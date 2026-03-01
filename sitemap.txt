@@ -1,0 +1,4 @@
+https://caos-web.vercel.app/
+https://caos-web.vercel.app/actividades.html
+https://caos-web.vercel.app/ranking.html
+https://caos-web.vercel.app/sumate.html
