@@ -32,131 +32,64 @@
 
         body::before {
             content: '';
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
-            opacity: .5;
+            pointer-events: none; z-index: 0; opacity: .5;
         }
 
         .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
-        .blob-1 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(8,145,178,0.18) 0%, transparent 70%);
-            top: -150px; left: -100px;
-            animation: drift 12s ease-in-out infinite alternate;
-        }
-        .blob-2 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(8,145,178,0.1) 0%, transparent 70%);
-            bottom: 10%; right: -100px;
-            animation: drift 15s ease-in-out infinite alternate-reverse;
-        }
-        @keyframes drift {
-            from { transform: translateY(0) scale(1); }
-            to   { transform: translateY(40px) scale(1.08); }
-        }
+        .blob-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(8,145,178,0.18) 0%, transparent 70%); top: -150px; left: -100px; animation: drift 12s ease-in-out infinite alternate; }
+        .blob-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(8,145,178,0.1) 0%, transparent 70%); bottom: 10%; right: -100px; animation: drift 15s ease-in-out infinite alternate-reverse; }
+        @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(40px) scale(1.08); } }
 
         /* NAVBAR */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 2.5rem; height: 68px;
-            background: rgba(5,5,5,0.65);
-            backdrop-filter: blur(20px);
+            background: rgba(5,5,5,0.65); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
         }
-        .nav-brand {
-            display: flex; align-items: center; gap: .6rem;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6rem; letter-spacing: .15em; color: var(--cyan);
-        }
+        .nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .15em; color: var(--cyan); }
         .nav-brand .logo { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--glass-border); }
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a {
-            color: var(--muted); text-decoration: none;
-            font-size: .88rem; font-weight: 400; letter-spacing: .06em;
-            text-transform: uppercase; transition: color .25s; position: relative;
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-            height: 1px; background: var(--cyan);
-            transform: scaleX(0); transform-origin: left; transition: transform .3s;
-        }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; transition: color .25s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--text); }
         .nav-links a.active::after, .nav-links a:hover::after { transform: scaleX(1); }
-        .btn-sumate {
-            text-decoration: none; padding: .45rem 1.3rem;
-            border: 1.5px solid var(--cyan); border-radius: 4px;
-            color: var(--cyan); font-size: .8rem; font-weight: 600;
-            letter-spacing: .1em; text-transform: uppercase;
-            background: var(--cyan-dim); backdrop-filter: blur(8px);
-            transition: background .25s, color .25s, box-shadow .25s;
-        }
+        .btn-sumate { text-decoration: none; padding: .45rem 1.3rem; border: 1.5px solid var(--cyan); border-radius: 4px; color: var(--cyan); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--cyan-dim); backdrop-filter: blur(8px); transition: background .25s, color .25s, box-shadow .25s; }
         .btn-sumate:hover { background: var(--cyan); color: #050505; box-shadow: 0 0 20px var(--cyan-glow); }
 
         /* MAIN & SLIDER */
         main { position: relative; z-index: 1; padding-top: 68px; overflow: hidden; }
 
-        .slider-wrapper {
-            display: flex;
-            width: 200vw;
-            transition: transform .75s cubic-bezier(.77,0,.18,1);
-        }
+        .slider-wrapper { display: flex; width: 200vw; transition: transform .75s cubic-bezier(.77,0,.18,1); }
         .slider-wrapper.show-second { transform: translateX(-100vw); }
 
-        .section {
-            width: 100vw;
-            min-height: calc(100vh - 68px);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            overflow: hidden;
-        }
+        .section { width: 100vw; min-height: calc(100vh - 68px); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; overflow: hidden; }
 
         /* BG STRIP */
         .bg-planch-sec { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
         .bg-track { display: flex; height: 100%; animation: scroll-bg 20s linear infinite; }
         .bg-track img { height: 100%; width: auto; object-fit: cover; opacity: .06; filter: saturate(0); flex-shrink: 0; }
-        @keyframes scroll-bg {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
+        @keyframes scroll-bg { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* GRID */
-        .grid-caos {
-            position: relative; z-index: 2;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem; max-width: 1100px; width: 100%;
-        }
-        .grid-caos h1 {
-            grid-column: 1 / -1;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            letter-spacing: .12em; text-transform: uppercase; line-height: 1; margin-bottom: .5rem;
-            background: linear-gradient(135deg, #fff 30%, var(--cyan) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+        .grid-caos { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; max-width: 1100px; width: 100%; }
+        .grid-caos h1 { grid-column: 1 / -1; font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); letter-spacing: .12em; text-transform: uppercase; line-height: 1; margin-bottom: .5rem; background: linear-gradient(135deg, #fff 30%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* CARDS */
         .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(18px);
-            border-radius: 12px; padding: 1.6rem;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            backdrop-filter: blur(18px); border-radius: 12px; padding: 1.6rem;
             position: relative; overflow: hidden;
             transition: transform .3s, box-shadow .3s, border-color .3s;
-            opacity: 0; transform: translateY(24px);
-            animation: fadeUp .6s forwards;
+            opacity: 0; transform: translateY(24px); animation: fadeUp .6s forwards;
+            cursor: pointer;
         }
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(8,145,178,.6), transparent);
-        }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(8,145,178,.6), transparent); }
         .card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(8,145,178,.2); border-color: var(--cyan); }
+        .card.active-card { border-color: var(--cyan); box-shadow: 0 0 30px rgba(8,145,178,.3); transform: translateY(-4px); }
         .card-wide { grid-column: span 2; }
         .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: .1em; margin: .6rem 0 .5rem; color: #fff; }
         .card p { font-size: .88rem; line-height: 1.6; color: var(--muted); }
@@ -166,6 +99,18 @@
         .card:nth-child(5) { animation-delay: .4s; }
         .card:nth-child(6) { animation-delay: .5s; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* CLICK HINT */
+        .card .hint {
+            display: flex; align-items: center; gap: .4rem;
+            margin-top: .8rem;
+            font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+            text-transform: uppercase; color: var(--cyan);
+            opacity: .7; transition: opacity .2s;
+        }
+        .card:hover .hint { opacity: 1; }
+        .hint-arrow { transition: transform .3s; }
+        .card.active-card .hint-arrow { transform: rotate(90deg); }
 
         /* TAGS */
         .tag { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 99px; }
@@ -177,57 +122,92 @@
         .tag-orange { background: rgba(249,115,22,.2); color: #fdba74; border: 1px solid rgba(249,115,22,.4); }
         .tag-sky    { background: rgba(14,165,233,.2); color: #7dd3fc; border: 1px solid rgba(14,165,233,.4); }
 
-        /* ARROW BUTTON */
+        /* DOC PANEL */
+        .doc-panel {
+            position: relative; z-index: 2;
+            max-width: 1100px; width: 100%;
+            margin-top: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .7s cubic-bezier(.77,0,.18,1), margin-top .4s;
+        }
+        .doc-panel.open {
+            max-height: 800px;
+            margin-top: 1.5rem;
+        }
+
+        .doc-inner {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            border-radius: 16px;
+            padding: 2.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .doc-inner::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        }
+
+        .doc-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem; letter-spacing: .12em;
+            color: #fff; margin-bottom: .3rem;
+        }
+        .doc-subtitle {
+            font-size: .8rem; font-weight: 600; letter-spacing: .12em;
+            text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem;
+        }
+        .doc-body {
+            font-size: .92rem; line-height: 1.9; color: var(--muted);
+        }
+        .doc-body p { margin-bottom: 1rem; }
+        .doc-body h4 {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+            letter-spacing: .1em; color: #fff; margin: 1.4rem 0 .5rem;
+        }
+
+        .doc-close {
+            position: absolute; top: 1.2rem; right: 1.5rem;
+            background: none; border: none; cursor: pointer;
+            color: var(--muted); font-size: 1.2rem;
+            transition: color .2s;
+        }
+        .doc-close:hover { color: var(--cyan); }
+
+        /* ARROW */
         .arrow-btn {
             position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 200;
             width: 56px; height: 56px; border-radius: 50%;
-            border: 1.5px solid var(--cyan);
-            background: var(--cyan-dim); backdrop-filter: blur(12px);
-            color: var(--cyan); font-size: 1.8rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
+            border: 1.5px solid var(--cyan); background: var(--cyan-dim);
+            backdrop-filter: blur(12px); color: var(--cyan); font-size: 1.8rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
             transition: background .25s, color .25s, box-shadow .25s, transform .2s;
-            box-shadow: 0 0 20px rgba(8,145,178,.15);
-            line-height: 1;
+            box-shadow: 0 0 20px rgba(8,145,178,.15); line-height: 1;
         }
         .arrow-btn:hover { background: var(--cyan); color: #050505; box-shadow: 0 0 30px var(--cyan-glow); transform: scale(1.08); }
 
-        /* DOTS */
-        .dots {
-            position: fixed; bottom: 2.8rem; left: 50%; transform: translateX(-50%);
-            z-index: 200; display: flex; gap: .6rem; align-items: center;
-        }
-        .dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: var(--muted); transition: background .3s, transform .3s; cursor: pointer;
-        }
+        .dots { position: fixed; bottom: 2.8rem; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: .6rem; align-items: center; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: background .3s, transform .3s; cursor: pointer; }
         .dot.active { background: var(--cyan); transform: scale(1.4); box-shadow: 0 0 8px var(--cyan-glow); }
 
-        /* SECTION HINT LABEL */
-        .section-label {
-            position: fixed; bottom: 2.7rem; right: 7rem; z-index: 200;
-            font-size: .72rem; font-weight: 600; letter-spacing: .1em;
-            text-transform: uppercase; color: var(--muted);
-            transition: opacity .3s;
-            white-space: nowrap;
-        }
+        .section-label { position: fixed; bottom: 2.7rem; right: 7rem; z-index: 200; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 
         @media (max-width: 900px) { .grid-caos { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) {
-            .navbar { padding: 0 1.2rem; }
-            .nav-links { display: none; }
-            .grid-caos { grid-template-columns: 1fr; }
-            .card-wide { grid-column: span 1; }
-            .section-label { display: none; }
+            .navbar { padding: 0 1.2rem; } .nav-links { display: none; }
+            .grid-caos { grid-template-columns: 1fr; } .card-wide { grid-column: span 1; }
+            .section-label { display: none; } .doc-inner { padding: 1.5rem; }
         }
     </style>
 </head>
 
 <body>
-
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="https://i.ibb.co/DfW0SY6t/Chat-GPT-Image-28-feb-2026-09-59-31.png" class="logo" alt="Logo C.A.O.S">
@@ -246,7 +226,7 @@
     <main>
         <div class="slider-wrapper" id="slider">
 
-            <!-- ── SECCIÓN 1: ACTIVIDADES ── -->
+            <!-- ══ SECCIÓN 1: ACTIVIDADES ══ -->
             <section class="section">
                 <div class="bg-planch-sec">
                     <div class="bg-track">
@@ -258,43 +238,58 @@
                 <div class="grid-caos">
                     <h1>Actividades</h1>
 
-                    <div class="card card-wide">
+                    <div class="card card-wide" onclick="openDoc('olympus', this)">
                         <span class="tag tag-cyan">Deporte</span>
                         <h3>OLYMPUS C.A.O.S.</h3>
                         <p>Mundialito integral de todas las disciplinas. Reorganización total para una competencia sana.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('golden', this)">
                         <span class="tag tag-purple">Premiación</span>
                         <h3>THE GOLDEN CUP</h3>
                         <p>El trofeo máximo al mejor curso de la gestión.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('blooming', this)">
                         <span class="tag tag-pink">Social</span>
                         <h3>BLOOMING FEST</h3>
                         <p>Fiesta de primavera con música y ambiente disruptivo.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('stage', this)">
                         <span class="tag tag-yellow">Arte</span>
                         <h3>C.A.O.S. STAGE</h3>
                         <p>Tu talento único en el escenario principal.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('enigma', this)">
                         <span class="tag tag-green">Estrategia</span>
                         <h3>ENIGMA CHALLENGE</h3>
                         <p>Desafío de acertijos y lógica por todo el colegio.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
+                    </div>
+                </div>
+
+                <!-- DOC PANEL SECCIÓN 1 -->
+                <div class="doc-panel" id="doc-panel-1">
+                    <div class="doc-inner">
+                        <button class="doc-close" onclick="closeDoc(1)">✕</button>
+                        <div class="doc-title" id="doc-title-1"></div>
+                        <div class="doc-subtitle" id="doc-subtitle-1"></div>
+                        <div class="doc-body" id="doc-body-1"></div>
                     </div>
                 </div>
             </section>
 
-            <!-- ── SECCIÓN 2: CAMBIOS EDUCATIVOS ── -->
+            <!-- ══ SECCIÓN 2: CAMBIOS EDUCATIVOS ══ -->
             <section class="section">
                 <div class="bg-planch-sec">
                     <div class="bg-track">
-                        <!-- REEMPLAZÁ estas URLs con tu imagen nueva cuando la tengas -->
+                        <!-- REEMPLAZÁ con tu imagen nueva -->
                         <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="Educación">
                         <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="Educación">
                     </div>
@@ -303,28 +298,42 @@
                 <div class="grid-caos">
                     <h1>Cambios Educativos</h1>
 
-                    <div class="card card-wide">
+                    <div class="card card-wide" onclick="openDoc('dia', this)">
                         <span class="tag tag-sky">Celebración</span>
                         <h3>DÍA DEL ESTUDIANTE</h3>
                         <p>Un día entero dedicado a celebrar el esfuerzo de cada estudiante. Actividades, sorpresas y un espacio donde cada voz importa.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('derechos', this)">
                         <span class="tag tag-cyan">Derechos</span>
                         <h3>DERECHOS ESTUDIANTILES</h3>
                         <p>Respeto real a los derechos de cada alumno. Protocolos claros y cero tolerancia a irregularidades.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('voz', this)">
                         <span class="tag tag-purple">Voz</span>
                         <h3>VOZ ESTUDIANTIL</h3>
                         <p>Asambleas abiertas donde los estudiantes proponen, debaten y deciden. Tu opinión construye el colegio.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="openDoc('cafeteria', this)">
                         <span class="tag tag-orange">Bienestar</span>
                         <h3>MEJORA DE LA CAFETERÍA</h3>
                         <p>Menús más variados, precios justos y un espacio digno. Porque la alimentación también es parte de la educación.</p>
+                        <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
+                    </div>
+                </div>
+
+                <!-- DOC PANEL SECCIÓN 2 -->
+                <div class="doc-panel" id="doc-panel-2">
+                    <div class="doc-inner">
+                        <button class="doc-close" onclick="closeDoc(2)">✕</button>
+                        <div class="doc-title" id="doc-title-2"></div>
+                        <div class="doc-subtitle" id="doc-subtitle-2"></div>
+                        <div class="doc-body" id="doc-body-2"></div>
                     </div>
                 </div>
             </section>
@@ -332,19 +341,15 @@
         </div>
     </main>
 
-    <!-- DOTS -->
     <div class="dots">
         <div class="dot active" onclick="goTo(0)"></div>
         <div class="dot" onclick="goTo(1)"></div>
     </div>
-
-    <!-- LABEL -->
     <span class="section-label" id="sectionLabel">Cambios Educativos →</span>
-
-    <!-- ARROW -->
     <button class="arrow-btn" id="arrowBtn" onclick="toggle()">›</button>
 
     <script>
+        /* ── SLIDER ── */
         let current = 0;
         const slider = document.getElementById('slider');
         const btn    = document.getElementById('arrowBtn');
@@ -358,8 +363,157 @@
             label.textContent = current === 0 ? 'Cambios Educativos →' : '← Actividades';
             dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
         }
-
         function toggle() { goTo(current === 0 ? 1 : 0); }
+
+        /* ── DOC CONTENT ── */
+        const docs = {
+            olympus: {
+                title: 'OLYMPUS C.A.O.S.',
+                subtitle: 'Propuesta Deportiva · Mundialito Integral',
+                body: `
+                    <p>El Olympus C.A.O.S. es nuestra propuesta estrella para una competencia deportiva integral, justa y emocionante. Actualmente los mundialitos carecen de organización clara, lo que genera conflictos y desmotivación.</p>
+                    <h4>¿Qué proponemos?</h4>
+                    <p>Un mundialito reorganizado que incluya todas las disciplinas disponibles: fútbol, básquet, vóley, atletismo y más. Con un reglamento claro, árbitros designados y un sistema de puntuación transparente visible para todos. Con un sistema diferente de puntuación al anterior.</p>
+                    <h4>Cronograma</h4>
+                    <p>Se realizará en tres etapas distribuidas a lo largo del año: <br>
+                        <p style="color: #0891b2">Clasificación por curso.-</p> Se jugarán partidos entre todos los 1º y 2º de Sec, entre todos los 3º y 4º, entre todos los 5º y 6º, solo dos cursos de cada serie con la mayor puntuaciaón entrarán a la semifinal.<br> 
+                        <p style="color: #0891b2">Cuartos de final.-</p>Se sortearán las posiciones de juego, y se añadira el mejor tercer lugar de todas la series para jugar en los cuartos de final
+                        <p style="color: #0891b2">Semifinal.- </p> Los vencedores jugarán la semifinal y competirán por la copa, modelo de eliminación directa.
+                        <p style="color: #0891b2">Final.- </p> Se disputaran los primeros, segundos y terceros lugares.
+                    </p>
+                    <h4>Impacto esperado</h4>
+                    <p>Mayor participación estudiantil, fomento del juego limpio y un espíritu de comunidad que trascienda las aulas. Acá vas a poder reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            golden: {
+                title: 'THE GOLDEN CUP',
+                subtitle: 'Propuesta de Premiación · Trofeo Máximo',
+                body: `
+                    <p>The Golden Cup es el reconocimiento máximo de la gestión: un trofeo que premia al curso que más haya sumado puntos durante todo el año en actividades, convivencia y participación.</p>
+                    <h4>Sistema de puntuación</h4>
+                    <p>Cada actividad organizada por C.A.O.S. sumará puntos al ranking general. Los cursos podrán ver su posición en tiempo real desde la sección Golden Cup del sitio.</p>
+                    <h4>Criterios</h4>
+                    <p>Participación deportiva, eventos culturales, asistencia a asambleas y reconocimientos especiales. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            blooming: {
+                title: 'BLOOMING FEST',
+                subtitle: 'Propuesta Social · Fiesta de Primavera',
+                body: `
+                    <p>Blooming Fest es la fiesta de primavera de C.A.O.S.: un evento social disruptivo pensado por y para los estudiantes, con música en vivo, arte y un ambiente completamente diferente a lo de siempre.</p>
+                    <h4>¿Qué incluye?</h4>
+                    <p>Escenario principal con bandas y DJ, feria de arte estudiantil, food trucks y espacios de descanso decorados temáticamente. Un evento que el colegio nunca va a olvidar.</p>
+                    <h4>Organización</h4>
+                    <p>Se coordina con las autoridades del colegio y se financiará a través de entradas simbólicas y sponsors. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            stage: {
+                title: 'C.A.O.S. STAGE',
+                subtitle: 'Propuesta Cultural · Escenario del Talento',
+                body: `
+                    <p>C.A.O.S. Stage es el espacio donde cada estudiante puede mostrar su talento único: música, teatro, stand-up, danza, malabares y cualquier expresión artística que quiera compartir.</p>
+                    <h4>¿Cómo participar?</h4>
+                    <p>Los interesados se inscriben previamente a través de los representantes de C.A.O.S. de cada curso. Se realizará una preselección amistosa para organizar el evento.</p>
+                    <h4>Frecuencia</h4>
+                    <p>Se planea realizar al menos dos ediciones por año. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            enigma: {
+                title: 'ENIGMA CHALLENGE',
+                subtitle: 'Propuesta de Estrategia · Desafío de Lógica',
+                body: `
+                    <p>Enigma Challenge es un recorrido de acertijos, pistas y desafíos de lógica distribuidos por todo el colegio. Los cursos compiten en equipos para resolver el misterio antes que el resto.</p>
+                    <h4>Mecánica</h4>
+                    <p>Cada equipo recibe una pista inicial. Resolviéndola llega a la siguiente ubicación y así sucesivamente hasta llegar al punto final, donde se revelará la solución del gran enigma.</p>
+                    <h4>Premios</h4>
+                    <p>El curso ganador suma puntos al Golden Cup y recibe un reconocimiento especial. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            dia: {
+                title: 'DÍA DEL ESTUDIANTE',
+                subtitle: 'Cambio Educativo · Celebración Oficial',
+                body: `
+                    <p>Proponemos que el Día del Estudiante sea reconocido formalmente por el colegio con actividades dedicadas exclusivamente a los alumnos: sin clases tradicionales, con talleres opcionales y espacios recreativos.</p>
+                    <h4>¿Por qué es importante?</h4>
+                    <p>Actualmente el día pasa sin reconocimiento institucional. Creemos que celebrar a los estudiantes fortalece el sentido de pertenencia y motiva la participación durante todo el año.</p>
+                    <h4>Propuesta concreta</h4>
+                    <p>Jornada de actividades libres, shows, juegos y un acto simbólico donde C.A.O.S. entrega reconocimientos a estudiantes destacados. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            derechos: {
+                title: 'DERECHOS ESTUDIANTILES',
+                subtitle: 'Cambio Educativo · Protocolo de Respeto',
+                body: `
+                    <p>Exigimos que los derechos de cada estudiante sean respetados de manera real y no solo en el papel. Proponemos la creación de un protocolo claro y accesible para todos.</p>
+                    <h4>Problemas actuales</h4>
+                    <p>Falta de canales claros para reportar irregularidades, desconocimiento del reglamento estudiantil y ausencia de respuestas institucionales frente a situaciones de injusticia.</p>
+                    <h4>Nuestras propuestas</h4>
+                    <p>Un buzón de sugerencias y denuncias anónimo, reuniones periódicas entre C.A.O.S. y autoridades, y la difusión del reglamento estudiantil en todos los cursos. Acá podés reemplazar este texto con el contenido real.</p>
+                `
+            },
+            voz: {
+                title: 'VOZ ESTUDIANTIL',
+                subtitle: 'Cambio Educativo · Asambleas Abiertas',
+                body: `
+                    <p>La Voz Estudiantil es nuestra propuesta para que los alumnos tengan un espacio real de participación en las decisiones que los afectan. No queremos ser consultados: queremos decidir.</p>
+                    <h4>Asambleas abiertas</h4>
+                    <p>Una vez al mes, una asamblea abierta a todos los cursos donde se presentan propuestas, se votan iniciativas y se da seguimiento a compromisos anteriores.</p>
+                    <h4>Canales digitales</h4>
+                    <p>Un formulario anónimo permanente para recibir ideas y reclamos, con respuesta pública mensual. Acá podés reemplazar este texto con el contenido real de la propuesta.</p>
+                `
+            },
+            cafeteria: {
+                title: 'MEJORA DE LA CAFETERÍA',
+                subtitle: 'Cambio Educativo · Bienestar y Alimentación',
+                body: `
+                    <p>La cafetería actual no cumple con las necesidades básicas de los estudiantes: precios altos, opciones limitadas y un espacio que no invita a quedarse. Eso tiene que cambiar.</p>
+                    <h4>Propuestas concretas</h4>
+                    <p>Menú semanal variado con opciones saludables y económicas, mejora del espacio físico con más mesas y mejor iluminación, y la incorporación de opciones vegetarianas y sin TACC.</p>
+                    <h4>Plan de acción</h4>
+                    <p>Reunión con el concesionario y las autoridades del colegio, presentación de una encuesta estudiantil sobre preferencias y un seguimiento mensual de los cambios implementados. Acá podés reemplazar este texto con el contenido real.</p>
+                `
+            }
+        };
+
+        /* ── DOC LOGIC ── */
+        let activeCard = null;
+
+        function openDoc(key, cardEl) {
+            const section   = cardEl.closest('.section');
+            const panelNum  = section === document.querySelectorAll('.section')[0] ? 1 : 2;
+            const panel     = document.getElementById('doc-panel-' + panelNum);
+            const data      = docs[key];
+
+            // Si ya está abierto el mismo, cerrarlo
+            if (activeCard === cardEl && panel.classList.contains('open')) {
+                closeDoc(panelNum);
+                return;
+            }
+
+            // Quitar active de card anterior
+            if (activeCard) activeCard.classList.remove('active-card');
+            activeCard = cardEl;
+            cardEl.classList.add('active-card');
+
+            // Poblar contenido
+            document.getElementById('doc-title-'    + panelNum).textContent = data.title;
+            document.getElementById('doc-subtitle-' + panelNum).textContent = data.subtitle;
+            document.getElementById('doc-body-'     + panelNum).innerHTML   = data.body;
+
+            // Abrir panel
+            panel.classList.add('open');
+
+            // Scroll suave hacia el panel
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 80);
+        }
+
+        function closeDoc(panelNum) {
+            const panel = document.getElementById('doc-panel-' + panelNum);
+            panel.classList.remove('open');
+            if (activeCard) { activeCard.classList.remove('active-card'); activeCard = null; }
+        }
     </script>
 
 </body>
