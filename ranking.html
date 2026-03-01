@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.ibb.co/DfW0SY6t/Chat-GPT-Image-28-feb-2026-09-59-31.png">
+    <title>Golden Cup | C.A.O.S</title>
+
+    <style>
+        :root {
+            --bg:           #050505;
+            --cyan:         #0891b2;
+            --cyan-dim:     rgba(8, 145, 178, 0.18);
+            --cyan-glow:    rgba(8, 145, 178, 0.45);
+            --glass-bg:     rgba(255,255,255,0.04);
+            --glass-border: rgba(8, 145, 178, 0.35);
+            --text:         #f0f4f8;
+            --muted:        rgba(240,244,248,0.5);
+            --gold:         #f59e0b;
+            --gold-dim:     rgba(245,158,11,0.15);
+            --silver:       #94a3b8;
+            --silver-dim:   rgba(148,163,184,0.15);
+            --bronze:       #cd7c3a;
+            --bronze-dim:   rgba(205,124,58,0.15);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0; opacity: .5;
+        }
+
+        .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+        .blob-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(8,145,178,0.15) 0%, transparent 70%); top: -200px; left: -150px; animation: drift 12s ease-in-out infinite alternate; }
+        .blob-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%); bottom: 5%; right: -100px; animation: drift 18s ease-in-out infinite alternate-reverse; }
+        .blob-3 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(8,145,178,0.08) 0%, transparent 70%); top: 50%; left: 50%; animation: drift 14s ease-in-out infinite alternate; }
+        @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(40px) scale(1.08); } }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2.5rem; height: 68px;
+            background: rgba(5,5,5,0.65); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .15em; color: var(--cyan); text-decoration: none; }
+        .nav-brand .logo { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--glass-border); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; transition: color .25s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text); }
+        .nav-links a.active::after, .nav-links a:hover::after { transform: scaleX(1); }
+        .btn-sumate { text-decoration: none; padding: .45rem 1.3rem; border: 1.5px solid var(--cyan); border-radius: 4px; color: var(--cyan); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--cyan-dim); backdrop-filter: blur(8px); transition: background .25s, color .25s, box-shadow .25s; }
+        .btn-sumate:hover { background: var(--cyan); color: #050505; box-shadow: 0 0 20px var(--cyan-glow); }
+
+        /* MAIN */
+        main { position: relative; z-index: 1; padding: 100px 2rem 6rem; max-width: 1100px; margin: 0 auto; }
+
+        /* HEADER */
+        .page-header { text-align: center; margin-bottom: 3.5rem; opacity: 0; transform: translateY(20px); animation: fadeUp .7s .1s forwards; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--cyan); margin-bottom: .6rem; display: block; }
+
+        .page-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            letter-spacing: .1em; line-height: .9;
+            background: linear-gradient(135deg, #fff 20%, var(--gold) 60%, var(--cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .page-header p { font-size: .9rem; color: var(--muted); margin-top: 1rem; letter-spacing: .05em; }
+
+        /* TROPHY ICON */
+        .trophy-line {
+            display: flex; align-items: center; justify-content: center; gap: 1rem;
+            margin-bottom: .5rem;
+        }
+        .trophy-line span { font-size: 2.5rem; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+        /* LOADING */
+        .loading {
+            text-align: center; padding: 4rem;
+            color: var(--muted); font-size: .88rem; letter-spacing: .1em; text-transform: uppercase;
+        }
+        .loading-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); margin: 0 3px; animation: blink 1.2s infinite; }
+        .loading-dot:nth-child(2) { animation-delay: .2s; }
+        .loading-dot:nth-child(3) { animation-delay: .4s; }
+        @keyframes blink { 0%,80%,100% { opacity: .2; transform: scale(.8); } 40% { opacity: 1; transform: scale(1); } }
+
+        /* CATEGORIAS LEGEND */
+        .categorias {
+            display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center;
+            margin-bottom: 2.5rem;
+            opacity: 0; animation: fadeUp .6s .3s forwards;
+        }
+        .cat-badge {
+            display: flex; align-items: center; gap: .4rem;
+            padding: .3rem .8rem; border-radius: 99px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg); backdrop-filter: blur(8px);
+            font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+            color: var(--muted);
+        }
+        .cat-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+        /* PODIO TOP 3 */
+        .podio {
+            display: flex; align-items: flex-end; justify-content: center;
+            gap: 1rem; margin-bottom: 3rem;
+            opacity: 0; animation: fadeUp .7s .2s forwards;
+        }
+        .podio-item {
+            display: flex; flex-direction: column; align-items: center; gap: .5rem;
+            flex: 1; max-width: 220px;
+        }
+        .podio-card {
+            width: 100%; border-radius: 16px; padding: 1.5rem 1rem;
+            text-align: center; position: relative; overflow: hidden;
+            backdrop-filter: blur(18px);
+            border: 1px solid;
+            transition: transform .3s, box-shadow .3s;
+        }
+        .podio-card:hover { transform: translateY(-4px); }
+        .podio-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+
+        .podio-1 .podio-card { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.5); box-shadow: 0 0 40px rgba(245,158,11,0.15); }
+        .podio-1 .podio-card::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .podio-2 .podio-card { background: rgba(148,163,184,0.07); border-color: rgba(148,163,184,0.4); }
+        .podio-2 .podio-card::before { background: linear-gradient(90deg, transparent, var(--silver), transparent); }
+        .podio-3 .podio-card { background: rgba(205,124,58,0.07); border-color: rgba(205,124,58,0.4); }
+        .podio-3 .podio-card::before { background: linear-gradient(90deg, transparent, var(--bronze), transparent); }
+
+        .podio-medal { font-size: 2rem; margin-bottom: .3rem; }
+        .podio-pos { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; letter-spacing: .05em; line-height: 1; }
+        .podio-1 .podio-pos { color: var(--gold); }
+        .podio-2 .podio-pos { color: var(--silver); }
+        .podio-3 .podio-pos { color: var(--bronze); }
+        .podio-curso { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: .1em; color: #fff; margin: .3rem 0; }
+        .podio-pts { font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+        .podio-pts span { font-size: 1.4rem; font-weight: 700; display: block; }
+        .podio-1 .podio-pts span { color: var(--gold); }
+        .podio-2 .podio-pts span { color: var(--silver); }
+        .podio-3 .podio-pts span { color: var(--bronze); }
+
+        .podio-1 { order: 2; }
+        .podio-2 { order: 1; }
+        .podio-3 { order: 3; }
+
+        /* GRID CARDS */
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .rank-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(18px);
+            border-radius: 14px; padding: 1.4rem 1.6rem;
+            position: relative; overflow: hidden;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+            opacity: 0; transform: translateY(20px);
+        }
+        .rank-card.visible { animation: fadeUp .5s forwards; }
+        .rank-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(8,145,178,.5), transparent); }
+        .rank-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(8,145,178,.15); border-color: var(--cyan); }
+
+        .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .card-pos { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: .05em; color: var(--muted); line-height: 1; }
+        .card-total { text-align: right; }
+        .card-total-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: .05em; color: var(--cyan); line-height: 1; }
+        .card-total-label { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+        .card-curso { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .1em; color: #fff; margin-bottom: 1rem; }
+
+        /* BARRA DE PROGRESO POR CATEGORÍA */
+        .cats { display: flex; flex-direction: column; gap: .5rem; }
+        .cat-row { display: flex; flex-direction: column; gap: .2rem; }
+        .cat-row-top { display: flex; justify-content: space-between; align-items: center; }
+        .cat-name { font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+        .cat-pts { font-size: .65rem; font-weight: 700; color: var(--text); }
+        .bar-track { height: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 99px; width: 0; transition: width 1s cubic-bezier(.4,0,.2,1); }
+
+        /* COLORES CATEGORÍAS */
+        .bar-deporte      { background: #0891b2; }
+        .bar-arte         { background: #a855f7; }
+        .bar-participacion{ background: #ec4899; }
+        .bar-convivencia  { background: #10b981; }
+        .bar-enigma       { background: #f59e0b; }
+
+        /* ERROR */
+        .error-msg { text-align: center; padding: 3rem; color: var(--muted); font-size: .88rem; }
+
+        /* LAST UPDATE */
+        .last-update { text-align: center; margin-top: 2.5rem; font-size: .72rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; opacity: 0; animation: fadeUp .5s 1s forwards; }
+        .last-update span { color: var(--cyan); }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) { .podio { flex-direction: column; align-items: center; } .podio-item { max-width: 100%; width: 100%; order: unset !important; } .navbar { padding: 0 1.2rem; } .nav-links { display: none; } }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <nav class="navbar">
+        <a href="caos.html" class="nav-brand">
+            <img src="https://i.ibb.co/DfW0SY6t/Chat-GPT-Image-28-feb-2026-09-59-31.png" class="logo" alt="Logo C.A.O.S">
+            <span>C.A.O.S</span>
+        </a>
+        <div class="nav-links">
+            <a href="caos.html">Inicio</a>
+            <a href="actividades.html">Actividades</a>
+            <a href="ranking.html" class="active">Golden Cup</a>
+            <a href="propuestas.html">Propuestas</a>
+            <a href="informacion.html">Información</a>
+        </div>
+        <a href="sumate.html" class="btn-sumate">Sumate</a>
+    </nav>
+
+    <main>
+        <div class="page-header">
+            <div class="trophy-line">
+                <span>🏆</span>
+            </div>
+            <span class="eyebrow">C.A.O.S. · Ranking Oficial</span>
+            <h1>GOLDEN CUP</h1>
+            <p>El trofeo máximo al mejor curso de la gestión · Actualización en tiempo real</p>
+        </div>
+
+        <div class="categorias">
+            <div class="cat-badge"><div class="cat-dot" style="background:#0891b2"></div>Deporte</div>
+            <div class="cat-badge"><div class="cat-dot" style="background:#a855f7"></div>Arte / Cultura</div>
+            <div class="cat-badge"><div class="cat-dot" style="background:#ec4899"></div>Participación</div>
+            <div class="cat-badge"><div class="cat-dot" style="background:#10b981"></div>Convivencia</div>
+            <div class="cat-badge"><div class="cat-dot" style="background:#f59e0b"></div>Enigma Challenge</div>
+        </div>
+
+        <!-- PODIO TOP 3 -->
+        <div class="podio" id="podio">
+            <div class="loading">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+        </div>
+
+        <!-- GRID RESTO -->
+        <div class="ranking-grid" id="rankingGrid"></div>
+
+        <div class="last-update" id="lastUpdate"></div>
+    </main>
+
+    <script>
+        const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbL2NfL77cus6H4GGKLYFOEIR-ONfpnv71CTWK9ju37Zi95J0Lu1wpZaK5VSDLIyDB0RZazAWwVCiL/pub?output=csv';
+
+        const CAT_KEYS   = ['deporte', 'arte', 'participacion', 'convivencia', 'enigma'];
+        const CAT_LABELS = ['Deporte', 'Arte / Cultura', 'Participación', 'Convivencia', 'Enigma Challenge'];
+        const CAT_BARS   = ['bar-deporte', 'bar-arte', 'bar-participacion', 'bar-convivencia', 'bar-enigma'];
+        const MEDALS     = ['🥇', '🥈', '🥉'];
+
+        async function fetchData() {
+            try {
+                const res  = await fetch(SHEET_CSV);
+                const text = await res.text();
+                return parseCSV(text);
+            } catch(e) {
+                document.getElementById('podio').innerHTML = `<div class="error-msg">No se pudo cargar el ranking. Verificá la conexión con Google Sheets.</div>`;
+                return null;
+            }
+        }
+
+        function parseCSV(text) {
+            const rows = text.trim().split('\n').map(r => r.split(',').map(c => c.trim().replace(/"/g,'')));
+            if (rows.length < 2) return [];
+
+            // headers: Curso, Deporte, Arte, Participacion, Convivencia, Enigma
+            return rows.slice(1).map(row => {
+                const deporte       = parseInt(row[1]) || 0;
+                const arte          = parseInt(row[2]) || 0;
+                const participacion = parseInt(row[3]) || 0;
+                const convivencia   = parseInt(row[4]) || 0;
+                const enigma        = parseInt(row[5]) || 0;
+                const total         = deporte + arte + participacion + convivencia + enigma;
+                return {
+                    curso: row[0] || '—',
+                    deporte, arte, participacion, convivencia, enigma, total
+                };
+            }).filter(r => r.curso && r.curso !== '—')
+              .sort((a, b) => b.total - a.total);
+        }
+
+        function maxTotal(data) {
+            return Math.max(...data.map(d => d.total), 1);
+        }
+
+        function buildPodio(top3) {
+            const podio = document.getElementById('podio');
+            const order = [1, 0, 2]; // plata, oro, bronce visualmente
+            const classes = ['podio-2', 'podio-1', 'podio-3'];
+
+            podio.innerHTML = '';
+
+            order.forEach(i => {
+                if (!top3[i]) return;
+                const d   = top3[i];
+                const pos = i + 1;
+                const div = document.createElement('div');
+                div.className = `podio-item ${classes[i]}`;
+                div.innerHTML = `
+                    <div class="podio-card">
+                        <div class="podio-medal">${MEDALS[i]}</div>
+                        <div class="podio-pos">${pos}°</div>
+                        <div class="podio-curso">${d.curso}</div>
+                        <div class="podio-pts">
+                            <span>${d.total}</span>
+                            puntos
+                        </div>
+                    </div>
+                `;
+                podio.appendChild(div);
+            });
+        }
+
+        function buildCards(data) {
+            const grid = document.getElementById('rankingGrid');
+            const max  = maxTotal(data);
+            grid.innerHTML = '';
+
+            data.forEach((d, idx) => {
+                const card = document.createElement('div');
+                card.className = 'rank-card';
+
+                const cats = CAT_KEYS.map((k, ci) => {
+                    const pct = max > 0 ? (d[k] / max * 100).toFixed(1) : 0;
+                    return `
+                        <div class="cat-row">
+                            <div class="cat-row-top">
+                                <span class="cat-name">${CAT_LABELS[ci]}</span>
+                                <span class="cat-pts">${d[k]} pts</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill ${CAT_BARS[ci]}" data-pct="${pct}"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="card-pos">#${idx + 1}</div>
+                        <div class="card-total">
+                            <div class="card-total-num">${d.total}</div>
+                            <div class="card-total-label">pts totales</div>
+                        </div>
+                    </div>
+                    <div class="card-curso">${d.curso}</div>
+                    <div class="cats">${cats}</div>
+                `;
+
+                grid.appendChild(card);
+
+                // Animate in with delay
+                setTimeout(() => {
+                    card.classList.add('visible');
+                    // Animate bars after card appears
+                    setTimeout(() => {
+                        card.querySelectorAll('.bar-fill').forEach(bar => {
+                            bar.style.width = bar.dataset.pct + '%';
+                        });
+                    }, 300);
+                }, idx * 80);
+            });
+        }
+
+        function setLastUpdate() {
+            const now = new Date();
+            const str = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('lastUpdate').innerHTML = `Última actualización: <span>${str}</span> · Los datos se sincronizan con Google Sheets`;
+        }
+
+        async function init() {
+            const data = await fetchData();
+            if (!data || data.length === 0) return;
+
+            buildPodio(data.slice(0, 3));
+            buildCards(data.slice(3)); // resto después del podio
+            setLastUpdate();
+        }
+
+        init();
+        // Refresca cada 2 minutos
+        setInterval(init, 120000);
+    </script>
+
+</body>
+</html>
