@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@200;300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Alianzas | S.E.E.F.</title>
+    <style>
+        :root {
+            --bg:       #0a0605;
+            --granate:  #8b1a1a;
+            --granate2: #a02020;
+            --beige:    #e8dcc8;
+            --beige-dim: rgba(232,220,200,0.55);
+            --beige-faint: rgba(232,220,200,0.07);
+            --border:   rgba(139,26,26,0.4);
+            --glow:     rgba(139,26,26,0.55);
+            --text:     #e8dcc8;
+            --muted:    rgba(232,220,200,0.45);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* CUSTOM CURSOR */
+        .cursor {
+            position: fixed; width: 12px; height: 12px;
+            background: var(--granate); border-radius: 50%;
+            pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform .1s, width .3s, height .3s, background .3s;
+            mix-blend-mode: normal;
+        }
+        .cursor-ring {
+            position: fixed; width: 36px; height: 36px;
+            border: 1.5px solid rgba(139,26,26,.6); border-radius: 50%;
+            pointer-events: none; z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform .18s ease-out, width .4s, height .4s, opacity .3s;
+        }
+        body:hover .cursor { opacity: 1; }
+
+        /* NOISE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0; opacity: .7;
+        }
+
+        /* AMBIENT BLOBS */
+        .blob { position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; }
+        .blob-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(139,26,26,.16) 0%, transparent 70%); top: -200px; left: -200px; animation: drift 16s ease-in-out infinite alternate; }
+        .blob-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,26,26,.08) 0%, transparent 70%); bottom: 0; right: -150px; animation: drift 20s ease-in-out infinite alternate-reverse; }
+        @keyframes drift { from { transform: translateY(0) scale(1); } to { transform: translateY(60px) scale(1.1); } }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2.5rem; height: 68px;
+            background: rgba(10,6,5,.7); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-brand { display: flex; align-items: center; gap: .6rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .15em; color: var(--granate); text-decoration: none; }
+        .nav-brand .logo { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; transition: color .25s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--granate); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text); }
+        .nav-links a.active::after, .nav-links a:hover::after { transform: scaleX(1); }
+        .btn-sumate { text-decoration: none; padding: .45rem 1.3rem; border: 1.5px solid var(--granate); border-radius: 4px; color: var(--granate); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: rgba(139,26,26,.18); backdrop-filter: blur(8px); transition: background .25s, color .25s, box-shadow .25s; }
+        .btn-sumate:hover { background: var(--granate); color: var(--beige); box-shadow: 0 0 20px var(--glow); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .4rem; background: none; border: none; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--granate); border-radius: 2px; transition: transform .3s, opacity .3s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,6,5,.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; flex-direction: column; padding: 1.5rem; gap: 1rem; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: .6rem 0; border-bottom: 1px solid var(--border); transition: color .2s; }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a.active { color: var(--granate); }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative; z-index: 1;
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 68px 2rem 0;
+            overflow: hidden;
+        }
+
+        /* Big diagonal text BG */
+        .hero-bg-word {
+            position: absolute;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(14rem, 28vw, 26rem);
+            letter-spacing: -.02em;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(139,26,26,.12);
+            user-select: none;
+            white-space: nowrap;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            pointer-events: none;
+            z-index: 0;
+            animation: bgWordDrift 20s ease-in-out infinite alternate;
+        }
+        @keyframes bgWordDrift { from { transform: translate(-50%, -50%) rotate(-8deg) scale(1); } to { transform: translate(-52%, -48%) rotate(-8deg) scale(1.03); } }
+
+        /* Horizontal line accents */
+        .hero-line {
+            position: absolute; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139,26,26,.5), transparent);
+            left: 0; right: 0;
+        }
+        .hero-line-top { top: 120px; animation: lineSlide 3s ease forwards; }
+        .hero-line-bot { bottom: 80px; animation: lineSlide 3s ease .5s forwards; }
+        @keyframes lineSlide { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+
+        /* Vertical counter */
+        .hero-counter {
+            position: absolute; left: 2.5rem; bottom: 4rem;
+            font-size: .65rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+            color: var(--muted); writing-mode: vertical-rl;
+            display: flex; align-items: center; gap: .8rem;
+            z-index: 2;
+        }
+        .hero-counter::before { content: ''; display: block; width: 1px; height: 40px; background: var(--granate); }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: .8rem;
+            font-size: .7rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+            color: var(--granate); margin-bottom: 2rem;
+            opacity: 0; animation: fadeUp .8s .2s forwards;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--granate); width: 40px; }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 900;
+            line-height: .95;
+            letter-spacing: -.02em;
+            opacity: 0; animation: fadeUp .9s .4s forwards;
+        }
+        .hero-title .line1 { display: block; color: var(--beige); }
+        .hero-title .line2 { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--granate); font-style: italic; }
+
+        .hero-sub {
+            margin-top: 2rem;
+            font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted);
+            max-width: 480px; margin-left: auto; margin-right: auto;
+            opacity: 0; animation: fadeUp .8s .7s forwards;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+            display: inline-flex; align-items: center; gap: .8rem;
+            font-size: .8rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+            color: var(--granate); text-decoration: none;
+            opacity: 0; animation: fadeUp .8s .9s forwards;
+            transition: gap .3s;
+        }
+        .hero-cta:hover { gap: 1.4rem; }
+        .hero-cta-arrow { width: 40px; height: 1px; background: var(--granate); position: relative; transition: width .3s; }
+        .hero-cta-arrow::after { content: '▶'; position: absolute; right: -6px; top: -6px; font-size: .6rem; }
+        .hero-cta:hover .hero-cta-arrow { width: 60px; }
+
+        /* Scroll indicator */
+        .scroll-ind {
+            position: absolute; right: 2.5rem; bottom: 3.5rem; z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: .5rem;
+            font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+        }
+        .scroll-ind-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--granate), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%,100% { opacity: .4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── MARQUEE STRIP ─── */
+        .marquee-section {
+            position: relative; z-index: 1;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0; overflow: hidden;
+            background: rgba(139,26,26,.06);
+        }
+        .marquee-track {
+            display: flex; gap: 3rem; width: max-content;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-item {
+            display: flex; align-items: center; gap: 1rem; white-space: nowrap;
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .15em;
+            color: var(--muted);
+        }
+        .marquee-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--granate); flex-shrink: 0; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ─── STATS ROW ─── */
+        .stats-section {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            max-width: 1200px; margin: 6rem auto 0; padding: 0 2rem;
+        }
+        .stat-item {
+            padding: 2.5rem 2rem;
+            border-right: 1px solid var(--border);
+            opacity: 0; transform: translateY(20px);
+            transition: opacity .6s, transform .6s;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item.visible { opacity: 1; transform: translateY(0); }
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 1;
+            color: var(--granate);
+        }
+        .stat-label { font-size: .75rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-top: .5rem; }
+
+        /* ─── ALIANZAS SECTION ─── */
+        .alianzas-section {
+            position: relative; z-index: 1;
+            padding: 8rem 2rem; max-width: 1200px; margin: 0 auto;
+        }
+
+        /* Section header */
+        .section-header {
+            display: grid; grid-template-columns: 1fr auto;
+            align-items: end; gap: 2rem; margin-bottom: 5rem;
+            padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+            opacity: 0; transform: translateY(24px);
+            transition: opacity .7s, transform .7s;
+        }
+        .section-header.visible { opacity: 1; transform: translateY(0); }
+        .section-label {
+            font-size: .65rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase;
+            color: var(--granate); margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 1.05;
+            color: var(--beige);
+        }
+        .section-title em { font-style: italic; color: var(--granate); }
+        .section-desc { font-size: .9rem; line-height: 1.8; color: var(--muted); max-width: 340px; text-align: right; }
+
+        /* ALIANZAS GRID — staggered masonry feel */
+        .alianzas-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Card base */
+        .a-card {
+            position: relative; overflow: hidden;
+            background: var(--beige-faint);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            cursor: none;
+            opacity: 0; transform: translateY(40px);
+            transition: opacity .7s, transform .7s, border-color .4s, box-shadow .4s;
+        }
+        .a-card.visible { opacity: 1; transform: translateY(0); }
+        .a-card:hover { border-color: var(--granate); box-shadow: 0 20px 60px rgba(139,26,26,.25), inset 0 0 60px rgba(139,26,26,.04); }
+
+        /* Card inner content */
+        .a-card-inner { padding: 2.5rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
+
+        /* Hover reveal overlay */
+        .a-card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(139,26,26,.92) 0%, rgba(80,10,10,.95) 100%);
+            display: flex; flex-direction: column; justify-content: center; padding: 2.5rem;
+            opacity: 0; transition: opacity .5s cubic-bezier(.77,0,.18,1);
+        }
+        .a-card:hover .a-card-overlay { opacity: 1; }
+
+        /* Diagonal accent line on card */
+        .a-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--granate), transparent);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .5s cubic-bezier(.77,0,.18,1);
+            z-index: 3;
+        }
+        .a-card:hover::before { transform: scaleX(1); }
+
+        /* Card number */
+        .card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem; font-weight: 900; line-height: 1;
+            color: rgba(232,220,200,.05);
+            position: absolute; top: 1rem; right: 1.5rem;
+            user-select: none; pointer-events: none;
+            transition: color .4s;
+        }
+        .a-card:hover .card-num { color: rgba(232,220,200,.08); }
+
+        /* Card tag */
+        .card-tag {
+            display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .2em;
+            text-transform: uppercase; padding: .3rem .8rem;
+            border: 1px solid var(--border); color: var(--granate);
+            background: rgba(139,26,26,.1); border-radius: 2px;
+            width: fit-content; margin-bottom: auto;
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 700; line-height: 1.1;
+            color: var(--beige); margin-bottom: .5rem;
+        }
+        .card-desc { font-size: .82rem; line-height: 1.7; color: var(--muted); }
+
+        /* Overlay content */
+        .overlay-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--beige); margin-bottom: 1rem; }
+        .overlay-body { font-size: .82rem; line-height: 1.8; color: rgba(232,220,200,.8); margin-bottom: 1.5rem; }
+        .overlay-link {
+            display: inline-flex; align-items: center; gap: .6rem;
+            font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+            color: var(--beige); text-decoration: none;
+            border-bottom: 1px solid rgba(232,220,200,.4); padding-bottom: .2rem;
+            transition: gap .3s, border-color .3s;
+        }
+        .overlay-link:hover { gap: 1rem; border-color: var(--beige); }
+
+        /* Grid layout — mix of sizes */
+        .a-card.wide   { grid-column: span 7; }
+        .a-card.narrow { grid-column: span 5; }
+        .a-card.third  { grid-column: span 4; }
+        .a-card.half   { grid-column: span 6; }
+        .a-card.full   { grid-column: span 12; }
+
+        /* FEATURE CARD (wide) special layout */
+        .a-card.feature .a-card-inner { flex-direction: row; align-items: flex-end; gap: 2rem; min-height: 320px; }
+        .a-card.feature .card-left { flex: 1; }
+        .a-card.feature .card-right { width: 280px; flex-shrink: 0; }
+
+        /* ─── PROPONER ALIANZA SECTION ─── */
+        .proponer-section {
+            position: relative; z-index: 1;
+            padding: 6rem 2rem 10rem; max-width: 1200px; margin: 0 auto;
+        }
+        .proponer-inner {
+            position: relative; overflow: hidden;
+            border: 1px solid var(--border); border-radius: 4px;
+            padding: 5rem;
+            background: var(--beige-faint);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .proponer-inner::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(139,26,26,.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .proponer-inner::after {
+            content: 'ALIANZA';
+            position: absolute; right: -1rem; bottom: -2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12rem; letter-spacing: -.02em;
+            color: transparent; -webkit-text-stroke: 1px rgba(139,26,26,.08);
+            user-select: none; pointer-events: none; line-height: 1;
+        }
+        .proponer-eyebrow { font-size: .65rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--granate); margin-bottom: 1.2rem; }
+        .proponer-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; line-height: 1.05; color: var(--beige); margin-bottom: 1.5rem; }
+        .proponer-title em { font-style: italic; color: var(--granate); }
+        .proponer-body { font-size: .9rem; line-height: 1.85; color: var(--muted); }
+        .proponer-form { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.2rem; }
+        .form-field { display: flex; flex-direction: column; gap: .4rem; }
+        .form-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+        .form-input, .form-textarea {
+            background: rgba(232,220,200,.04); border: 1px solid var(--border);
+            border-radius: 2px; padding: .9rem 1.1rem;
+            font-family: 'Outfit', sans-serif; font-size: .88rem; color: var(--beige);
+            outline: none; transition: border-color .3s, box-shadow .3s;
+            resize: none; cursor: none;
+        }
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+        .form-input:focus, .form-textarea:focus { border-color: var(--granate); box-shadow: 0 0 0 3px rgba(139,26,26,.12); }
+        .form-textarea { height: 100px; }
+        .form-btn {
+            padding: 1rem 2rem; background: var(--granate); color: var(--beige);
+            border: none; border-radius: 2px; font-family: 'Outfit', sans-serif;
+            font-size: .8rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+            cursor: none; transition: background .3s, box-shadow .3s, transform .2s;
+            position: relative; overflow: hidden;
+        }
+        .form-btn::after { content: ''; position: absolute; inset: 0; background: rgba(232,220,200,.1); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+        .form-btn:hover::after { transform: scaleX(1); }
+        .form-btn:hover { box-shadow: 0 0 40px rgba(139,26,26,.5); transform: translateY(-1px); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            position: relative; z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .a-card.wide, .a-card.narrow, .a-card.third, .a-card.half { grid-column: span 6; }
+            .a-card.feature .a-card-inner { flex-direction: column; }
+            .a-card.feature .card-right { width: 100%; }
+            .proponer-inner { grid-template-columns: 1fr; padding: 3rem; }
+            .stats-section { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .section-header { grid-template-columns: 1fr; }
+            .section-desc { text-align: left; max-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 1.2rem; }
+            .nav-links, .btn-sumate { display: none; }
+            .hamburger { display: flex; }
+            .hero-counter, .scroll-ind { display: none; }
+            .hero-title { font-size: clamp(3rem, 12vw, 5rem); }
+            body { cursor: auto; }
+            .cursor, .cursor-ring { display: none; }
+        }
+        @media (max-width: 480px) {
+            .a-card.wide, .a-card.narrow, .a-card.third, .a-card.half, .a-card.full { grid-column: span 12; }
+            .proponer-inner { padding: 2rem; }
+            .proponer-inner::after { display: none; }
+            .stats-section { grid-template-columns: repeat(2, 1fr); padding: 0 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="nav-brand">
+        <img src="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png" class="logo" alt="Logo S.E.E.F.">
+        <span>S.E.E.F.</span>
+    </a>
+    <div class="nav-links">
+        <a href="caos.html">Inicio</a>
+        <a href="actividades.html">Actividades</a>
+        <a href="ranking.html">Golden Cup</a>
+        <a href="propuestas.html">Propuestas</a>
+        <a href="alianzas.html" class="active">Alianzas</a>
+        <a href="informacion.html">Información</a>
+    </div>
+    <a href="sumate.html" class="btn-sumate">Sumate</a>
+    <button class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="caos.html">Inicio</a>
+    <a href="actividades.html">Actividades</a>
+    <a href="ranking.html">Golden Cup</a>
+    <a href="propuestas.html">Propuestas</a>
+    <a href="alianzas.html" class="active">Alianzas</a>
+    <a href="informacion.html">Información</a>
+    <a href="sumate.html" style="color:var(--granate)">Sumate →</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero-bg-word">ALIANZAS</div>
+    <div class="hero-line hero-line-top"></div>
+    <div class="hero-line hero-line-bot"></div>
+    <div class="hero-counter">S.E.E.F. · 2025</div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow">Red de Alianzas · S.E.E.F.</div>
+        <h1 class="hero-title">
+            <span class="line1">Juntos</span>
+            <span class="line2">somos más</span>
+        </h1>
+        <p class="hero-sub">Construimos alianzas estratégicas con organizaciones, docentes y referentes que comparten nuestra visión de un colegio mejor.</p>
+        <a href="#alianzas" class="hero-cta">
+            Ver alianzas
+            <span class="hero-cta-arrow"></span>
+        </a>
+    </div>
+
+    <div class="scroll-ind">
+        <div class="scroll-ind-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="marquee-dot"></span>DOCENTES ALIADOS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>ORGANIZACIONES ESTUDIANTILES</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>REFERENTES COMUNITARIOS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>ESPACIOS CULTURALES</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>INSTITUCIONES DEPORTIVAS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>MEDIOS ESTUDIANTILES</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>DOCENTES ALIADOS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>ORGANIZACIONES ESTUDIANTILES</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>REFERENTES COMUNITARIOS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>ESPACIOS CULTURALES</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>INSTITUCIONES DEPORTIVAS</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>MEDIOS ESTUDIANTILES</div>
+    </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<div class="stats-section" id="stats">
+    <div class="stat-item">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Alianzas activas</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Sectores representados</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Proyectos conjuntos</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Posibilidades</div>
+    </div>
+</div>
+
+<!-- ══ ALIANZAS GRID ══ -->
+<section class="alianzas-section" id="alianzas">
+    <div class="section-header" id="secHeader">
+        <div>
+            <div class="section-label">Nuestras alianzas</div>
+            <h2 class="section-title">Una red que <em>crece</em></h2>
+        </div>
+        <p class="section-desc">Cada alianza es un puente. Trabajamos con quienes comparten el compromiso de transformar la experiencia estudiantil desde adentro.</p>
+    </div>
+
+    <div class="alianzas-grid">
+
+        <!-- Card 1 — WIDE (feature) -->
+        <div class="a-card wide feature" data-delay="0">
+            <div class="card-num">01</div>
+            <div class="a-card-inner">
+                <div class="card-left">
+                    <span class="card-tag">Docentes</span>
+                    <div style="margin-top:1.5rem">
+                        <div class="card-name">Profesores<br>Aliados</div>
+                        <p class="card-desc" style="margin-top:.6rem">Docentes que nos apoyan, acompañan nuestras propuestas y actúan como nexo con la dirección del colegio.</p>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <p class="card-desc">Juntos impulsamos cambios concretos en el aula, mejoramos la comunicación y construimos puentes reales entre estudiantes y autoridades.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Profesores Aliados</div>
+                <p class="overlay-body">Un grupo de docentes comprometidos que avalan y respaldan nuestras iniciativas. Son nuestra voz institucional cuando los estudiantes necesitamos ser escuchados por las autoridades.</p>
+                <a href="informacion.html" class="overlay-link">Saber más →</a>
+            </div>
+        </div>
+
+        <!-- Card 2 — NARROW -->
+        <div class="a-card narrow" data-delay="100">
+            <div class="card-num">02</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Cultural</span>
+                <div>
+                    <div class="card-name">Espacios Culturales</div>
+                    <p class="card-desc" style="margin-top:.6rem">Organizaciones artísticas y culturales que nos brindan recursos, espacios y expertise para nuestros eventos.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Espacios Culturales</div>
+                <p class="overlay-body">Alianza con centros culturales locales para potenciar el S.E.E.F.. Stage y el Blooming Fest con producción profesional.</p>
+                <a href="propuestas.html" class="overlay-link">Ver propuestas →</a>
+            </div>
+        </div>
+
+        <!-- Card 3 — THIRD -->
+        <div class="a-card third" data-delay="0">
+            <div class="card-num">03</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Deportes</span>
+                <div>
+                    <div class="card-name">Clubes Deportivos</div>
+                    <p class="card-desc" style="margin-top:.6rem">Instituciones deportivas que apoyan el Olympus S.E.E.F.. con árbitros, materiales y organización.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Clubes Deportivos</div>
+                <p class="overlay-body">Arbitraje profesional, préstamo de canchas e indumentaria para que el mundialito sea un evento de verdad.</p>
+                <a href="propuestas.html" class="overlay-link">Ver Olympus →</a>
+            </div>
+        </div>
+
+        <!-- Card 4 — THIRD -->
+        <div class="a-card third" data-delay="150">
+            <div class="card-num">04</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Nutrición</span>
+                <div>
+                    <div class="card-name">Nutricionistas</div>
+                    <p class="card-desc" style="margin-top:.6rem">Profesionales de la salud que acompañan nuestra propuesta de alimentación saludable en la cafetería.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Nutricionistas</div>
+                <p class="overlay-body">Asesoramiento profesional para diseñar un menú escolar balanceado, accesible y adaptado a todas las necesidades.</p>
+                <a href="propuestas.html" class="overlay-link">Ver propuesta →</a>
+            </div>
+        </div>
+
+        <!-- Card 5 — THIRD -->
+        <div class="a-card third" data-delay="300">
+            <div class="card-num">05</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Psicología</span>
+                <div>
+                    <div class="card-name">Profesionales de Salud Mental</div>
+                    <p class="card-desc" style="margin-top:.6rem">Psicólogos y orientadores que respaldan nuestro programa de acompañamiento emocional.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Salud Mental</div>
+                <p class="overlay-body">Profesionales que voluntariamente ofrecen talleres, charlas y espacios de escucha para nuestra comunidad estudiantil.</p>
+                <a href="propuestas.html" class="overlay-link">Ver bienestar →</a>
+            </div>
+        </div>
+
+        <!-- Card 6 — HALF -->
+        <div class="a-card half" data-delay="0">
+            <div class="card-num">06</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Medios</span>
+                <div>
+                    <div class="card-name">Medios de Comunicación Estudiantil</div>
+                    <p class="card-desc" style="margin-top:.6rem">Radios y revistas estudiantiles de otros colegios que colaboran con nuestro boletín y nos dan visibilidad externa.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Medios Estudiantiles</div>
+                <p class="overlay-body">Red de comunicación entre centros de estudiantes para amplificar nuestras propuestas y generar impacto más allá del colegio.</p>
+                <a href="informacion.html" class="overlay-link">Contacto →</a>
+            </div>
+        </div>
+
+        <!-- Card 7 — HALF -->
+        <div class="a-card half" data-delay="150">
+            <div class="card-num">07</div>
+            <div class="a-card-inner">
+                <span class="card-tag">Comunidad</span>
+                <div>
+                    <div class="card-name">Referentes Comunitarios</div>
+                    <p class="card-desc" style="margin-top:.6rem">Líderes locales y ex alumnos que comparten su experiencia con los estudiantes actuales.</p>
+                </div>
+            </div>
+            <div class="a-card-overlay">
+                <div class="overlay-title">Referentes Comunitarios</div>
+                <p class="overlay-body">Exalumnos, emprendedores y líderes del barrio que vienen al colegio a compartir su historia y motivar a la próxima generación.</p>
+                <a href="sumate.html" class="overlay-link">Unirse →</a>
+            </div>
+        </div>
+
+        <!-- Card 8 — FULL (CTA card) -->
+        <div class="a-card full" data-delay="0" style="background: rgba(139,26,26,.08);">
+            <div class="a-card-inner" style="flex-direction:row; align-items:center; justify-content:space-between; min-height:140px; padding: 2.5rem 3rem;">
+                <div>
+                    <div class="section-label" style="margin-bottom:.5rem">¿Querés ser parte?</div>
+                    <div class="card-name" style="font-size:1.6rem">Tu organización puede aliarse con S.E.E.F..</div>
+                </div>
+                <a href="#proponer" class="btn-sumate" style="white-space:nowrap; font-size:.85rem; padding:.7rem 2rem;">Proponé una alianza</a>
+            </div>
+            <div class="a-card-overlay" style="flex-direction:row; align-items:center; justify-content:space-between; padding:2.5rem 3rem;">
+                <div class="overlay-title" style="font-size:1.8rem; margin-bottom:0">¿Listos para construir juntos?</div>
+                <a href="#proponer" class="overlay-link" style="font-size:.85rem">Contactanos →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ PROPONER ALIANZA ══ -->
+<section class="proponer-section" id="proponer">
+    <div class="proponer-inner">
+        <div>
+            <div class="proponer-eyebrow">Sumate a la red</div>
+            <h2 class="proponer-title">Proponé una <em>alianza</em></h2>
+            <p class="proponer-body">Si representás una organización, institución o sos un docente que quiere trabajar con S.E.E.F.., completá el formulario. Te respondemos a la brevedad.</p>
+        </div>
+        <form class="proponer-form" onsubmit="enviarAlianza(event)">
+            <div class="form-field">
+                <label class="form-label">Nombre / Organización</label>
+                <input class="form-input" type="text" placeholder="Tu nombre o el de tu organización" id="aliNombre">
+            </div>
+            <div class="form-field">
+                <label class="form-label">Tipo de alianza</label>
+                <input class="form-input" type="text" placeholder="Ej: Deportiva, Cultural, Educativa..." id="aliTipo">
+            </div>
+            <div class="form-field">
+                <label class="form-label">¿Qué proponés?</label>
+                <textarea class="form-textarea" placeholder="Contanos brevemente tu idea..." id="aliPropuesta"></textarea>
+            </div>
+            <div class="form-field">
+                <label class="form-label">Contacto (email o Instagram)</label>
+                <input class="form-input" type="text" placeholder="@usuario o email@ejemplo.com" id="aliContacto">
+            </div>
+            <button type="submit" class="form-btn" id="aliBtn">Enviar propuesta →</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <span>S.E.E.F. · Centro de Estudiantes</span>
+    <span>Alianzas · 2025</span>
+</footer>
+
+<script>
+    // ── CURSOR ──
+    const cur = document.getElementById('cur');
+    const curRing = document.getElementById('curRing');
+    document.addEventListener('mousemove', e => {
+        cur.style.left = e.clientX + 'px';
+        cur.style.top  = e.clientY + 'px';
+        setTimeout(() => {
+            curRing.style.left = e.clientX + 'px';
+            curRing.style.top  = e.clientY + 'px';
+        }, 80);
+    });
+    document.querySelectorAll('a, button, .a-card').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cur.style.width = '20px'; cur.style.height = '20px';
+            curRing.style.width = '56px'; curRing.style.height = '56px';
+        });
+        el.addEventListener('mouseleave', () => {
+            cur.style.width = '12px'; cur.style.height = '12px';
+            curRing.style.width = '36px'; curRing.style.height = '36px';
+        });
+    });
+
+    // ── HAMBURGER ──
+    function toggleMenu() {
+        document.getElementById('ham').classList.toggle('active');
+        document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ── SCROLL REVEAL ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = entry.target.dataset.delay || 0;
+                setTimeout(() => entry.target.classList.add('visible'), parseInt(delay));
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.a-card, .stat-item, .section-header').forEach(el => observer.observe(el));
+
+    // Stagger stat items
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+        el.style.transitionDelay = (i * 0.12) + 's';
+    });
+
+    // ── FORM SUBMIT ──
+    function enviarAlianza(e) {
+        e.preventDefault();
+        const btn = document.getElementById('aliBtn');
+        btn.textContent = '✓ Propuesta enviada';
+        btn.style.background = '#2d5a2d';
+        btn.disabled = true;
+        ['aliNombre','aliTipo','aliPropuesta','aliContacto'].forEach(id => document.getElementById(id).value = '');
+        setTimeout(() => {
+            btn.textContent = 'Enviar propuesta →';
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 4000);
+    }
+
+    // ── SMOOTH ANCHOR ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+</body>
+</html>
