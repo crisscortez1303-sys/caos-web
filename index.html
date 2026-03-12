@@ -1,781 +1,754 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Outfit:wght@200;300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Inicio | S.E.E.F.</title>
-    <style>
-        :root {
-            --bg:       #080403;
-            --granate:  #8b1a1a;
-            --granate2: #b02020;
-            --beige:    #e8dcc8;
-            --beige2:   #d4c4a8;
-            --beige-dim: rgba(232,220,200,0.06);
-            --border:   rgba(139,26,26,0.35);
-            --glow:     rgba(139,26,26,0.6);
-            --muted:    rgba(232,220,200,0.45);
-            --text:     #e8dcc8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.E.E.F. | Solución Equitativa Estudiantil Fortalecida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+    :root {
+    --bg:       #080403;
+    --granate:  #8b1a1a;
+    --granate2: #b02020;
+    --beige:    #e8dcc8;
+    --beige2:   #d4c4a8;
+    --beige-dim: rgba(232,220,200,0.06);
+    --border:   rgba(139,26,26,0.35);
+    --glow:     rgba(139,26,26,0.6);
+    --muted:    rgba(232,220,200,0.45);
+    --text:     #e8dcc8;
+    }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none}
 
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
-            cursor: none;
-        }
+    /* CURSOR */
+    #cur{position:fixed;width:10px;height:10px;background:var(--granate);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+    #curR{position:fixed;width:32px;height:32px;border:1px solid rgba(139,26,26,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .3s,height .3s}
+    body.hov #cur{width:18px;height:18px;background:var(--granate2)}
+    body.hov #curR{width:52px;height:52px;border-color:var(--granate)}
 
-        /* ── CURSOR ── */
-        #cur {
-            position: fixed; width: 10px; height: 10px;
-            background: var(--granate); border-radius: 50%;
-            pointer-events: none; z-index: 9999;
-            transform: translate(-50%,-50%);
-            transition: width .25s, height .25s, background .25s;
-        }
-        #curRing {
-            position: fixed; width: 32px; height: 32px;
-            border: 1px solid rgba(139,26,26,.5); border-radius: 50%;
-            pointer-events: none; z-index: 9998;
-            transform: translate(-50%,-50%);
-            transition: left .12s ease-out, top .12s ease-out, width .3s, height .3s;
-        }
-        body.cursor-hover #cur { width: 18px; height: 18px; }
-        body.cursor-hover #curRing { width: 52px; height: 52px; border-color: var(--granate); }
+   
 
-        /* ── NOISE ── */
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 0;
-        }
+    /* NOISE */
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
 
-        /* ── BLOBS ── */
-        .blob { position: fixed; border-radius: 50%; filter: blur(150px); pointer-events: none; z-index: 0; }
-        .b1 { width:800px; height:800px; background:radial-gradient(circle,rgba(139,26,26,.18) 0%,transparent 70%); top:-300px; left:-250px; animation: db 18s ease-in-out infinite alternate; }
-        .b2 { width:600px; height:600px; background:radial-gradient(circle,rgba(139,26,26,.1) 0%,transparent 70%); bottom:-100px; right:-200px; animation: db 22s ease-in-out infinite alternate-reverse; }
-        .b3 { width:300px; height:300px; background:radial-gradient(circle,rgba(232,220,200,.03) 0%,transparent 70%); top:45%; left:45%; animation: db 14s ease-in-out infinite alternate; }
-        @keyframes db { from{transform:translateY(0) scale(1)} to{transform:translateY(60px) scale(1.1)} }
+    /* BLOBS */
+    .blob{position:fixed;border-radius:50%;filter:blur(150px);pointer-events:none;z-index:0}
+    .b1{width:800px;height:800px;background:radial-gradient(circle,rgba(139,26,26,.18) 0%,transparent 70%);top:-300px;left:-250px;animation:db 18s ease-in-out infinite alternate}
+    .b2{width:600px;height:600px;background:radial-gradient(circle,rgba(139,26,26,.1) 0%,transparent 70%);bottom:-100px;right:-200px;animation:db 22s ease-in-out infinite alternate-reverse}
+    .b3{width:300px;height:300px;background:radial-gradient(circle,rgba(232,220,200,.03) 0%,transparent 70%);top:45%;left:45%;animation:db 14s ease-in-out infinite alternate}
+    @keyframes db{from{transform:translateY(0) scale(1)}to{transform:translateY(60px) scale(1.1)}}
 
-        /* ── NAVBAR ── */
-        .nav {
-            position: fixed; top:0; left:0; right:0; z-index:100;
-            height: 68px; display:flex; align-items:center; justify-content:space-between;
-            padding: 0 2.5rem;
-            background: rgba(8,4,3,.75); backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-brand { display:flex; align-items:center; gap:.6rem; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; color:var(--granate); }
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(8,4,3,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-brand { display:flex; align-items:center; gap:.6rem; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; color:var(--granate); }
         .nav-brand img { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--border); object-fit:cover; }
-        .nav-links { display:flex; gap:1.8rem; }
-        .nav-links a { color:var(--muted); text-decoration:none; font-size:.8rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; position:relative; }
-        .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--granate); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
-        .nav-links a:hover,.nav-links a.active { color:var(--beige); }
-        .nav-links a.active::after,.nav-links a:hover::after { transform:scaleX(1); }
-        .nav-cta { text-decoration:none; padding:.4rem 1.2rem; border:1.5px solid var(--granate); color:var(--granate); font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; border-radius:3px; background:rgba(139,26,26,.12); transition:all .25s; }
-        .nav-cta:hover { background:var(--granate); color:var(--beige); box-shadow:0 0 24px var(--glow); }
-        .ham { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:none; padding:.4rem; }
-        .ham span { display:block; width:22px; height:2px; background:var(--granate); border-radius:2px; transition:transform .3s,opacity .3s; }
-        .ham.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-        .ham.active span:nth-child(2){opacity:0}
-        .ham.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-        .mob-menu { display:none; position:fixed; top:68px; left:0; right:0; background:rgba(8,4,3,.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); z-index:199; flex-direction:column; padding:1.5rem; gap:.8rem; }
-        .mob-menu.open { display:flex; }
-        .mob-menu a { color:var(--muted); text-decoration:none; font-size:.92rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.55rem 0; border-bottom:1px solid var(--border); transition:color .2s; }
-        .mob-menu a:last-child { border-bottom:none; }
-        .mob-menu a:hover,.mob-menu a.active { color:var(--granate); }
+    .nb{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.18em;color:var(--granate)}
+    .nl{display:flex;gap:1.8rem}
+    .nl a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;position:relative}
+    .nl a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--granate);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    .nl a:hover{color:var(--beige)}
+    .nl a:hover::after{transform:scaleX(1)}
+    .ncta{text-decoration:none;padding:.4rem 1.2rem;border:1.5px solid var(--granate);color:var(--granate);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;background:rgba(139,26,26,.12);transition:all .25s}
+    .ncta:hover{background:var(--granate);color:var(--beige);box-shadow:0 0 24px var(--glow)}
 
-        /* ══════════════════════
-           HERO — SPLIT LAYOUT
-        ══════════════════════ */
-        .hero {
-            position: relative; z-index:1;
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding-top: 68px;
-            overflow: hidden;
-        }
+    /* HERO */
+    .hero{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:68px;overflow:hidden}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 4rem;position:relative}
+    .hero-left::after{content:'';position:absolute;top:15%;bottom:15%;right:0;width:1px;background:linear-gradient(to bottom,transparent,var(--granate),transparent)}
+    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.62rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--granate);margin-bottom:2.5rem;opacity:0;animation:fu .7s .2s forwards}
+    .eyebrow span{display:block;width:32px;height:1px;background:var(--granate)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,7vw,8rem);font-weight:700;line-height:.88;letter-spacing:-.01em;margin-bottom:2rem;opacity:0;animation:fu .9s .35s forwards}
+    .hero-title .t1{display:block;color:var(--beige)}
+    .hero-title .t2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--granate);font-style:italic}
+    .hero-title .t3{display:block;color:var(--beige);font-size:.48em;font-weight:300;letter-spacing:.08em;margin-top:.5rem}
+    .hero-desc{font-size:.92rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:400px;margin-bottom:3rem;opacity:0;animation:fu .7s .6s forwards}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fu .7s .8s forwards}
+    .btn-p{text-decoration:none;padding:.85rem 2.2rem;background:var(--granate);color:var(--beige);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;border:none;transition:box-shadow .3s,transform .2s;box-shadow:0 0 28px rgba(139,26,26,.4);position:relative;overflow:hidden;cursor:none}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(139,26,26,.7)}
+    .btn-s{text-decoration:none;padding:.85rem 2.2rem;background:transparent;color:var(--beige);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;border:1.5px solid var(--border);transition:border-color .3s,box-shadow .3s,transform .2s;cursor:none}
+    .btn-s:hover{border-color:var(--granate);box-shadow:0 0 20px rgba(139,26,26,.2);transform:translateY(-2px)}
 
-        /* Left panel */
-        .hero-left {
-            display: flex; flex-direction:column; justify-content:center;
-            padding: 6rem 4rem 6rem 4rem;
-            position: relative;
-        }
-        .hero-left::after {
-            content:'';
-            position:absolute; top:15%; bottom:15%; right:0; width:1px;
-            background: linear-gradient(to bottom, transparent, var(--granate), transparent);
-        }
+    /* HERO RIGHT */
+    .hero-right{position:relative;display:flex;align-items:center;justify-content:center;padding:4rem;overflow:hidden}
+    .hero-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(10rem,18vw,18rem);color:transparent;-webkit-text-stroke:1px rgba(139,26,26,.08);user-select:none;pointer-events:none;letter-spacing:-.02em;animation:gp 6s ease-in-out infinite}
+    @keyframes gp{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.02)}}
+    .logo-piece{position:relative;z-index:2;opacity:0;animation:li 1.2s .4s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes li{from{opacity:0;transform:scale(.5) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+    .ring-wrap .logo-img {position:relative;width:220px;height:220px;margin:0 auto}
+    .ring-wrap {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:170px;height:170px;border-radius:50%;object-fit:cover;z-index:2;filter:drop-shadow(0 0 40px rgba(139,26,26,.8));background:radial-gradient(circle,rgba(139,26,26,.3),var(--bg));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.2em;color:var(--granate);border:2px solid var(--border)}
+    .logo-img img{
+        position: absolute;
+        top: 23%;
+        left: 14%;
+        width: 120px;
+        height: 120px;
+    }
+    .ring-svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 10s linear infinite}
+    .ring-svg2{position:absolute;inset:-16px;width:calc(100% + 32px);height:calc(100% + 32px);animation:spin 20s linear infinite reverse;opacity:.4}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    .ring-pulse{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(139,26,26,.2) 0%,transparent 70%);animation:rp 3s ease-in-out infinite}
+    @keyframes rp{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+    .sigla-under{
+        text-align:center;
+        margin-top:19rem;
+        margin-left: 15px;
+        font-family:'Bebas Neue',sans-serif;
+        font-size:clamp(3rem,5vw,5rem);
+        letter-spacing:.25em;line-height:1}
+    .sigla-under span{background:linear-gradient(135deg,#e8dcc8 20%,#8b1a1a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .sigla-meaning{text-align:center;margin-top:.6rem;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+    .scroll-ind{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fu .5s 1.6s forwards}
+    .scroll-line{width:1px;height:45px;background:linear-gradient(to bottom,var(--granate),transparent);animation:sp 2s ease-in-out infinite}
+    @keyframes sp{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
+    @keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-        .hero-eyebrow {
-            display:inline-flex; align-items:center; gap:.6rem;
-            font-size:.62rem; font-weight:700; letter-spacing:.35em; text-transform:uppercase;
-            color:var(--granate); margin-bottom:2.5rem;
-            opacity:0; animation:fu .7s .2s forwards;
-        }
-        .hero-eyebrow span { display:block; width:32px; height:1px; background:var(--granate); }
+    /* MARQUEE */
+    .marquee-bar{position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:.9rem 0;background:rgba(139,26,26,.05)}
+    .mq-track{display:flex;gap:2.5rem;width:max-content;animation:mq 28s linear infinite}
+    .mq-item{display:flex;align-items:center;gap:.8rem;white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.15em;color:var(--muted)}
+    .mq-dot{width:4px;height:4px;border-radius:50%;background:var(--granate);flex-shrink:0}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(5rem, 9vw, 9.5rem);
-            font-weight: 700;
-            line-height: .88;
-            letter-spacing: -.01em;
-            margin-bottom: 2rem;
-            opacity:0; animation:fu .9s .35s forwards;
-        }
-        .hero-title .t1 { display:block; color:var(--beige); }
-        .hero-title .t2 { display:block; color:transparent; -webkit-text-stroke:1.5px var(--granate); font-style:italic; }
-        .hero-title .t3 { display:block; color:var(--beige); font-size:.55em; font-weight:300; letter-spacing:.08em; margin-top:.3rem; }
+    /* STATS */
+    .stats-wrap{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;padding:0 2rem}
+    .sc-item{padding:3.5rem 2rem;border-right:1px solid var(--border);position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .sc-item.vis{opacity:1;transform:translateY(0)}
+    .sc-item:last-child{border-right:none}
+    .sc-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(139,26,26,0),transparent);transition:background .4s}
+    .sc-item:hover::before{background:linear-gradient(90deg,transparent,var(--granate),transparent)}
+    .sc-num{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,5vw,5.5rem);font-weight:700;line-height:1;color:var(--granate)}
+    .sc-label{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
 
-        .hero-desc {
-            font-size:.95rem; font-weight:300; line-height:1.9; color:var(--muted);
-            max-width:380px; margin-bottom:3rem;
-            opacity:0; animation:fu .7s .6s forwards;
-        }
+    /* SECTION COMMON */
+    .section{position:relative;z-index:1;padding:8rem 2rem;max-width:1200px;margin:0 auto}
+    .sec-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;padding-bottom:2.5rem;margin-bottom:4rem;border-bottom:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .sec-head.vis{opacity:1;transform:translateY(0)}
+    .sec-kicker{font-size:.62rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--granate);margin-bottom:.8rem}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:700;line-height:1;color:var(--beige)}
+    .sec-title em{font-style:italic;color:var(--granate)}
+    .sec-sub{font-size:.85rem;line-height:1.85;color:var(--muted);max-width:320px;text-align:right}
 
-        .hero-btns {
-            display:flex; gap:1rem; flex-wrap:wrap;
-            opacity:0; animation:fu .7s .8s forwards;
-        }
-        .btn-p {
-            text-decoration:none; padding:.85rem 2.2rem;
-            background:var(--granate); color:var(--beige);
-            font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-            border-radius:2px; border:none;
-            transition:box-shadow .3s,transform .2s;
-            box-shadow:0 0 28px rgba(139,26,26,.4);
-            position:relative; overflow:hidden;
-        }
-        .btn-p::after { content:''; position:absolute; inset:0; background:rgba(232,220,200,.08); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
-        .btn-p:hover::after { transform:scaleX(1); }
-        .btn-p:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(139,26,26,.7); }
-        .btn-s {
-            text-decoration:none; padding:.85rem 2.2rem;
-            background:transparent; color:var(--beige);
-            font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-            border-radius:2px; border:1.5px solid var(--border);
-            transition:border-color .3s,box-shadow .3s,transform .2s;
-        }
-        .btn-s:hover { border-color:var(--granate); box-shadow:0 0 20px rgba(139,26,26,.2); transform:translateY(-2px); }
+    /* PROPUESTAS BASICAS GRID */
+    .prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+    .p-card{background:var(--beige-dim);border:1px solid var(--border);border-radius:2px;padding:2rem;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .3s,background .3s}
+    .p-card.vis{opacity:1;transform:translateY(0)}
+    .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--granate),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+    .p-card:hover::before{transform:scaleX(1)}
+    .p-card:hover{border-color:var(--granate);background:rgba(139,26,26,.06)}
+    .p-icon{width:40px;height:40px;border-radius:50%;background:rgba(139,26,26,.15);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1rem;transition:background .3s,box-shadow .3s}
+    .p-card:hover .p-icon{background:rgba(139,26,26,.3);box-shadow:0 0 16px rgba(139,26,26,.4)}
+    .p-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.2rem .6rem;border-radius:99px;margin-bottom:.6rem;background:rgba(139,26,26,.2);color:#e8b4b4;border:1px solid rgba(139,26,26,.4)}
+    .p-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--beige);margin-bottom:.5rem;line-height:1.2}
+    .p-desc{font-size:.8rem;line-height:1.7;color:var(--muted)}
 
-        /* Right panel */
-        .hero-right {
-            position:relative;
-            display:flex; align-items:center; justify-content:center;
-            padding:4rem;
-            overflow:hidden;
-        }
+    /* EVENTOS (actos grandes) */
+    .act-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1rem}
+    .a-card{background:var(--beige-dim);border:1px solid var(--border);border-radius:2px;padding:2.5rem;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s,border-color .3s,box-shadow .3s}
+    .a-card.vis{opacity:1;transform:translateY(0)}
+    .a-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--granate),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+    .a-card:hover::before{transform:scaleX(1)}
+    .a-card:hover{border-color:var(--granate);box-shadow:0 12px 50px rgba(139,26,26,.2)}
+    .a-card.c7{grid-column:span 7}
+    .a-card.c5{grid-column:span 5}
+    .a-card.c4{grid-column:span 4}
+    .a-card.c8{grid-column:span 8}
+    .a-card.c6{grid-column:span 6}
+    .a-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.25rem .7rem;border-radius:99px;margin-bottom:1rem}
+    .tg1{background:rgba(139,26,26,.2);color:#e8b4b4;border:1px solid rgba(139,26,26,.4)}
+    .tg2{background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)}
+    .tg3{background:rgba(236,72,153,.2);color:#f9a8d4;border:1px solid rgba(236,72,153,.4)}
+    .tg4{background:rgba(234,179,8,.2);color:#fde68a;border:1px solid rgba(234,179,8,.4)}
+    .tg5{background:rgba(16,185,129,.2);color:#6ee7b7;border:1px solid rgba(16,185,129,.4)}
+    .tg6{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.4)}
+    .a-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:rgba(232,220,200,.05);position:absolute;bottom:.5rem;right:1rem;line-height:1;user-select:none;pointer-events:none;transition:color .3s}
+    .a-card:hover .a-num{color:rgba(232,220,200,.08)}
+    .a-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;color:var(--beige);line-height:1.1;margin-bottom:.5rem}
+    .a-desc{font-size:.82rem;line-height:1.75;color:var(--muted)}
+    .a-arrow{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--granate);opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
+    .a-card:hover .a-arrow{opacity:1;transform:translateX(0)}
 
-        /* Large ghost text behind logo */
-        .hero-ghost {
-            position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-            font-family:'Bebas Neue',sans-serif;
-            font-size:clamp(10rem,18vw,18rem);
-            color:transparent;
-            -webkit-text-stroke:1px rgba(139,26,26,.08);
-            user-select:none; pointer-events:none; letter-spacing:-.02em;
-            animation:ghostPulse 6s ease-in-out infinite;
-        }
-        @keyframes ghostPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.02)} }
+    /* DERECHOS / TRANSPARENCIA */
+    .der-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+    .d-card{background:var(--beige-dim);border:1px solid var(--border);border-radius:2px;padding:2rem;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s,border-color .3s,background .3s}
+    .d-card.vis{opacity:1;transform:translateY(0)}
+    .d-card:hover{border-color:var(--granate);background:rgba(139,26,26,.06)}
+    .d-card .d-icon{font-size:1.6rem;margin-bottom:.8rem}
+    .d-card .d-tag{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--granate);margin-bottom:.4rem}
+    .d-card .d-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--beige);margin-bottom:.5rem}
+    .d-card .d-desc{font-size:.78rem;line-height:1.7;color:var(--muted)}
 
-        /* Logo center piece */
-        .logo-piece {
-            position:relative; z-index:2;
-            opacity:0; animation:logoIn 1.2s .4s cubic-bezier(.34,1.56,.64,1) forwards;
-        }
-        @keyframes logoIn { from{opacity:0;transform:scale(.5) rotate(-20deg)} to{opacity:1;transform:scale(1) rotate(0deg)} }
+    /* TEAM */
+    .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+    .t-card{background:var(--bg);padding:2rem 1.5rem;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s,background .35s}
+    .t-card.vis{opacity:1;transform:translateY(0)}
+    .t-card:hover{background:rgba(139,26,26,.08)}
+    .t-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,26,26,.06) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+    .t-card:hover::after{opacity:1}
+    .t-icon{width:48px;height:48px;border-radius:50%;background:rgba(139,26,26,.15);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.2rem;transition:background .3s,box-shadow .3s,border-color .3s}
+    .t-card:hover .t-icon{background:rgba(139,26,26,.25);border-color:var(--granate);box-shadow:0 0 16px rgba(139,26,26,.4)}
+    .t-role{font-size:.56rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--granate);margin-bottom:.3rem}
+    .t-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--beige);line-height:1.2;margin-bottom:.4rem}
+    .t-grado{font-size:.72rem;color:var(--muted)}
+    .t-card.span2{grid-column:span 2}
 
-        .ring-wrap { position:relative; width:220px; height:220px; margin:0 auto; }
-        .ring-wrap img {
-            position:absolute; top:50%; left:50%;
-            transform:translate(-50%,-50%);
-            width:180px; height:180px; border-radius:50%; object-fit:cover;
-            z-index:2;
-            filter:drop-shadow(0 0 40px rgba(139,26,26,.8));
-        }
-        .ring-svg { position:absolute; inset:0; width:100%; height:100%; animation:spin 10s linear infinite; }
-        .ring-svg2 { position:absolute; inset:-16px; width:calc(100% + 32px); height:calc(100% + 32px); animation:spin 20s linear infinite reverse; opacity:.4; }
-        @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-        .ring-pulse {
-            position:absolute; inset:-20px; border-radius:50%;
-            background:radial-gradient(circle,rgba(139,26,26,.2) 0%,transparent 70%);
-            animation:rp 3s ease-in-out infinite;
-        }
-        @keyframes rp { 0%,100%{transform:scale(1);opacity:.6} 50%{transform:scale(1.15);opacity:1} }
+    /* MANIFESTO */
+    .manifesto{position:relative;z-index:1;padding:6rem 2rem;background:linear-gradient(135deg,rgba(139,26,26,.08),transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .manifesto-inner{max-width:900px;margin:0 auto;text-align:center}
+    .manifesto-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;font-style:italic;line-height:1.3;color:var(--beige);opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+    .manifesto-quote.vis{opacity:1;transform:translateY(0)}
+    .manifesto-quote em{color:var(--granate);font-style:normal}
+    .manifesto-author{margin-top:2rem;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .8s .2s}
+    .manifesto-quote.vis~.manifesto-author{opacity:1}
 
-        .sigla-under {
-            text-align:center; margin-top:2rem;
-            font-family:'Bebas Neue',sans-serif;
-            font-size:clamp(3rem,5vw,5rem);
-            letter-spacing:.25em; line-height:1;
-        }
-        .sigla-under span {
-            background:linear-gradient(135deg,#e8dcc8 20%,#8b1a1a 100%);
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-        }
-        .sigla-meaning {
-            text-align:center; margin-top:.6rem;
-            font-size:.6rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
-            color:var(--muted);
-        }
+    /* FOOTER */
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    footer .brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.18em;color:var(--granate)}
+    footer .footer-links{display:flex;gap:1.5rem}
+    footer .footer-links a{color:var(--muted);text-decoration:none;font-size:.68rem;letter-spacing:.12em;transition:color .2s}
+    footer .footer-links a:hover{color:var(--granate)}
 
-        /* Scroll indicator */
-        .scroll-ind {
-            position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
-            z-index:2; display:flex; flex-direction:column; align-items:center; gap:.4rem;
-            font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
-            opacity:0; animation:fu .5s 1.6s forwards;
-        }
-        .scroll-line { width:1px; height:45px; background:linear-gradient(to bottom,var(--granate),transparent); animation:sp 2s ease-in-out infinite; }
-        @keyframes sp { 0%,100%{opacity:.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
-        @keyframes fu { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    .div{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);position:relative;z-index:1}
 
-        /* ── MARQUEE ── */
-        .marquee-bar {
-            position:relative; z-index:1;
-            border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-            overflow:hidden; padding:.9rem 0;
-            background:rgba(139,26,26,.05);
-        }
-        .mq-track { display:flex; gap:2.5rem; width:max-content; animation:mq 22s linear infinite; }
-        .mq-item { display:flex; align-items:center; gap:.8rem; white-space:nowrap; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.15em; color:var(--muted); }
-        .mq-dot { width:4px; height:4px; border-radius:50%; background:var(--granate); flex-shrink:0; }
-        @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* HAMBURGER */
+    .ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:.4rem}
+    .ham span{display:block;width:22px;height:2px;background:var(--granate);border-radius:2px;transition:transform .3s,opacity .3s}
+    .mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,4,3,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;flex-direction:column;padding:1.5rem;gap:.8rem}
+    .mob-menu.open{display:flex}
+    .mob-menu a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+    .mob-menu a:hover{color:var(--granate)}
 
-        /* ── STATS COUNTER ── */
-        .stats-wrap {
-            position:relative; z-index:1;
-            display:grid; grid-template-columns:repeat(4,1fr);
-            max-width:1100px; margin:0 auto; padding:0 2rem;
-        }
-        .sc-item {
-            padding:3.5rem 2rem;
-            border-right:1px solid var(--border);
-            position:relative; overflow:hidden;
-            opacity:0; transform:translateY(20px);
-            transition:opacity .6s,transform .6s;
-        }
-        .sc-item.vis { opacity:1; transform:translateY(0); }
-        .sc-item:last-child { border-right:none; }
-        .sc-item::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(139,26,26,.0),transparent); transition:background .4s; }
-        .sc-item:hover::before { background:linear-gradient(90deg,transparent,var(--granate),transparent); }
-        .sc-num {
-            font-family:'Cormorant Garamond',serif;
-            font-size:clamp(3.5rem,5vw,5.5rem);
-            font-weight:700; line-height:1; color:var(--granate);
-            transition:color .3s;
-        }
-        .sc-item:hover .sc-num { color:var(--granate2); }
-        .sc-label { font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:.5rem; }
+    /* GOLDEN CUP SPECIAL */
+    .golden-banner{position:relative;z-index:1;margin:0 2rem 2rem;border:1px solid var(--border);border-radius:2px;overflow:hidden;background:linear-gradient(135deg,rgba(139,26,26,.12),rgba(234,179,8,.05));padding:3rem;display:flex;align-items:center;gap:3rem;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .golden-banner.vis{opacity:1;transform:translateY(0)}
+    .golden-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--granate),#d4af37,transparent)}
+    .gb-trophy{font-size:5rem;flex-shrink:0;filter:drop-shadow(0 0 20px rgba(212,175,55,.4))}
+    .gb-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--beige)}
+    .gb-title em{font-style:italic;background:linear-gradient(135deg,#d4af37,#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .gb-desc{font-size:.85rem;line-height:1.75;color:var(--muted);margin-top:.5rem;max-width:500px}
 
-        /* ── EQUIPO ── */
-        .equipo-section {
-            position:relative; z-index:1;
-            padding:8rem 2rem;
-            max-width:1200px; margin:0 auto;
-        }
-        .sec-head {
-            display:grid; grid-template-columns:1fr auto; align-items:end; gap:2rem;
-            padding-bottom:2.5rem; margin-bottom:4rem;
-            border-bottom:1px solid var(--border);
-            opacity:0; transform:translateY(20px); transition:opacity .6s,transform .6s;
-        }
-        .sec-head.vis { opacity:1; transform:translateY(0); }
-        .sec-kicker { font-size:.62rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--granate); margin-bottom:.8rem; }
-        .sec-title {
-            font-family:'Cormorant Garamond',serif;
-            font-size:clamp(2.8rem,5vw,5rem); font-weight:700; line-height:1.0;
-            color:var(--beige);
-        }
-        .sec-title em { font-style:italic; color:var(--granate); }
-        .sec-sub { font-size:.85rem; line-height:1.85; color:var(--muted); max-width:320px; text-align:right; }
-
-        /* TEAM GRID — asymmetric */
-        .team-grid {
-            display:grid;
-            grid-template-columns:repeat(5,1fr);
-            gap:1px;
-            background:var(--border);
-            border:1px solid var(--border);
-        }
-        .t-card {
-            background:var(--bg);
-            padding:2rem 1.5rem;
-            position:relative; overflow:hidden;
-            transition:background .35s;
-            opacity:0; transform:translateY(16px);
-            transition:opacity .5s,transform .5s,background .35s;
-        }
-        .t-card.vis { opacity:1; transform:translateY(0); }
-        .t-card:hover { background:rgba(139,26,26,.08); }
-        .t-card::after {
-            content:''; position:absolute; inset:0;
-            background:linear-gradient(135deg,rgba(139,26,26,.06) 0%,transparent 60%);
-            opacity:0; transition:opacity .4s;
-        }
-        .t-card:hover::after { opacity:1; }
-
-        .t-icon {
-            width:48px; height:48px; border-radius:50%;
-            background:rgba(139,26,26,.15); border:1px solid var(--border);
-            display:flex; align-items:center; justify-content:center;
-            font-size:1.1rem; color:var(--granate);
-            margin-bottom:1.2rem;
-            transition:background .3s, box-shadow .3s, border-color .3s;
-        }
-        .t-card:hover .t-icon { background:rgba(139,26,26,.25); border-color:var(--granate); box-shadow:0 0 16px rgba(139,26,26,.4); }
-        .t-role { font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--granate); margin-bottom:.4rem; }
-        .t-name { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; color:var(--beige); line-height:1.2; margin-bottom:.5rem; }
-        .t-desc { font-size:.75rem; line-height:1.65; color:var(--muted); }
-
-        /* card spanning 2 cols on bottom */
-        .t-card.span2 { grid-column:span 2; }
-
-        /* ── ACTIVIDADES ── */
-        .act-section {
-            position:relative; z-index:1;
-            padding:0 2rem 8rem;
-            max-width:1200px; margin:0 auto;
-        }
-
-        .act-grid {
-            display:grid;
-            grid-template-columns:repeat(12,1fr);
-            gap:1rem;
-            margin-top:4rem;
-        }
-
-        .a-card {
-            background:var(--beige-dim);
-            border:1px solid var(--border);
-            border-radius:2px;
-            padding:2rem;
-            position:relative; overflow:hidden;
-            text-decoration:none; color:inherit;
-            display:block;
-            opacity:0; transform:translateY(24px);
-            transition:opacity .5s,transform .5s,border-color .3s,box-shadow .3s;
-        }
-        .a-card.vis { opacity:1; transform:translateY(0); }
-        .a-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--granate),transparent); transform:scaleX(0); transform-origin:left; transition:transform .5s; }
-        .a-card:hover::before { transform:scaleX(1); }
-        .a-card:hover { border-color:var(--granate); box-shadow:0 12px 50px rgba(139,26,26,.2); }
-
-        .a-card.c7 { grid-column:span 7; }
-        .a-card.c5 { grid-column:span 5; }
-        .a-card.c4 { grid-column:span 4; }
-        .a-card.c8 { grid-column:span 8; }
-
-        .a-tag { display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; padding:.25rem .7rem; border-radius:99px; margin-bottom:1rem; }
-        .tg1 { background:rgba(139,26,26,.2); color:#e8b4b4; border:1px solid rgba(139,26,26,.4); }
-        .tg2 { background:rgba(139,92,246,.2); color:#c4b5fd; border:1px solid rgba(139,92,246,.4); }
-        .tg3 { background:rgba(236,72,153,.2); color:#f9a8d4; border:1px solid rgba(236,72,153,.4); }
-        .tg4 { background:rgba(234,179,8,.2); color:#fde68a; border:1px solid rgba(234,179,8,.4); }
-        .tg5 { background:rgba(16,185,129,.2); color:#6ee7b7; border:1px solid rgba(16,185,129,.4); }
-
-        .a-num { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:rgba(232,220,200,.05); position:absolute; bottom:.5rem; right:1rem; line-height:1; user-select:none; pointer-events:none; transition:color .3s; }
-        .a-card:hover .a-num { color:rgba(232,220,200,.08); }
-        .a-name { font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:700; color:var(--beige); line-height:1.1; margin-bottom:.5rem; }
-        .a-desc { font-size:.8rem; line-height:1.7; color:var(--muted); }
-        .a-arrow { display:inline-flex; align-items:center; gap:.4rem; margin-top:1rem; font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--granate); opacity:0; transform:translateX(-8px); transition:opacity .3s,transform .3s; }
-        .a-card:hover .a-arrow { opacity:1; transform:translateX(0); }
-
-        .ver-todo {
-            display:inline-flex; align-items:center; gap:.6rem; margin-top:2.5rem;
-            text-decoration:none; color:var(--beige); font-size:.75rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
-            border-bottom:1px solid rgba(232,220,200,.2); padding-bottom:.3rem;
-            transition:gap .3s,border-color .3s;
-        }
-        .ver-todo:hover { gap:1rem; border-color:var(--granate); color:var(--granate); }
-
-        /* ── FOOTER ── */
-        footer {
-            position:relative; z-index:1;
-            border-top:1px solid var(--border);
-            padding:2rem 2.5rem;
-            display:flex; align-items:center; justify-content:space-between;
-            font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
-        }
-        footer .brand { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:.18em; color:var(--granate); }
-
-        /* ── DIVIDER ── */
-        .div { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); position:relative; z-index:1; }
-
-        /* ── RESPONSIVE ── */
-        @media(max-width:1024px) {
-            .hero { grid-template-columns:1fr; min-height:auto; }
-            .hero-left { padding:5rem 2.5rem 3rem; }
-            .hero-left::after { display:none; }
-            .hero-right { padding:2rem 2.5rem 5rem; }
-            .stats-wrap { grid-template-columns:repeat(2,1fr); }
-            .sc-item:nth-child(2) { border-right:none; }
-            .team-grid { grid-template-columns:repeat(3,1fr); }
-            .t-card.span2 { grid-column:span 1; }
-            .sec-head { grid-template-columns:1fr; }
-            .sec-sub { text-align:left; max-width:100%; }
-        }
-        @media(max-width:768px) {
-            .nav { padding:0 1.2rem; }
-            .nav-links,.nav-cta { display:none; }
-            .ham { display:flex; }
-            body { cursor:auto; }
-            #cur,#curRing { display:none; }
-            .a-card.c7,.a-card.c5,.a-card.c4,.a-card.c8 { grid-column:span 12; }
-            .team-grid { grid-template-columns:repeat(2,1fr); }
-        }
-        @media(max-width:480px) {
-            .stats-wrap { grid-template-columns:repeat(2,1fr); padding:0 1rem; }
-            .hero-left { padding:4rem 1.5rem 2rem; }
-            .hero-right { padding:1rem 1.5rem 4rem; }
-            .hero-btns { flex-direction:column; }
-            .btn-p,.btn-s { text-align:center; }
-            footer { flex-direction:column; gap:.6rem; text-align:center; }
-            .team-grid { grid-template-columns:1fr 1fr; gap:0; }
-        }
-    </style>
+    @media(max-width:1024px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-left{padding:5rem 2.5rem 3rem}
+    .hero-left::after{display:none}
+    .hero-right{padding:2rem 2.5rem 5rem}
+    .stats-wrap{grid-template-columns:repeat(2,1fr)}
+    .sc-item:nth-child(2){border-right:none}
+    .team-grid{grid-template-columns:repeat(3,1fr)}
+    .t-card.span2{grid-column:span 1}
+    .sec-head{grid-template-columns:1fr}
+    .sec-sub{text-align:left;max-width:100%}
+    .der-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+    .nav{padding:0 1.2rem}
+    .nl,.ncta{display:none}
+    .ham{display:flex}
+    body{cursor:auto}
+    #cur,#curR{display:none}
+    .a-card.c7,.a-card.c5,.a-card.c4,.a-card.c8,.a-card.c6{grid-column:span 12}
+    .team-grid{grid-template-columns:repeat(2,1fr)}
+    .golden-banner{flex-direction:column;gap:1.5rem;text-align:center}
+    .der-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+    .stats-wrap{grid-template-columns:repeat(2,1fr);padding:0 1rem}
+    .hero-left{padding:4rem 1.5rem 2rem}
+    .hero-right{padding:1rem 1.5rem 4rem}
+    .hero-btns{flex-direction:column}
+    .btn-p,.btn-s{text-align:center}
+    footer{flex-direction:column;gap:.6rem;text-align:center}
+    .team-grid{grid-template-columns:1fr 1fr}
+    .prop-grid{grid-template-columns:1fr}
+    }
+</style>
 </head>
 <body>
 
 <div id="cur"></div>
-<div id="curRing"></div>
+<div id="curR"></div>
 <div class="blob b1"></div>
 <div class="blob b2"></div>
 <div class="blob b3"></div>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="nav">
     <a href="index.html" class="nav-brand">
         <img src="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png" alt="S.E.E.F.">
         <span>S.E.E.F.</span>
     </a>
-    <div class="nav-links">
-        <a href="index.html" class="active">Inicio</a>
-        <a href="actividades.html">Actividades</a>
-        <a href="ranking.html">Golden Cup</a>
-        <a href="propuestas.html">Propuestas</a>
-        <a href="alianzas.html">Alianzas</a>
-        <a href="informacion.html">Información</a>
-    </div>
-    <a href="sumate.html" class="nav-cta">Sumate</a>
-    <button class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <div class="nl">
+    <a href="propuestas.html">Propuestas</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#derechos">Derechos</a>
+    <a href="#equipo">Equipo</a>
+  </div>
+  <a class="ncta" href="#equipo">Únete</a>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mob">
-    <a href="index.html" class="active">Inicio</a>
-    <a href="actividades.html">Actividades</a>
-    <a href="ranking.html">Golden Cup</a>
-    <a href="propuestas.html">Propuestas</a>
-    <a href="alianzas.html">Alianzas</a>
-    <a href="informacion.html">Información</a>
-    <a href="sumate.html" style="color:var(--granate)">Sumate →</a>
+  <a href="propuestas.html">Propuestas</a>
+  <a href="#eventos">Eventos</a>
+  <a href="#derechos">Derechos</a>
+  <a href="#equipo">Equipo</a>
 </div>
 
-<!-- ══ HERO ══ -->
-<div class="hero">
-    <!-- LEFT -->
-    <div class="hero-left">
-        <div class="hero-eyebrow"><span></span>Centro de Estudiantes · 2026 – 2027<span></span></div>
-        <h1 class="hero-title">
-            <span class="t1">Nacidos</span>
-            <span class="t2">para ser</span>
-            <span class="t3">grandes</span>
-        </h1>
-        <p class="hero-desc">S.E.E.F. es el centro de estudiantes que rompe moldes. Más actividades, más voz, más comunidad. Transformamos el colegio desde adentro.</p>
-        <div class="hero-btns">
-            <a href="propuestas.html" class="btn-p">Ver propuestas</a>
-            <a href="sumate.html" class="btn-s">Sumate al movimiento</a>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow"><span></span>Colegio Alemán del Sud · Tarija 2026</div>
+    <h1 class="hero-title">
+      <span class="t1">Solución</span>
+      <span class="t2">Equitativa</span>
+      <span class="t3">Estudiantil Fortalecida</span>
+    </h1>
+    <p class="hero-desc">Somos un frente estudiantil comprometido con la construcción de soluciones justas y equitativas, donde cada estudiante es escuchado, respetado y verdaderamente valorado.</p>
+    <div class="hero-btns">
+      <a class="btn-p" href="propuestas.html">Ver Propuestas</a>
+      <a class="btn-s" href="#equipo">Nuestro Equipo</a>
     </div>
-
-    <!-- RIGHT -->
-    <div class="hero-right">
-        <div class="hero-ghost">S</div>
-        <div class="logo-piece">
-            <div class="ring-wrap">
-                <div class="ring-pulse"></div>
-                <svg class="ring-svg" viewBox="0 0 220 220" fill="none">
-                    <circle cx="110" cy="110" r="104" stroke="rgba(139,26,26,0.2)" stroke-width="1"/>
-                    <circle cx="110" cy="110" r="104" stroke="url(#rg1)" stroke-width="2.5" stroke-dasharray="80 574" stroke-linecap="round"/>
-                    <defs>
-                        <linearGradient id="rg1" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#8b1a1a"/>
-                            <stop offset="100%" stop-color="#e8dcc8"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <svg class="ring-svg2" viewBox="0 0 252 252" fill="none">
-                    <circle cx="126" cy="126" r="120" stroke="rgba(139,26,26,0.12)" stroke-width="1" stroke-dasharray="4 12"/>
-                </svg>
-                <img src="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png" alt="Logo S.E.E.F.">
-            </div>
-            <div class="sigla-under">
-                <span>S.E.E.F.</span>
-            </div>
-            <div class="sigla-meaning">Solución · Equitativa · Estudiantil · Fortalecida</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-ghost">SEEF</div>
+    <div class="logo-piece">
+      <div class="ring-wrap">
+        <div class="ring-pulse"></div>
+        <svg class="ring-svg" viewBox="0 0 220 220">
+          <circle cx="110" cy="110" r="104" fill="none" stroke="rgba(139,26,26,0.4)" stroke-width="1" stroke-dasharray="8 6"/>
+        </svg>
+        <svg class="ring-svg2" viewBox="0 0 252 252">
+          <circle cx="126" cy="126" r="120" fill="none" stroke="rgba(232,220,200,0.12)" stroke-width="1" stroke-dasharray="3 10"/>
+        </svg>
+        <div class="logo-img">
+            <img src="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png" alt="img">
         </div>
+      </div>
+      <div class="sigla-under"><span>S.E.E.F.</span></div>
+      <div class="sigla-meaning">Nacidos para ser grandes</div>
     </div>
-
     <div class="scroll-ind">
-        <div class="scroll-line"></div>
-        <span>Explorá</span>
+      <div class="scroll-line"></div>
+      Scroll
     </div>
-</div>
+  </div>
+</section>
 
 <!-- MARQUEE -->
 <div class="marquee-bar">
-    <div class="mq-track">
-        <div class="mq-item"><span class="mq-dot"></span>OLYMPUS S.E.E.F.</div>
-        <div class="mq-item"><span class="mq-dot"></span>THE GOLDEN CUP</div>
-        <div class="mq-item"><span class="mq-dot"></span>BLOOMING FEST</div>
-        <div class="mq-item"><span class="mq-dot"></span>S.E.E.F. STAGE</div>
-        <div class="mq-item"><span class="mq-dot"></span>ENIGMA CHALLENGE</div>
-        <div class="mq-item"><span class="mq-dot"></span>VOZ ESTUDIANTIL</div>
-        <div class="mq-item"><span class="mq-dot"></span>DERECHOS ESTUDIANTILES</div>
-        <div class="mq-item"><span class="mq-dot"></span>OLYMPUS S.E.E.F.</div>
-        <div class="mq-item"><span class="mq-dot"></span>THE GOLDEN CUP</div>
-        <div class="mq-item"><span class="mq-dot"></span>BLOOMING FEST</div>
-        <div class="mq-item"><span class="mq-dot"></span>S.E.E.F. STAGE</div>
-        <div class="mq-item"><span class="mq-dot"></span>ENIGMA CHALLENGE</div>
-        <div class="mq-item"><span class="mq-dot"></span>VOZ ESTUDIANTIL</div>
-        <div class="mq-item"><span class="mq-dot"></span>DERECHOS ESTUDIANTILES</div>
-    </div>
+  <div class="mq-track">
+    <div class="mq-item"><div class="mq-dot"></div>Olympus S.E.E.F.</div>
+    <div class="mq-item"><div class="mq-dot"></div>The Golden Cup</div>
+    <div class="mq-item"><div class="mq-dot"></div>S.E.E.F. Stage</div>
+    <div class="mq-item"><div class="mq-dot"></div>Enigma Challenge</div>
+    <div class="mq-item"><div class="mq-dot"></div>Día del Estudiante</div>
+    <div class="mq-item"><div class="mq-dot"></div>Voz Estudiantil</div>
+    <div class="mq-item"><div class="mq-dot"></div>Derechos Estudiantiles</div>
+    <div class="mq-item"><div class="mq-dot"></div>Buzón Anónimo</div>
+    <div class="mq-item"><div class="mq-dot"></div>Nacidos para ser grandes</div>
+    <div class="mq-item"><div class="mq-dot"></div>Olympus S.E.E.F.</div>
+    <div class="mq-item"><div class="mq-dot"></div>The Golden Cup</div>
+    <div class="mq-item"><div class="mq-dot"></div>S.E.E.F. Stage</div>
+    <div class="mq-item"><div class="mq-dot"></div>Enigma Challenge</div>
+    <div class="mq-item"><div class="mq-dot"></div>Día del Estudiante</div>
+    <div class="mq-item"><div class="mq-dot"></div>Voz Estudiantil</div>
+    <div class="mq-item"><div class="mq-dot"></div>Derechos Estudiantiles</div>
+    <div class="mq-item"><div class="mq-dot"></div>Buzón Anónimo</div>
+    <div class="mq-item"><div class="mq-dot"></div>Nacidos para ser grandes</div>
+  </div>
 </div>
 
 <!-- STATS -->
-<div class="stats-wrap" id="stats">
-    <div class="sc-item">
-        <div class="sc-num" data-target="5">0</div>
-        <div class="sc-label">Actividades planificadas</div>
-    </div>
-    <div class="sc-item">
-        <div class="sc-num" data-target="13">0</div>
-        <div class="sc-label">Cursos participantes</div>
-    </div>
-    <div class="sc-item">
-        <div class="sc-num" data-target="1">0</div>
-        <div class="sc-label">Golden Cup en juego</div>
-    </div>
-    <div class="sc-item">
-        <div class="sc-num">∞</div>
-        <div class="sc-label">Sueños por cumplir</div>
-    </div>
+<div class="stats-wrap">
+  <div class="sc-item">
+    <div class="sc-num" data-target="22">0</div>
+    <div class="sc-label">Propuestas</div>
+  </div>
+  <div class="sc-item">
+    <div class="sc-num" data-target="11">0</div>
+    <div class="sc-label">Miembros del Equipo</div>
+  </div>
+  <div class="sc-item">
+    <div class="sc-num" data-target="6">0</div>
+    <div class="sc-label">Cursos Representados</div>
+  </div>
+  <div class="sc-item">
+    <div class="sc-num" data-target="2026">0</div>
+    <div class="sc-label">Gestión</div>
+  </div>
 </div>
+
+<div class="div"></div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-inner">
+    <p class="manifesto-quote" id="mq">"Creemos que todos podemos destacar en algo. Que el valor de un estudiante no se mide solo por lo académico, sino también por su <em>esfuerzo, su creatividad, su liderazgo</em> y su capacidad de superarse."</p>
+    <p class="manifesto-author">— Manifiesto S.E.E.F. · Tarija 2026</p>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- PROPUESTAS INFRAESTRUCTURA -->
+<section class="section" id="propuestas">
+  <div class="sec-head">
+    <div>
+      <div class="sec-kicker">Mejoras Concretas</div>
+      <h2 class="sec-title">Propuestas de <em>Infraestructura</em></h2>
+    </div>
+    <p class="sec-sub">Cambios tangibles y necesarios para mejorar la experiencia diaria de cada estudiante en la institución.</p>
+  </div>
+  <div class="prop-grid">
+    <div class="p-card">
+      <div class="p-icon">🚿</div>
+      <div class="p-tag">Bienestar</div>
+      <div class="p-name">Cortinas para Vestidores</div>
+      <p class="p-desc">Instalación de cortinas en los vestidores del baño para garantizar privacidad. Un entorno seguro y cómodo impacta directamente en la autoestima y bienestar de los estudiantes.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🧠</div>
+      <div class="p-tag">Salud Mental</div>
+      <div class="p-name">Botiquín para Psicología</div>
+      <p class="p-desc">Botiquín destinado al área de psicología con herramientas básicas para acompañar situaciones emocionales o de crisis. La salud mental es una prioridad.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🗑️</div>
+      <div class="p-tag">Ambiente</div>
+      <div class="p-name">Renovar Basureros</div>
+      <p class="p-desc">Renovación de basureros en cada curso para fomentar la responsabilidad colectiva y el hábito de mantener espacios limpios. Conciencia ambiental desde el aula.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">⚡</div>
+      <div class="p-tag">Seguridad</div>
+      <div class="p-name">Renovar Enchufes</div>
+      <p class="p-desc">Actualización de enchufes para mayor seguridad eléctrica y para responder a las necesidades del aprendizaje moderno con dispositivos electrónicos.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🌸</div>
+      <div class="p-tag">Convivencia</div>
+      <div class="p-name">Actividades en Primavera</div>
+      <p class="p-desc">Organización de actividades recreativas en primavera para reforzar la convivencia, la creatividad y el sentido de pertenencia entre todos los cursos.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🌿</div>
+      <div class="p-tag">Higiene</div>
+      <div class="p-name">Aromatizantes para Baño</div>
+      <p class="p-desc">Implementación de aromatizantes para mantener espacios más agradables. Un ambiente fresco influye en la percepción de bienestar y el cuidado colectivo.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🧴</div>
+      <div class="p-tag">Salud</div>
+      <div class="p-name">Alcohol en Gel</div>
+      <p class="p-desc">Disponibilidad de alcohol en gel en baños para reforzar hábitos de higiene y prevención sanitaria, protegiendo a toda la comunidad educativa.</p>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">☕</div>
+      <div class="p-tag">Alimentación</div>
+      <div class="p-name">Mejora de la Cafetería</div>
+      <p class="p-desc">Menú semanal variado con alternativas saludables y económicas, optimización del espacio y seguimiento mensual para garantizar mejoras reales.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- GRANDES EVENTOS -->
+<section class="section" id="eventos">
+  <div class="sec-head">
+    <div>
+      <div class="sec-kicker">Iniciativas Grandes</div>
+      <h2 class="sec-title">Eventos & <em>Programas</em></h2>
+    </div>
+    <p class="sec-sub">Propuestas que transforman la vida estudiantil con actividades estructuradas, competencias y espacios de expresión.</p>
+  </div>
+  <div class="act-grid">
+    <div class="a-card c7">
+      <span class="a-tag tg1">Deporte</span>
+      <div class="a-name">Olympus S.E.E.F.</div>
+      <p class="a-desc">Campeonato deportivo integral: fútbol, básquet, vóley, atletismo y más. Con fases clasificatorias (1°–2°, 3°–4°, 5°–6°), cuartos de final con sorteo, semifinales y gran final. Árbitros designados, reglamento claro y sistema de puntuación transparente.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">01</div>
+    </div>
+    <div class="a-card c5">
+      <span class="a-tag tg4">Premio Anual</span>
+      <div class="a-name">The Golden Cup</div>
+      <p class="a-desc">Trofeo anual al curso con más puntos acumulados en actividades, convivencia y participación. Ranking consultable en tiempo real. Puntos por deportes, cultura, asambleas y reconocimientos especiales.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">02</div>
+    </div>
+    <div class="a-card c4">
+      <span class="a-tag tg3">Arte</span>
+      <div class="a-name">S.E.E.F. Stage</div>
+      <p class="a-desc">Espacio artístico para mostrar talentos: música, teatro, danza, stand-up. Inscripción por representantes de curso. Al menos una edición por año.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">03</div>
+    </div>
+    <div class="a-card c8">
+      <span class="a-tag tg2">Competencia</span>
+      <div class="a-name">Enigma Challenge</div>
+      <p class="a-desc">Competencia escolar de acertijos y desafíos de lógica distribuidos por todo el colegio. Equipos por curso resuelven un gran misterio siguiendo pistas por distintas ubicaciones. El ganador obtiene 150 puntos para la Golden Cup.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">04</div>
+    </div>
+    <div class="a-card c6">
+      <span class="a-tag tg5">Celebración</span>
+      <div class="a-name">Día del Estudiante</div>
+      <p class="a-desc">Jornada especial sin clases tradicionales, con talleres opcionales, shows, juegos y reconocimientos a alumnos destacados en ámbitos académicos, deportivos y creativos. Cada estudiante puede sobresalir según su talento.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">05</div>
+    </div>
+    <div class="a-card c6">
+      <span class="a-tag tg6">Reconocimiento</span>
+      <div class="a-name">Reconocimiento a Destacados</div>
+      <p class="a-desc">Sistema de reconocimiento que valora deportes, arte, liderazgo, compañerismo, creatividad y esfuerzo. No solo lo académico. Cada estudiante destaca en algo diferente.</p>
+      <div class="a-arrow">Ver más →</div>
+      <div class="a-num">06</div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- GOLDEN CUP BANNER -->
+<div class="golden-banner" id="gcup" style="max-width:1200px;margin:2rem auto">
+  <div class="gb-trophy">🏆</div>
+  <div>
+    <div class="gb-title">The <em>Golden Cup</em></div>
+    <p class="gb-desc">El máximo reconocimiento anual. Ranking actualizado en tiempo real. Cada evento de S.E.E.F. suma puntos. Participación deportiva, cultural, asambleas y reconocimientos especiales. Todos los talentos cuentan.</p>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- DERECHOS Y TRANSPARENCIA -->
+<section class="section" id="derechos">
+  <div class="sec-head">
+    <div>
+      <div class="sec-kicker">Compromiso Real</div>
+      <h2 class="sec-title">Derechos & <em>Transparencia</em></h2>
+    </div>
+    <p class="sec-sub">Canales claros, comunicación abierta y participación genuina para toda la comunidad estudiantil.</p>
+  </div>
+  <div class="der-grid">
+    <div class="d-card">
+      <div class="d-icon">⚖️</div>
+      <div class="d-tag">Derechos</div>
+      <div class="d-name">Derechos Estudiantiles</div>
+      <p class="d-desc">Protocolo claro y accesible para reportar irregularidades, conocer el reglamento y recibir respuestas ante situaciones de injusticia. Reuniones periódicas entre S.E.E.F. y autoridades.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📣</div>
+      <div class="d-tag">Participación</div>
+      <div class="d-name">Voz Estudiantil</div>
+      <p class="d-desc">Asambleas abiertas mensuales para presentar propuestas, votar iniciativas y dar seguimiento. Formulario digital anónimo con respuesta pública mensual. De ser consultados, a ser parte de la decisión.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📬</div>
+      <div class="d-tag">Anonimato</div>
+      <div class="d-name">Buzón Anónimo</div>
+      <p class="d-desc">Canal protegido físico y digital para expresar inquietudes, denunciar irregularidades o señalar injusticias sin miedo a represalias. Libertad de expresión garantizada.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">💻</div>
+      <div class="d-tag">Digital</div>
+      <div class="d-name">Plataforma Estudiantil</div>
+      <p class="d-desc">Espacio digital oficial con propuestas, comunicados, novedades y avances de gestión. Comunicación clara que evita desinformación y acerca la gestión a toda la comunidad.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">🔍</div>
+      <div class="d-tag">Seguimiento</div>
+      <div class="d-name">Seguimiento de Reclamos</div>
+      <p class="d-desc">Sistema público donde cada reclamo tiene estado visible: recibido, en revisión, resuelto. Ninguna solicitud queda sin respuesta. Confianza institucional real.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📊</div>
+      <div class="d-tag">Datos</div>
+      <div class="d-name">Encuestas Periódicas</div>
+      <p class="d-desc">Consultas regulares para conocer opinión estudiantil, medir satisfacción y detectar problemas antes de que crezcan. Decisiones basadas en datos reales.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📰</div>
+      <div class="d-tag">Comunicación</div>
+      <div class="d-name">Boletín Estudiantil</div>
+      <p class="d-desc">Medio oficial donde los estudiantes informan, opinan y generan contenido. Espacio de identidad colectiva donde la comunidad comunica desde su propia perspectiva.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📱</div>
+      <div class="d-tag">Digital</div>
+      <div class="d-name">Redes Activas</div>
+      <p class="d-desc">Gestión profesional de redes de S.E.E.F. con información clara, dinámica y atractiva. Presencia digital constante para mantener a todos actualizados en tiempo real.</p>
+    </div>
+    <div class="d-card">
+      <div class="d-icon">📋</div>
+      <div class="d-tag">Gestión</div>
+      <div class="d-name">Informes Públicos</div>
+      <p class="d-desc">Reportes mensuales sobre actividades y gastos para una gestión abierta y verificable. La transparencia genera confianza y demuestra compromiso con el uso correcto de los recursos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- SELECCIONES DEPORTIVAS -->
+<section class="section">
+  <div class="sec-head">
+    <div>
+      <div class="sec-kicker">Orgullo Institucional</div>
+      <h2 class="sec-title">Apoyo <em>Deportivo</em></h2>
+    </div>
+    <p class="sec-sub">Acompañamiento constante a quienes representan al colegio en cada competencia.</p>
+  </div>
+  <div class="act-grid">
+    <div class="a-card c12" style="grid-column:span 12;background:linear-gradient(135deg,rgba(139,26,26,.1),var(--beige-dim))">
+      <span class="a-tag tg1">Deporte</span>
+      <div class="a-name">Apoyo a las Selecciones Deportivas</div>
+      <p class="a-desc">Fortalecemos el apoyo a las selecciones mediante acompañamiento constante, mejor organización y reconocimiento a quienes representan a la institución. Coordinación de entrenamientos, gestión de materiales, difusión de competencias y reconocimiento público a los equipos. Apoyar nuestras selecciones no solo mejora el rendimiento deportivo, sino que fortalece el sentido de pertenencia y el orgullo de toda la comunidad educativa.</p>
+      <div class="a-arrow">Conoce más →</div>
+    </div>
+  </div>
+</section>
 
 <div class="div"></div>
 
 <!-- EQUIPO -->
-<section class="equipo-section" id="equipo">
-    <div class="sec-head" id="secHead">
-        <div>
-            <div class="sec-kicker">El equipo</div>
-            <h2 class="sec-title">Quiénes <em>somos</em></h2>
-        </div>
-        <p class="sec-sub">Estudiantes como vos que decidieron hacer algo real. Un equipo comprometido con cambiar el colegio desde adentro.</p>
+<section class="section" id="equipo">
+  <div class="sec-head">
+    <div>
+      <div class="sec-kicker">Quiénes somos</div>
+      <h2 class="sec-title">Nuestro <em>Equipo</em></h2>
     </div>
-
-    <div class="team-grid">
-        <div class="t-card" data-td="0">
-            <div class="t-icon"><i class="fa-solid fa-user-tie"></i></div>
-            <div class="t-role">Presidencia</div>
-            <div class="t-name">Presidente/a</div>
-            <div class="t-desc">Lidera la gestión y representa a los estudiantes ante las autoridades del colegio.</div>
-        </div>
-        <div class="t-card" data-td="80">
-            <div class="t-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-            <div class="t-role">Vicepresidencia</div>
-            <div class="t-name">Vicepresidente/a</div>
-            <div class="t-desc">Coordina las áreas y apoya la toma de decisiones estratégicas.</div>
-        </div>
-        <div class="t-card" data-td="160">
-            <div class="t-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-            <div class="t-role">Secretaría de Hacienda</div>
-            <div class="t-name">Tesorero/a</div>
-            <div class="t-desc">Administra los recursos y garantiza la transparencia económica.</div>
-        </div>
-        <div class="t-card" data-td="240">
-            <div class="t-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <div class="t-role">Secretaría de Actas</div>
-            <div class="t-name">Secr. de Actas</div>
-            <div class="t-desc">Encargado de registrar todas las asambleas y acuerdos para mayor transparencia.</div>
-        </div>
-        <div class="t-card" data-td="320">
-            <div class="t-icon"><i class="fa-solid fa-trophy"></i></div>
-            <div class="t-role">Sec. Deportes Masc.</div>
-            <div class="t-name">Secr. Deportes</div>
-            <div class="t-desc">Organiza los mundialitos y toda la agenda deportiva masculina de S.E.E.F.</div>
-        </div>
-        <div class="t-card" data-td="80">
-            <div class="t-icon"><i class="fa-solid fa-trophy"></i></div>
-            <div class="t-role">Sec. Deportes Fem.</div>
-            <div class="t-name">Secra. Deportes</div>
-            <div class="t-desc">Organiza los mundialitos y toda la agenda deportiva femenina de S.E.E.F.</div>
-        </div>
-        <div class="t-card span2" data-td="160">
-            <div class="t-icon"><i class="fa-solid fa-tree"></i></div>
-            <div class="t-role">Sec. Medio Ambiente y Salud</div>
-            <div class="t-name">Secr. Medio Ambiente</div>
-            <div class="t-desc">Cuida todas las políticas para el cuidado del medio ambiente y la salud estudiantil.</div>
-        </div>
-        <div class="t-card" data-td="240">
-            <div class="t-icon"><i class="fa-solid fa-landmark"></i></div>
-            <div class="t-role">Secretaría de Cultura</div>
-            <div class="t-name">Secr. de Cultura</div>
-            <div class="t-desc">Organiza las actividades culturales para mejorar el diálogo estudiantil.</div>
-        </div>
-        <div class="t-card" data-td="320">
-            <div class="t-icon"><i class="fa-solid fa-newspaper"></i></div>
-            <div class="t-role">Secretaría de Prensa</div>
-            <div class="t-name">Secr. de Prensa</div>
-            <div class="t-desc">Gestiona las redes, el sitio web y la comunicación oficial de S.E.E.F.</div>
-        </div>
-        <div class="t-card" data-td="400">
-            <div class="t-icon"><i class="fa-solid fa-earth-americas"></i></div>
-            <div class="t-role">Relaciones Exteriores</div>
-            <div class="t-name">Secr. FEST</div>
-            <div class="t-desc">Representa al colegio en actividades dentro de la FEST.</div>
-        </div>
+    <p class="sec-sub">Líderes comprometidos de distintos cursos, unidos por un mismo propósito: un colegio más justo y participativo.</p>
+  </div>
+  <div class="team-grid">
+    <div class="t-card span2">
+      <div class="t-icon">👑</div>
+      <div class="t-role">Presidente</div>
+      <div class="t-name">Leonardo A. Zamora Guzmán</div>
+      <div class="t-grado">5to "A"</div>
     </div>
+    <div class="t-card">
+      <div class="t-icon">🤝</div>
+      <div class="t-role">Vicepresidente</div>
+      <div class="t-name">Larissa N. Orozco Vargas</div>
+      <div class="t-grado">4to "C"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">💰</div>
+      <div class="t-role">Sec. de Hacienda</div>
+      <div class="t-name">Alejandro Rollano Quintana</div>
+      <div class="t-grado">5to "A"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">📝</div>
+      <div class="t-role">Sec. de Actas</div>
+      <div class="t-name">Aylen Noelia Herrera Martínez</div>
+      <div class="t-grado">6to "A"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">🏛️</div>
+      <div class="t-role">Delegado Federación</div>
+      <div class="t-name">Sileni Espinoza Vilte</div>
+      <div class="t-grado">5to "A"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">⚽</div>
+      <div class="t-role">Sec. Deportes Masculino</div>
+      <div class="t-name">Jose Ignacio Tapia Prado</div>
+      <div class="t-grado">4to "C"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">🏐</div>
+      <div class="t-role">Sec. Deportes Femenino</div>
+      <div class="t-name">Valentina Flores Montellanos</div>
+      <div class="t-grado">2do "B"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">🎭</div>
+      <div class="t-role">Sec. de Cultura</div>
+      <div class="t-name">Miguel Angel Guzmán Oporto</div>
+      <div class="t-grado">3ro "A"</div>
+    </div>
+    <div class="t-card">
+      <div class="t-icon">🌿</div>
+      <div class="t-role">Sec. Medioambiente y Salud</div>
+      <div class="t-name">Dasha Mariana Tavera Remonth</div>
+      <div class="t-grado">1ro "B"</div>
+    </div>
+    <div class="t-card span2">
+      <div class="t-icon">📢</div>
+      <div class="t-role">Sec. de Prensa y Propaganda</div>
+      <div class="t-name">Sara Sofia Ceballos Pulido</div>
+      <div class="t-grado">3ro "A"</div>
+    </div>
+  </div>
 </section>
 
-<div class="div"></div>
-
-<!-- ACTIVIDADES -->
-<section class="act-section" id="actividades">
-    <div class="sec-head" id="secHead2">
-        <div>
-            <div class="sec-kicker">Lo que viene</div>
-            <h2 class="sec-title">Nuestras <em>actividades</em></h2>
-        </div>
-        <p class="sec-sub">Cinco propuestas que van a cambiar cómo vivís el colegio. Esto es solo el comienzo.</p>
-    </div>
-
-    <div class="act-grid">
-        <a href="propuestas.html" class="a-card c7" data-ad="0">
-            <div class="a-num">01</div>
-            <span class="a-tag tg1">Deporte</span>
-            <div class="a-name">Olympus S.E.E.F.</div>
-            <p class="a-desc">Mundialito integral de todas las disciplinas. Reorganización total para una competencia sana y emocionante. Reglamento claro, árbitros designados, sistema transparente.</p>
-            <div class="a-arrow">Ver propuesta →</div>
-        </a>
-        <a href="ranking.html" class="a-card c5" data-ad="100">
-            <div class="a-num">02</div>
-            <span class="a-tag tg2">Premiación</span>
-            <div class="a-name">The Golden Cup</div>
-            <p class="a-desc">El trofeo máximo al mejor curso de la gestión. Puntos en tiempo real.</p>
-            <div class="a-arrow">Ver ranking →</div>
-        </a>
-        <a href="propuestas.html" class="a-card c4" data-ad="0">
-            <div class="a-num">03</div>
-            <span class="a-tag tg3">Social</span>
-            <div class="a-name">Blooming Fest</div>
-            <p class="a-desc">Fiesta de máscaras, feria de arte y food trucks. Un evento que no se olvida.</p>
-            <div class="a-arrow">Ver propuesta →</div>
-        </a>
-        <a href="propuestas.html" class="a-card c4" data-ad="150">
-            <div class="a-num">04</div>
-            <span class="a-tag tg4">Arte</span>
-            <div class="a-name">S.E.E.F. Stage</div>
-            <p class="a-desc">Tu talento único en el escenario principal. Música, teatro, danza y más.</p>
-            <div class="a-arrow">Ver propuesta →</div>
-        </a>
-        <a href="propuestas.html" class="a-card c4" data-ad="300">
-            <div class="a-num">05</div>
-            <span class="a-tag tg5">Estrategia</span>
-            <div class="a-name">Enigma Challenge</div>
-            <p class="a-desc">Desafío de acertijos y lógica por todo el colegio. 150 puntos al ganador.</p>
-            <div class="a-arrow">Ver propuesta →</div>
-        </a>
-    </div>
-
-    <a href="propuestas.html" class="ver-todo">Ver todas las propuestas →</a>
-</section>
-
-<div class="div"></div>
-
+<!-- FOOTER -->
 <footer>
-    <span class="brand">S.E.E.F.</span>
-    <span>Solución Equitativa Estudiantil Fortalecida · Centro de Estudiantes</span>
-    <span>2026 – 2027</span>
+  <div class="brand">S.E.E.F.</div>
+  <span>Colegio Alemán del Sud · Tarija · Gestión 2026</span>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">Contacto</a>
+    <a href="#">Buzón</a>
+  </div>
 </footer>
 
 <script>
-    // ── CURSOR ──
-    const cur = document.getElementById('cur');
-    const curRing = document.getElementById('curRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove', e => {
-        mx=e.clientX; my=e.clientY;
-        cur.style.left=mx+'px'; cur.style.top=my+'px';
-    });
-    function animRing(){
-        rx += (mx-rx)*.12; ry += (my-ry)*.12;
-        curRing.style.left=rx+'px'; curRing.style.top=ry+'px';
-        requestAnimationFrame(animRing);
+// CURSOR
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.p-card,.a-card,.d-card,.t-card,.sc-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+// HAM
+document.getElementById('ham').addEventListener('click',function(){
+  document.getElementById('mob').classList.toggle('open');
+  this.classList.toggle('active');
+});
+
+// INTERSECTION OBSERVER
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis')}});
+},{threshold:0.1});
+document.querySelectorAll('.sc-item,.sec-head,.p-card,.a-card,.d-card,.t-card,.golden-banner,#mq').forEach(el=>io.observe(el));
+
+// STAGGERED DELAYS
+document.querySelectorAll('.p-card,.a-card,.d-card,.t-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i%4)*0.08+'s';
+});
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.sc-num[data-target]');
+const cio = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target, target=+el.dataset.target;
+      const dur=1800, start=Date.now();
+      const tick=()=>{
+        const p=Math.min((Date.now()-start)/dur,1);
+        const ease=1-Math.pow(1-p,4);
+        el.textContent=Math.floor(ease*target);
+        if(p<1)requestAnimationFrame(tick);
+        else el.textContent=target;
+      };
+      tick(); cio.unobserve(el);
     }
-    animRing();
-    document.querySelectorAll('a,button,.t-card,.a-card').forEach(el=>{
-        el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
-    });
-
-    // ── HAMBURGER ──
-    function toggleMenu(){
-        document.getElementById('ham').classList.toggle('active');
-        document.getElementById('mob').classList.toggle('open');
-    }
-
-    // ── INTERSECTION OBSERVER ──
-    const io = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-            if(e.isIntersecting){
-                const d = parseInt(e.target.dataset.td||e.target.dataset.ad||0);
-                setTimeout(()=>e.target.classList.add('vis'),d);
-                io.unobserve(e.target);
-            }
-        });
-    },{threshold:.1});
-
-    document.querySelectorAll('.sc-item,.t-card,.a-card,.sec-head').forEach(el=>io.observe(el));
-
-    // ── COUNTER ANIMATION ──
-    const cio = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-            if(e.isIntersecting){
-                e.target.querySelectorAll('.sc-num[data-target]').forEach(el=>{
-                    const target=parseInt(el.dataset.target);
-                    let start=0; const dur=1600;
-                    const step=ts=>{
-                        if(!step.startTime) step.startTime=ts;
-                        const p=Math.min((ts-step.startTime)/dur,1);
-                        el.textContent=Math.floor(p*target)+(p<1?'':'+');
-                        if(p<1) requestAnimationFrame(step);
-                        else el.textContent=target+(target>1?'+':'');
-                    };
-                    requestAnimationFrame(step);
-                });
-                cio.unobserve(e.target);
-            }
-        });
-    },{threshold:.3});
-    cio.observe(document.getElementById('stats'));
-
-    // ── SEC HEADS ──
-    document.querySelectorAll('.sec-head').forEach(el=>{
-        const o2=new IntersectionObserver(entries=>{
-            if(entries[0].isIntersecting){entries[0].target.classList.add('vis');o2.unobserve(entries[0].target);}
-        },{threshold:.2});
-        o2.observe(el);
-    });
+  });
+},{threshold:.5});
+counters.forEach(c=>cio.observe(c));
 </script>
 </body>
 </html>
