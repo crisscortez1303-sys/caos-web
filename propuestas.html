@@ -1,493 +1,878 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://i.ibb.co/DfW0SY6t/Chat-GPT-Image-28-feb-2026-09-59-31.png">
-    <title>Propuestas | C.A.O.S</title>
-    <style>
-        :root {
-            --bg: #050505; --cyan: #0891b2;
-            --cyan-dim: rgba(8,145,178,0.18); --cyan-glow: rgba(8,145,178,0.45);
-            --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(8,145,178,0.35);
-            --text: #f0f4f8; --muted: rgba(240,244,248,0.5);
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
-        body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;overflow-x:hidden}
-        body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
-        .blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
-        .blob-1{width:500px;height:500px;background:radial-gradient(circle,rgba(8,145,178,.18) 0%,transparent 70%);top:-150px;left:-100px;animation:drift 12s ease-in-out infinite alternate}
-        .blob-2{width:400px;height:400px;background:radial-gradient(circle,rgba(8,145,178,.1) 0%,transparent 70%);bottom:10%;right:-100px;animation:drift 15s ease-in-out infinite alternate-reverse}
-        @keyframes drift{from{transform:translateY(0) scale(1)}to{transform:translateY(40px) scale(1.08)}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.E.E.F. | Propuestas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+    :root{
+    --bg:#080403;
+    --granate:#8b1a1a;
+    --granate2:#b02020;
+    --beige:#e8dcc8;
+    --beige-dim:rgba(232,220,200,0.06);
+    --border:rgba(139,26,26,0.35);
+    --glow:rgba(139,26,26,0.6);
+    --muted:rgba(232,220,200,0.45);
+    --text:#e8dcc8;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;min-height:100vh}
 
-        /* NAVBAR */
-        .navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:rgba(5,5,5,.65);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
-        .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.15em;color:var(--cyan);text-decoration:none}
-        .nav-brand .logo{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--glass-border)}
-        .nav-links{display:flex;gap:2rem}
-        .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;transition:color .25s;position:relative}
-        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-        .nav-links a:hover,.nav-links a.active{color:var(--text)}
-        .nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1)}
-        .btn-sumate{text-decoration:none;padding:.45rem 1.3rem;border:1.5px solid var(--cyan);border-radius:4px;color:var(--cyan);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--cyan-dim);backdrop-filter:blur(8px);transition:background .25s,color .25s,box-shadow .25s}
-        .btn-sumate:hover{background:var(--cyan);color:#050505;box-shadow:0 0 20px var(--cyan-glow)}
+    /* CURSOR */
+    #cur{position:fixed;width:10px;height:10px;background:var(--granate);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+    #curR{position:fixed;width:32px;height:32px;border:1px solid rgba(139,26,26,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .3s,height .3s}
+    body.hov #cur{width:18px;height:18px;background:var(--granate2)}
+    body.hov #curR{width:52px;height:52px;border-color:var(--granate)}
 
-        /* SLIDER */
-        main{position:relative;z-index:1;padding-top:68px;overflow:hidden}
-        .slider-wrapper{display:flex;transition:transform .75s cubic-bezier(.77,0,.18,1);will-change:transform}
-        .slide{width:100vw;flex-shrink:0;min-height:calc(100vh - 68px);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;overflow:hidden}
+    /* NOISE */
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
 
-        /* BG STRIP */
-        .bg-strip{position:absolute;inset:0;overflow:hidden;z-index:0}
-        .bg-track{display:flex;height:100%;animation:scrollbg 20s linear infinite}
-        .bg-track img{height:100%;width:auto;object-fit:cover;opacity:.06;filter:saturate(0);flex-shrink:0}
-        @keyframes scrollbg{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* BLOBS */
+    .blob{position:fixed;border-radius:50%;filter:blur(160px);pointer-events:none;z-index:0}
+    .b1{width:700px;height:700px;background:radial-gradient(circle,rgba(139,26,26,.15) 0%,transparent 70%);top:-200px;right:-200px;animation:db 20s ease-in-out infinite alternate}
+    .b2{width:500px;height:500px;background:radial-gradient(circle,rgba(139,26,26,.08) 0%,transparent 70%);bottom:0;left:-150px;animation:db 26s ease-in-out infinite alternate-reverse}
+    @keyframes db{from{transform:translateY(0) scale(1)}to{transform:translateY(80px) scale(1.08)}}
 
-        /* GRID */
-        .grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1100px;width:100%}
-        .grid h1{grid-column:1/-1;font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:.12em;text-transform:uppercase;line-height:1;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(8,4,3,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-brand { display:flex; align-items:center; gap:.6rem; text-decoration:none; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:.18em; color:var(--granate); }
+        .nav-brand img { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--border); object-fit:cover; }
+    .nb{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.18em;color:var(--granate)}
+    .nl{display:flex;gap:1.8rem}
+    .nl a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;position:relative}
+    .nl a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--granate);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    .nl a:hover,.nl a.active{color:var(--beige)}
+    .nl a.active::after,.nl a:hover::after{transform:scaleX(1)}
+    .ncta{text-decoration:none;padding:.4rem 1.2rem;border:1.5px solid var(--granate);color:var(--granate);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;background:rgba(139,26,26,.12);transition:all .25s}
+    .ncta:hover{background:var(--granate);color:var(--beige);box-shadow:0 0 24px var(--glow)}
+    .ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:.4rem}
+    .ham span{display:block;width:22px;height:2px;background:var(--granate);border-radius:2px;transition:transform .3s,opacity .3s}
+    .mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,4,3,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;flex-direction:column;padding:1.5rem;gap:.8rem}
+    .mob-menu.open{display:flex}
+    .mob-menu a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+    .mob-menu a:last-child{border-bottom:none}
+    .mob-menu a:hover{color:var(--granate)}
 
-        /* CARDS */
-        .card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(18px);border-radius:12px;padding:1.6rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;opacity:0;transform:translateY(24px);animation:fadeUp .6s forwards}
-        .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(8,145,178,.6),transparent)}
-        .card:hover{transform:translateY(-4px)!important;box-shadow:0 8px 40px rgba(8,145,178,.2);border-color:var(--cyan)}
-        .card.open{border-color:var(--cyan);box-shadow:0 0 30px rgba(8,145,178,.3)}
-        .card-wide{grid-column:span 2}
-        .card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;margin:.6rem 0 .5rem;color:#fff}
-        .card p{font-size:.88rem;line-height:1.6;color:var(--muted)}
-        .card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}.card:nth-child(4){animation-delay:.3s}.card:nth-child(5){animation-delay:.4s}.card:nth-child(6){animation-delay:.5s}
-        @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-        .hint{display:flex;align-items:center;gap:.4rem;margin-top:.8rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);opacity:.7;transition:opacity .2s}
-        .card:hover .hint{opacity:1}
-        .hint-arrow{transition:transform .3s}
-        .card.open .hint-arrow{transform:rotate(90deg)}
+    /* ── PAGE HEADER ── */
+    .page-header{
+    position:relative;z-index:1;
+    padding:10rem 4rem 5rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:end;
+    border-bottom:1px solid var(--border);
+    max-width:1400px;
+    margin:0 auto;
+    }
+    .ph-breadcrumb{display:flex;align-items:center;gap:.6rem;font-size:.62rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;opacity:0;animation:fu .6s .1s forwards}
+    .ph-breadcrumb a{color:var(--granate);text-decoration:none;transition:color .2s}
+    .ph-breadcrumb a:hover{color:var(--beige)}
+    .ph-breadcrumb span{color:var(--border)}
+    .ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,8vw,8rem);font-weight:700;line-height:.85;letter-spacing:-.02em;opacity:0;animation:fu .9s .2s forwards}
+    .ph-title .t1{display:block;color:var(--beige)}
+    .ph-title .t2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--granate);font-style:italic}
+    .ph-right{opacity:0;animation:fu .7s .4s forwards}
+    .ph-desc{font-size:.95rem;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:2rem}
+    .ph-count{display:flex;gap:2rem;flex-wrap:wrap}
+    .ph-count-item .n{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--granate);line-height:1}
+    .ph-count-item .l{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
 
-        /* TAGS */
-        .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .7rem;border-radius:99px}
-        .tag-cyan{background:rgba(8,145,178,.2);color:#67e8f9;border:1px solid rgba(8,145,178,.4)}
-        .tag-purple{background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)}
-        .tag-pink{background:rgba(236,72,153,.2);color:#f9a8d4;border:1px solid rgba(236,72,153,.4)}
-        .tag-yellow{background:rgba(234,179,8,.2);color:#fde68a;border:1px solid rgba(234,179,8,.4)}
-        .tag-green{background:rgba(16,185,129,.2);color:#6ee7b7;border:1px solid rgba(16,185,129,.4)}
-        .tag-orange{background:rgba(249,115,22,.2);color:#fdba74;border:1px solid rgba(249,115,22,.4)}
-        .tag-sky{background:rgba(14,165,233,.2);color:#7dd3fc;border:1px solid rgba(14,165,233,.4)}
-        .tag-red{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.4)}
-        .tag-teal{background:rgba(20,184,166,.2);color:#5eead4;border:1px solid rgba(20,184,166,.4)}
-        .tag-indigo{background:rgba(99,102,241,.2);color:#a5b4fc;border:1px solid rgba(99,102,241,.4)}
+    @keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-        /* DOC PANEL */
-        .doc-panel{position:relative;z-index:2;max-width:1100px;width:100%;overflow:hidden;max-height:0;margin-top:0;transition:max-height .7s cubic-bezier(.77,0,.18,1),margin-top .4s}
-        .doc-panel.open{max-height:900px;margin-top:1.5rem}
-        .doc-inner{background:rgba(255,255,255,.03);border:1px solid var(--glass-border);backdrop-filter:blur(24px);border-radius:16px;padding:2.5rem 3rem;position:relative;overflow:hidden}
-        .doc-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
-        .doc-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.12em;color:#fff;margin-bottom:.3rem}
-        .doc-subtitle{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem}
-        .doc-body{font-size:.92rem;line-height:1.9;color:var(--muted)}
-        .doc-body p{margin-bottom:1rem}
-        .doc-body h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:#fff;margin:1.4rem 0 .5rem}
-        .doc-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;cursor:pointer;color:var(--muted);font-size:1.2rem;transition:color .2s}
-        .doc-close:hover{color:var(--cyan)}
+    /* ── FILTER TABS ── */
+    .filter-bar{
+    position:sticky;top:68px;z-index:50;
+    background:rgba(8,4,3,.92);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    padding:0 4rem;
+    display:flex;align-items:center;gap:0;
+    overflow-x:auto;
+    scrollbar-width:none;
+    }
+    .filter-bar::-webkit-scrollbar{display:none}
+    .f-tab{
+    flex-shrink:0;
+    padding:1.1rem 1.5rem;
+    font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);
+    background:none;border:none;border-bottom:2px solid transparent;
+    cursor:none;
+    transition:color .2s,border-color .2s;
+    display:flex;align-items:center;gap:.5rem;
+    }
+    .f-tab:hover{color:var(--beige)}
+    .f-tab.on{color:var(--granate);border-bottom-color:var(--granate)}
+    .f-tab .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.6}
 
-        /* CONTROLS */
-        .dots{position:fixed;bottom:2.8rem;left:50%;transform:translateX(-50%);z-index:200;display:flex;gap:.5rem;align-items:center}
-        .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);transition:background .3s,transform .3s;cursor:pointer;border:none;padding:0}
-        .dot.active{background:var(--cyan);transform:scale(1.5);box-shadow:0 0 8px var(--cyan-glow)}
-        .arrow-btn{position:fixed;bottom:2.4rem;z-index:200;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--cyan);background:var(--cyan-dim);backdrop-filter:blur(12px);color:var(--cyan);font-size:1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s,box-shadow .25s,transform .2s,opacity .25s;line-height:1}
-        .arrow-btn:hover{background:var(--cyan);color:#050505;box-shadow:0 0 30px var(--cyan-glow);transform:scale(1.08)}
-        .arrow-btn:disabled{opacity:.2;cursor:default;transform:none!important;pointer-events:none}
-        #btnPrev{right:8rem}
-        #btnNext{right:2.5rem}
-        .counter{position:fixed;bottom:3rem;right:12.5rem;z-index:200;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-        .counter em{color:var(--cyan);font-style:normal}
+    /* ── PROPUESTAS LAYOUT — BENTO GRID ── */
+    .props-container{
+    position:relative;z-index:1;
+    max-width:1400px;margin:0 auto;
+    padding:3rem 4rem 6rem;
+    }
 
-        @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:600px){.navbar{padding:0 1.2rem}.nav-links{display:none}.grid{grid-template-columns:1fr}.card-wide{grid-column:span 1}.doc-inner{padding:1.5rem}.counter{display:none}#btnPrev{right:6.5rem}}
-    </style>
+    /* CATEGORY BLOCK */
+    .cat-block{
+    margin-bottom:5rem;
+    opacity:0;transform:translateY(30px);
+    transition:opacity .6s,transform .6s;
+    }
+    .cat-block.vis{opacity:1;transform:translateY(0)}
+    .cat-block.hidden{display:none}
+
+    .cat-label{
+    display:flex;align-items:center;gap:1rem;
+    margin-bottom:2rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid var(--border);
+    }
+    .cat-label .cat-icon{
+    width:42px;height:42px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    background:rgba(139,26,26,.15);border:1px solid var(--border);
+    flex-shrink:0;
+    }
+    .cat-label .cat-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;font-weight:700;
+    color:var(--beige);
+    }
+    .cat-label .cat-count{
+    margin-left:auto;
+    font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);
+    background:var(--beige-dim);border:1px solid var(--border);
+    padding:.3rem .8rem;border-radius:99px;
+    }
+
+    /* BENTO GRID per category */
+    .bento{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:auto;
+    gap:1rem;
+    }
+
+    /* PROP CARD — base */
+    .pc{
+    background:var(--beige-dim);
+    border:1px solid var(--border);
+    border-radius:3px;
+    padding:2rem;
+    position:relative;overflow:hidden;
+    transition:border-color .3s,background .3s,box-shadow .3s,transform .2s;
+    cursor:default;
+    }
+    .pc::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--granate),transparent);
+    transform:scaleX(0);transform-origin:left;transition:transform .5s;
+    }
+    .pc:hover::before{transform:scaleX(1)}
+    .pc:hover{
+    border-color:var(--granate);
+    background:rgba(139,26,26,.07);
+    box-shadow:0 8px 40px rgba(139,26,26,.15);
+    transform:translateY(-2px);
+    }
+
+    /* GRID SPANS */
+    .c4{grid-column:span 4}
+    .c6{grid-column:span 6}
+    .c8{grid-column:span 8}
+    .c12{grid-column:span 12}
+    .c3{grid-column:span 3}
+    .c5{grid-column:span 5}
+    .c7{grid-column:span 7}
+
+    /* CARD INTERNAL */
+    .pc-tag{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    padding:.22rem .65rem;border-radius:99px;margin-bottom:1rem;
+    }
+    .tag-infra{background:rgba(139,26,26,.2);color:#e8b4b4;border:1px solid rgba(139,26,26,.4)}
+    .tag-evento{background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)}
+    .tag-derecho{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.4)}
+    .tag-cultura{background:rgba(236,72,153,.2);color:#f9a8d4;border:1px solid rgba(236,72,153,.4)}
+    .tag-deporte{background:rgba(16,185,129,.2);color:#6ee7b7;border:1px solid rgba(16,185,129,.4)}
+    .tag-trans{background:rgba(234,179,8,.2);color:#fde68a;border:1px solid rgba(234,179,8,.4)}
+
+    .pc-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+    .pc-num{
+    position:absolute;bottom:.5rem;right:1rem;
+    font-family:'Cormorant Garamond',serif;
+    font-size:5rem;font-weight:700;
+    color:rgba(232,220,200,.04);line-height:1;
+    user-select:none;pointer-events:none;
+    transition:color .3s;
+    }
+    .pc:hover .pc-num{color:rgba(232,220,200,.07)}
+    .pc-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.5rem;font-weight:700;
+    color:var(--beige);line-height:1.1;margin-bottom:.6rem;
+    }
+    .pc-title-lg{font-size:2.2rem}
+    .pc-desc{font-size:.8rem;line-height:1.75;color:var(--muted)}
+    .pc-badge{
+    display:inline-flex;align-items:center;gap:.4rem;
+    margin-top:1rem;
+    font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--granate);
+    opacity:0;transform:translateX(-6px);
+    transition:opacity .3s,transform .3s;
+    }
+    .pc:hover .pc-badge{opacity:1;transform:translateX(0)}
+
+    /* FEATURED card style */
+    .pc.featured{
+    background:linear-gradient(135deg,rgba(139,26,26,.12),var(--beige-dim));
+    border-color:rgba(139,26,26,.5);
+    }
+
+    /* ── MODAL ── */
+    .modal-bg{
+    position:fixed;inset:0;z-index:500;
+    background:rgba(4,2,1,.85);backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:center;
+    padding:2rem;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+    }
+    .modal-bg.open{opacity:1;pointer-events:all}
+    .modal{
+    background:#100608;
+    border:1px solid var(--border);
+    border-radius:4px;
+    max-width:640px;width:100%;
+    padding:3rem;
+    position:relative;
+    transform:scale(.92) translateY(20px);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+    max-height:85vh;
+    overflow-y:auto;
+    }
+    .modal-bg.open .modal{transform:scale(1) translateY(0)}
+    .modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--granate),transparent)}
+    .modal-close{
+    position:absolute;top:1.2rem;right:1.2rem;
+    background:none;border:1px solid var(--border);color:var(--muted);
+    width:32px;height:32px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1rem;cursor:none;
+    transition:border-color .2s,color .2s;
+    }
+    .modal-close:hover{border-color:var(--granate);color:var(--granate)}
+    .modal-icon{font-size:3rem;margin-bottom:1rem;display:block}
+    .modal-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.22rem .65rem;border-radius:99px;margin-bottom:1rem}
+    .modal-title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--beige);line-height:1.1;margin-bottom:1.2rem}
+    .modal-body{font-size:.88rem;line-height:1.85;color:var(--muted)}
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar{
+    position:fixed;top:68px;left:0;z-index:200;
+    height:2px;background:var(--granate);
+    width:0%;transition:width .1s;
+    box-shadow:0 0 8px var(--glow);
+    }
+
+    /* ── BACK BTN ── */
+    .back-btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    text-decoration:none;
+    font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);
+    transition:color .2s,gap .2s;
+    margin-bottom:1rem;
+    }
+    .back-btn:hover{color:var(--granate);gap:.9rem}
+
+    /* FOOTER */
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    footer .brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.18em;color:var(--granate)}
+
+    @media(max-width:1024px){
+    .page-header{grid-template-columns:1fr;padding:8rem 2rem 4rem}
+    .filter-bar{padding:0 2rem}
+    .props-container{padding:2rem 2rem 5rem}
+    .c4{grid-column:span 6}
+    .c8{grid-column:span 12}
+    .c3{grid-column:span 6}
+    .c7{grid-column:span 12}
+    .c5{grid-column:span 12}
+    }
+    @media(max-width:768px){
+    .nav{padding:0 1.2rem}
+    .nl,.ncta{display:none}
+    .ham{display:flex}
+    body{cursor:auto}
+    #cur,#curR{display:none}
+    .c4,.c6,.c8,.c12,.c3,.c5,.c7{grid-column:span 12}
+    .page-header{padding:6rem 1.5rem 3rem}
+    .filter-bar{padding:0 1rem}
+    .props-container{padding:1.5rem 1.5rem 4rem}
+    footer{flex-direction:column;gap:.6rem;text-align:center}
+    }
+</style>
 </head>
 <body>
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
 
-<nav class="navbar">
-    <a href="caos.html" class="nav-brand">
-        <img src="https://i.ibb.co/DfW0SY6t/Chat-GPT-Image-28-feb-2026-09-59-31.png" class="logo" alt="Logo C.A.O.S">
-        <span>C.A.O.S</span>
+<div id="cur"></div>
+<div id="curR"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="progress-bar" id="pbar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="index.html" class="nav-brand">
+        <img src="https://i.ibb.co/S47yN9h3/Logo-Logotipo-Marca-Personal-Negocio-Sencillo-Rosa.png" alt="S.E.E.F.">
+        <span>S.E.E.F.</span>
     </a>
-    <div class="nav-links">
-        <a href="caos.html">Inicio</a>
-        <a href="actividades.html">Actividades</a>
-        <a href="ranking.html">Golden Cup</a>
-        <a href="propuestas.html" class="active">Propuestas</a>
-        <a href="informacion.html">Información</a>
-    </div>
-    <a href="sumate.html" class="btn-sumate">Sumate</a>
+  <div class="nl">
+    <a href="propuestas.html" class="active">Propuestas</a>
+    <a href="seef.html#eventos">Eventos</a>
+    <a href="seef.html#derechos">Derechos</a>
+    <a href="seef.html#equipo">Equipo</a>
+  </div>
+  <a class="ncta" href="seef.html#equipo">Únete</a>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
+<div class="mob-menu" id="mob">
+  <a href="propuestas.html">Propuestas</a>
+  <a href="seef.html#eventos">Eventos</a>
+  <a href="seef.html#derechos">Derechos</a>
+  <a href="seef.html#equipo">Equipo</a>
+</div>
 
-<main>
-<div class="slider-wrapper" id="slider">
-
-    <!-- ══ 1: ACTIVIDADES ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Actividades</h1>
-            <div class="card card-wide" data-doc="olympus">
-                <span class="tag tag-cyan">Deporte</span><h3>OLYMPUS C.A.O.S.</h3>
-                <p>Mundialito integral de todas las disciplinas. Reorganización total para una competencia sana.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="golden">
-                <span class="tag tag-purple">Premiación</span><h3>THE GOLDEN CUP</h3>
-                <p>El trofeo máximo al mejor curso de la gestión.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="blooming">
-                <span class="tag tag-pink">Social</span><h3>BLOOMING FEST</h3>
-                <p>Fiesta de primavera con música y ambiente disruptivo.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="stage">
-                <span class="tag tag-yellow">Arte</span><h3>C.A.O.S. STAGE</h3>
-                <p>Tu talento único en el escenario principal.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="enigma">
-                <span class="tag tag-green">Estrategia</span><h3>ENIGMA CHALLENGE</h3>
-                <p>Desafío de acertijos y lógica por todo el colegio.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-0">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="0">✕</button>
-                <div class="doc-title" id="title-0"></div>
-                <div class="doc-subtitle" id="sub-0"></div>
-                <div class="doc-body" id="body-0"></div>
-            </div>
-        </div>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-left">
+    <div class="ph-breadcrumb">
+      <a href="seef.html">Inicio</a>
+      <span>/</span>
+      Propuestas
     </div>
-
-    <!-- ══ 2: CAMBIOS EDUCATIVOS ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Cambios Educativos</h1>
-            <div class="card card-wide" data-doc="dia">
-                <span class="tag tag-sky">Celebración</span><h3>DÍA DEL ESTUDIANTE</h3>
-                <p>Un día entero dedicado a celebrar el esfuerzo de cada estudiante.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="derechos">
-                <span class="tag tag-cyan">Derechos</span><h3>DERECHOS ESTUDIANTILES</h3>
-                <p>Respeto real a los derechos de cada alumno. Cero tolerancia a irregularidades.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="voz">
-                <span class="tag tag-purple">Voz</span><h3>VOZ ESTUDIANTIL</h3>
-                <p>Asambleas abiertas donde los estudiantes proponen y deciden.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="cafeteria">
-                <span class="tag tag-orange">Bienestar</span><h3>MEJORA DE LA CAFETERÍA</h3>
-                <p>Menús variados, precios justos y un espacio digno.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-1">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="1">✕</button>
-                <div class="doc-title" id="title-1"></div>
-                <div class="doc-subtitle" id="sub-1"></div>
-                <div class="doc-body" id="body-1"></div>
-            </div>
-        </div>
+    <h1 class="ph-title">
+      <span class="t1">Todas las</span>
+      <span class="t2">Propuestas</span>
+    </h1>
+  </div>
+  <div class="ph-right">
+    <p class="ph-desc">Cada propuesta nace de escuchar a la comunidad estudiantil. Aquí encontrarás el detalle de cada iniciativa que S.E.E.F. lleva adelante para construir un colegio más justo, participativo y humano.</p>
+    <div class="ph-count">
+      <div class="ph-count-item">
+        <div class="n">22</div>
+        <div class="l">Total de propuestas</div>
+      </div>
+      <div class="ph-count-item">
+        <div class="n">6</div>
+        <div class="l">Categorías</div>
+      </div>
+      <div class="ph-count-item">
+        <div class="n">2026</div>
+        <div class="l">Gestión</div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- ══ 3: BIENESTAR Y SALUD ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Bienestar y Salud</h1>
-            <div class="card card-wide" data-doc="salud_mental">
-                <span class="tag tag-green">Salud Mental</span><h3>ACOMPAÑAMIENTO EMOCIONAL</h3>
-                <p>Espacios seguros de escucha y contención para estudiantes que lo necesiten.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="actividad_fisica">
-                <span class="tag tag-teal">Actividad</span><h3>MÁS MOVIMIENTO</h3>
-                <p>Espacios recreativos activos en recreos y pausas activas en clases.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="alimentacion">
-                <span class="tag tag-yellow">Nutrición</span><h3>ALIMENTACIÓN SALUDABLE</h3>
-                <p>Opciones nutritivas y accesibles para todos durante la jornada escolar.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="prevencion">
-                <span class="tag tag-pink">Prevención</span><h3>TALLERES DE PREVENCIÓN</h3>
-                <p>Charlas y talleres sobre salud integral, hábitos y bienestar estudiantil.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-2">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="2">✕</button>
-                <div class="doc-title" id="title-2"></div>
-                <div class="doc-subtitle" id="sub-2"></div>
-                <div class="doc-body" id="body-2"></div>
-            </div>
-        </div>
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="f-tab on" data-cat="all"><div class="dot"></div>Todas</button>
+  <button class="f-tab" data-cat="infraestructura"><div class="dot"></div>Infraestructura</button>
+  <button class="f-tab" data-cat="eventos"><div class="dot"></div>Eventos</button>
+  <button class="f-tab" data-cat="derechos"><div class="dot"></div>Derechos</button>
+  <button class="f-tab" data-cat="transparencia"><div class="dot"></div>Transparencia</button>
+  <button class="f-tab" data-cat="deporte"><div class="dot"></div>Deporte</button>
+  <button class="f-tab" data-cat="cultura"><div class="dot"></div>Cultura</button>
+</div>
+
+<!-- PROPUESTAS CONTAINER -->
+<div class="props-container">
+
+  <!-- INFRAESTRUCTURA -->
+  <div class="cat-block" data-category="infraestructura" id="cat-infra">
+    <div class="cat-label">
+      <div class="cat-icon">🏫</div>
+      <div class="cat-name">Infraestructura & Bienestar</div>
+      <div class="cat-count">8 propuestas</div>
     </div>
+    <div class="bento">
 
-    <!-- ══ 4: INFORMACIÓN Y PRENSA ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Información y Prensa</h1>
-            <div class="card card-wide" data-doc="comunicacion">
-                <span class="tag tag-cyan">Comunicación</span><h3>BOLETÍN ESTUDIANTIL</h3>
-                <p>Un medio propio donde los estudiantes informan, opinan y crean contenido.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="redes">
-                <span class="tag tag-indigo">Redes</span><h3>REDES ACTIVAS</h3>
-                <p>Gestión profesional de las redes de C.A.O.S. con contenido de calidad.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="transparencia">
-                <span class="tag tag-sky">Transparencia</span><h3>INFORMES PÚBLICOS</h3>
-                <p>Reportes mensuales sobre actividades y gastos accesibles a todos.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="cartelera">
-                <span class="tag tag-orange">Cartelera</span><h3>CARTELERA DIGITAL</h3>
-                <p>Pantallas actualizadas con novedades, eventos y comunicados institucionales.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-3">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="3">✕</button>
-                <div class="doc-title" id="title-3"></div>
-                <div class="doc-subtitle" id="sub-3"></div>
-                <div class="doc-body" id="body-3"></div>
-            </div>
-        </div>
+      <div class="pc c8 featured"
+        data-modal="cortinas"
+        data-icon="🚿" data-tag="tag-infra" data-taglabel="Bienestar"
+        data-title="Cortinas para los Vestidores del Baño"
+        data-full="La instalación de cortinas en los vestidores busca garantizar un espacio donde cada estudiante pueda cambiarse con tranquilidad y confianza. La privacidad no es un lujo, es una necesidad básica que fortalece el respeto entre compañeros y mejora la experiencia dentro de la institución. Un entorno seguro y cómodo impacta directamente en la autoestima y bienestar de los estudiantes.">
+        <span class="pc-icon">🚿</span>
+        <span class="pc-tag tag-infra">Bienestar</span>
+        <div class="pc-title pc-title-lg">Cortinas para los Vestidores</div>
+        <p class="pc-desc">Privacidad garantizada en los vestidores del baño. Un entorno seguro impacta directamente en la autoestima y bienestar de los estudiantes.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">01</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="botiquin"
+        data-icon="🧠" data-tag="tag-infra" data-taglabel="Salud Mental"
+        data-title="Botiquín para Psicología"
+        data-full="Contar con un botiquín destinado al área de psicología permite brindar herramientas básicas para acompañar situaciones emocionales o de crisis. Más allá de lo físico, la salud mental es una prioridad. Este recurso refuerza el compromiso institucional con el cuidado integral de los estudiantes, promoviendo un ambiente de contención y apoyo oportuno.">
+        <span class="pc-icon">🧠</span>
+        <span class="pc-tag tag-infra">Salud Mental</span>
+        <div class="pc-title">Botiquín para Psicología</div>
+        <p class="pc-desc">Herramientas básicas para acompañar situaciones emocionales o de crisis. La salud mental como prioridad institucional.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">02</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="basureros"
+        data-icon="🗑️" data-tag="tag-infra" data-taglabel="Ambiente"
+        data-title="Renovar los Basureros de cada Curso"
+        data-full="La renovación de basureros no solo mejora la estética del aula, sino que fomenta la responsabilidad colectiva y el hábito de mantener espacios limpios. Contar con recipientes adecuados y en buen estado promueve una cultura de respeto por el entorno, fortaleciendo valores de organización y conciencia ambiental dentro de la comunidad educativa.">
+        <span class="pc-icon">🗑️</span>
+        <span class="pc-tag tag-infra">Ambiente</span>
+        <div class="pc-title">Renovar los Basureros</div>
+        <p class="pc-desc">Recipientes adecuados en cada curso para fomentar la responsabilidad colectiva y conciencia ambiental.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">03</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="enchufes"
+        data-icon="⚡" data-tag="tag-infra" data-taglabel="Seguridad"
+        data-title="Renovar los Enchufes de los Cursos"
+        data-full="Actualizar los enchufes garantiza mayor seguridad eléctrica y reduce riesgos de accidentes. Además, responde a las necesidades actuales donde el uso de dispositivos electrónicos es cada vez más frecuente en el aprendizaje. Modernizar la infraestructura eléctrica significa apostar por un entorno educativo más seguro y acorde a los tiempos actuales.">
+        <span class="pc-icon">⚡</span>
+        <span class="pc-tag tag-infra">Seguridad</span>
+        <div class="pc-title">Renovar los Enchufes</div>
+        <p class="pc-desc">Mayor seguridad eléctrica y respuesta a las necesidades de aprendizaje moderno con dispositivos electrónicos.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">04</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="aromatizantes"
+        data-icon="🌿" data-tag="tag-infra" data-taglabel="Higiene"
+        data-title="Aromatizantes para Baño"
+        data-full="Implementar aromatizantes contribuye a mantener espacios más agradables y cómodos para todos. Un ambiente limpio y fresco influye directamente en la percepción de bienestar y en el cuidado colectivo de las instalaciones, generando mayor respeto por los espacios compartidos.">
+        <span class="pc-icon">🌿</span>
+        <span class="pc-tag tag-infra">Higiene</span>
+        <div class="pc-title">Aromatizantes para Baño</div>
+        <p class="pc-desc">Espacios más agradables que influyen en la percepción de bienestar y el cuidado colectivo de las instalaciones.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">05</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="alcohol"
+        data-icon="🧴" data-tag="tag-infra" data-taglabel="Salud"
+        data-title="Alcohol en Gel para el Baño"
+        data-full="La disponibilidad de alcohol en gel refuerza hábitos de higiene y prevención sanitaria dentro de la institución. Fomentar el autocuidado protege no solo a nivel individual, sino también colectivo, reduciendo riesgos de contagio y promoviendo una comunidad más saludable y consciente.">
+        <span class="pc-icon">🧴</span>
+        <span class="pc-tag tag-infra">Salud</span>
+        <div class="pc-title">Alcohol en Gel</div>
+        <p class="pc-desc">Higiene y prevención sanitaria accesible para toda la comunidad educativa. Autocuidado colectivo.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">06</div>
+      </div>
+
+      <div class="pc c8"
+        data-modal="cafeteria"
+        data-icon="☕" data-tag="tag-infra" data-taglabel="Alimentación"
+        data-title="Mejora de la Cafetería"
+        data-full="Se propone mejorar la cafetería escolar ante problemas como precios elevados, opciones limitadas y un espacio saturado que no responde a las necesidades de los estudiantes. La iniciativa plantea implementar un menú semanal variado, con alternativas saludables y económicas, además de optimizar el espacio físico o la atención para evitar la congestión. Como plan de acción, se propone realizar una reunión con el concesionario y las autoridades, presentar una encuesta estudiantil sobre preferencias y llevar un seguimiento mensual para garantizar que los cambios se cumplan.">
+        <span class="pc-icon">☕</span>
+        <span class="pc-tag tag-infra">Alimentación</span>
+        <div class="pc-title pc-title-lg">Mejora de la Cafetería</div>
+        <p class="pc-desc">Menú semanal variado con alternativas saludables y económicas. Reunión con concesionario, encuesta estudiantil y seguimiento mensual para garantizar cambios reales.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">07</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="primavera"
+        data-icon="🌸" data-tag="tag-cultura" data-taglabel="Convivencia"
+        data-title="Actividades en Primavera"
+        data-full="Organizar actividades en primavera permite generar espacios recreativos que refuercen la convivencia, la creatividad y el sentido de pertenencia. Estas iniciativas promueven la participación activa de los estudiantes, fortaleciendo la unión entre cursos y creando experiencias positivas que enriquecen la vida escolar.">
+        <span class="pc-icon">🌸</span>
+        <span class="pc-tag tag-cultura">Convivencia</span>
+        <div class="pc-title">Actividades en Primavera</div>
+        <p class="pc-desc">Espacios recreativos que refuerzan convivencia, creatividad y sentido de pertenencia entre todos los cursos.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">08</div>
+      </div>
+
     </div>
+  </div>
 
-    <!-- ══ 5: INFRAESTRUCTURA ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Infraestructura</h1>
-            <div class="card card-wide" data-doc="aulas">
-                <span class="tag tag-teal">Espacios</span><h3>MEJORA DE AULAS</h3>
-                <p>Aulas más cómodas, mejor iluminadas y equipadas para el aprendizaje.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="biblioteca">
-                <span class="tag tag-purple">Recursos</span><h3>BIBLIOTECA RENOVADA</h3>
-                <p>Modernización con nuevos materiales, tecnología y horarios más amplios.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="laboratorio">
-                <span class="tag tag-cyan">Tecnología</span><h3>LAB DE TECNOLOGÍA</h3>
-                <p>Equipamiento actualizado en el laboratorio de informática para todos los cursos.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="espacios">
-                <span class="tag tag-green">Común</span><h3>ESPACIOS COMUNES</h3>
-                <p>Patios, pasillos y salones mejorados para el bienestar de toda la comunidad.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-4">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="4">✕</button>
-                <div class="doc-title" id="title-4"></div>
-                <div class="doc-subtitle" id="sub-4"></div>
-                <div class="doc-body" id="body-4"></div>
-            </div>
-        </div>
+  <!-- EVENTOS -->
+  <div class="cat-block" data-category="eventos" id="cat-eventos">
+    <div class="cat-label">
+      <div class="cat-icon">🎪</div>
+      <div class="cat-name">Eventos & Programas</div>
+      <div class="cat-count">6 propuestas</div>
     </div>
+    <div class="bento">
 
-    <!-- ══ 6: PLATAFORMA Y RECLAMOS ══ -->
-    <div class="slide">
-        <div class="bg-strip"><div class="bg-track">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-            <img src="https://i.ibb.co/ppvvhgZ/Disen-o-sin-ti-tulo.jpg" alt="">
-        </div></div>
-        <div class="grid">
-            <h1>Plataforma y Reclamos</h1>
-            <div class="card card-wide" data-doc="buzon">
-                <span class="tag tag-red">Reclamos</span><h3>BUZÓN ANÓNIMO</h3>
-                <p>Canal seguro y anónimo para reportar irregularidades o injusticias.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="plataforma">
-                <span class="tag tag-indigo">Digital</span><h3>PLATAFORMA ESTUDIANTIL</h3>
-                <p>Un sitio centralizado con información, propuestas y novedades de C.A.O.S.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="seguimiento">
-                <span class="tag tag-sky">Seguimiento</span><h3>SEGUIMIENTO DE RECLAMOS</h3>
-                <p>Sistema público donde cada reclamo presentado tiene estado visible.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-            <div class="card" data-doc="encuestas">
-                <span class="tag tag-yellow">Participación</span><h3>ENCUESTAS PERIÓDICAS</h3>
-                <p>Consultas regulares para medir satisfacción y detectar problemas a tiempo.</p>
-                <div class="hint"><span class="hint-arrow">›</span> Leer propuesta</div>
-            </div>
-        </div>
-        <div class="doc-panel" id="panel-5">
-            <div class="doc-inner">
-                <button class="doc-close" data-close="5">✕</button>
-                <div class="doc-title" id="title-5"></div>
-                <div class="doc-subtitle" id="sub-5"></div>
-                <div class="doc-body" id="body-5"></div>
-            </div>
-        </div>
+      <div class="pc c7 featured"
+        data-modal="olympus"
+        data-icon="🏟️" data-tag="tag-deporte" data-taglabel="Deporte"
+        data-title="Olympus S.E.E.F."
+        data-full="Olympus S.E.E.F. es una propuesta para transformar los mundialitos en una competencia deportiva integral, organizada y justa, incorporando disciplinas como fútbol, básquet, vóley, atletismo y más, con un reglamento claro, árbitros designados y un sistema de puntuación renovado y transparente. El torneo iniciará con una fase de clasificación por cursos (1°–2°, 3°–4° y 5°–6°), donde los dos mejores de cada serie avanzará; posteriormente se jugarán cuartos de final con sorteo e inclusión del mejor tercer lugar, seguido de semifinales en eliminación directa y una final para definir los tres primeros puestos. Con esta estructura se busca aumentar la participación estudiantil, fomentar el juego limpio y fortalecer el sentido de comunidad.">
+        <span class="pc-icon">🏟️</span>
+        <span class="pc-tag tag-deporte">Deporte</span>
+        <div class="pc-title pc-title-lg">Olympus S.E.E.F.</div>
+        <p class="pc-desc">Campeonato deportivo integral: fútbol, básquet, vóley, atletismo. Fases clasificatorias, cuartos de final con sorteo, semifinales y gran final. Reglamento claro, árbitros designados.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">01</div>
+      </div>
+
+      <div class="pc c5"
+        data-modal="goldencup"
+        data-icon="🏆" data-tag="tag-trans" data-taglabel="Premio Anual"
+        data-title="The Golden Cup"
+        data-full="The Golden Cup es el máximo reconocimiento anual de la gestión, un trofeo que premia al curso que más puntos acumule a lo largo del año en actividades, convivencia y participación. Cada evento organizado por S.E.E.F sumará al ranking general, el cual podrá consultarse en tiempo real desde la sección Golden Cup del sitio. Los puntos se otorgarán según criterios como participación deportiva, eventos culturales, asistencia a asambleas y reconocimientos especiales, promoviendo que todos los estudiantes aporten con sus talentos y fortalezcan el trabajo en equipo de su curso.">
+        <span class="pc-icon">🏆</span>
+        <span class="pc-tag tag-trans">Premio Anual</span>
+        <div class="pc-title">The Golden Cup</div>
+        <p class="pc-desc">Trofeo al curso con más puntos en el año. Ranking en tiempo real. Puntos por deportes, cultura, asambleas y reconocimientos especiales.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">02</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="stage"
+        data-icon="🎤" data-tag="tag-cultura" data-taglabel="Arte"
+        data-title="S.E.E.F. Stage"
+        data-full="S.E.E.F. Stage es un espacio artístico donde los estudiantes pueden mostrar sus talentos, como música, teatro, danza, stand-up o cualquier otra expresión creativa. La participación se realiza mediante inscripción previa con los representantes de cada curso y se organizará al menos una edición por año, promoviendo que cada alumno pueda destacar y compartir su talento con la comunidad.">
+        <span class="pc-icon">🎤</span>
+        <span class="pc-tag tag-cultura">Arte</span>
+        <div class="pc-title">S.E.E.F. Stage</div>
+        <p class="pc-desc">Espacio artístico para música, teatro, danza y stand-up. Al menos una edición por año. Inscripción por representantes de curso.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">03</div>
+      </div>
+
+      <div class="pc c8"
+        data-modal="enigma"
+        data-icon="🔮" data-tag="tag-evento" data-taglabel="Competencia"
+        data-title="Enigma Challenge"
+        data-full="Enigma Challenge es una competencia escolar basada en acertijos y desafíos de lógica distribuidos por todo el colegio, donde los cursos participan en equipos para resolver un gran misterio antes que los demás. Cada equipo comienza con una pista inicial que los guía a distintas ubicaciones hasta llegar al punto final, donde se revela la solución. El curso ganador obtiene 150 puntos para la Golden Cup y un reconocimiento especial.">
+        <span class="pc-icon">🔮</span>
+        <span class="pc-tag tag-evento">Competencia</span>
+        <div class="pc-title pc-title-lg">Enigma Challenge</div>
+        <p class="pc-desc">Competencia de acertijos y lógica por todo el colegio. Equipos por curso resuelven un gran misterio siguiendo pistas en distintas ubicaciones. El ganador obtiene 150 puntos para la Golden Cup.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">04</div>
+      </div>
+
+      <div class="pc c6"
+        data-modal="diaest"
+        data-icon="🎉" data-tag="tag-cultura" data-taglabel="Celebración"
+        data-title="Día del Estudiante"
+        data-full="Se propone que el Día del Estudiante sea reconocido oficialmente por el colegio mediante una jornada especial sin clases tradicionales, con talleres opcionales, actividades recreativas y espacios de integración. La iniciativa busca fortalecer el sentido de pertenencia y valorar el rol de los estudiantes dentro de la comunidad educativa. La propuesta incluye shows, juegos y un acto simbólico donde S.E.E.F entregue reconocimientos a alumnos destacados en ámbitos académicos, deportivos y en distintas actividades, resaltando que cada estudiante puede sobresalir según su talento.">
+        <span class="pc-icon">🎉</span>
+        <span class="pc-tag tag-cultura">Celebración</span>
+        <div class="pc-title">Día del Estudiante</div>
+        <p class="pc-desc">Jornada especial sin clases con talleres, shows, juegos y reconocimientos. Cada estudiante puede sobresalir según su talento.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">05</div>
+      </div>
+
+      <div class="pc c6"
+        data-modal="reconocimiento"
+        data-icon="⭐" data-tag="tag-cultura" data-taglabel="Reconocimiento"
+        data-title="Reconocimiento a todos los Estudiantes Destacados"
+        data-full="Proponemos un sistema de reconocimiento que valore a los estudiantes en todas sus aptitudes, no únicamente en el ámbito académico. Deportes, arte, liderazgo, compañerismo, creatividad, esfuerzo y superación personal también merecen ser visibilizados. Creemos que cada estudiante destaca en algo diferente, y reconocer esa diversidad fortalece la autoestima, la motivación y el sentido de pertenencia dentro de la comunidad educativa.">
+        <span class="pc-icon">⭐</span>
+        <span class="pc-tag tag-cultura">Reconocimiento</span>
+        <div class="pc-title">Reconocimiento a Destacados</div>
+        <p class="pc-desc">Deportes, arte, liderazgo, compañerismo, creatividad y superación personal. No solo lo académico. Cada estudiante destaca en algo diferente.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">06</div>
+      </div>
+
     </div>
+  </div>
 
-</div><!-- /slider -->
-</main>
+  <!-- DERECHOS -->
+  <div class="cat-block" data-category="derechos" id="cat-derechos">
+    <div class="cat-label">
+      <div class="cat-icon">⚖️</div>
+      <div class="cat-name">Derechos Estudiantiles</div>
+      <div class="cat-count">3 propuestas</div>
+    </div>
+    <div class="bento">
 
-<!-- CONTROLS -->
-<div class="dots" id="dots"></div>
-<span class="counter" id="counter"></span>
-<button class="arrow-btn" id="btnPrev">‹</button>
-<button class="arrow-btn" id="btnNext">›</button>
+      <div class="pc c12 featured"
+        data-modal="derechos"
+        data-icon="⚖️" data-tag="tag-derecho" data-taglabel="Derechos"
+        data-title="Derechos Estudiantiles"
+        data-full="Se propone garantizar que los derechos de los estudiantes sean respetados de manera efectiva mediante la creación de un protocolo claro, accesible y transparente. Actualmente existen problemas como la falta de canales definidos para reportar irregularidades, el desconocimiento del reglamento estudiantil y la ausencia de respuestas ante situaciones de injusticia. Para solucionarlo, se plantea implementar un buzón anónimo físico y otro en línea para sugerencias y denuncias, realizar reuniones periódicas entre S.E.E.F. y las autoridades, y difundir el reglamento estudiantil en todos los cursos, asegurando información clara y acompañamiento real.">
+        <span class="pc-icon">⚖️</span>
+        <span class="pc-tag tag-derecho">Derechos</span>
+        <div class="pc-title pc-title-lg">Derechos Estudiantiles</div>
+        <p class="pc-desc">Protocolo claro para reportar irregularidades. Buzón anónimo físico y digital. Reuniones periódicas con autoridades. Difusión del reglamento en todos los cursos.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">01</div>
+      </div>
+
+      <div class="pc c6"
+        data-modal="voz"
+        data-icon="📣" data-tag="tag-derecho" data-taglabel="Participación"
+        data-title="Voz Estudiantil"
+        data-full="La Voz Estudiantil es una propuesta que busca garantizar una participación real y activa de los alumnos en las decisiones que los afectan, pasando de ser solo consultados a formar parte del proceso de decisión. Se plantea realizar asambleas abiertas mensuales con todos los cursos para presentar propuestas, votar iniciativas y dar seguimiento a compromisos asumidos, además de habilitar un formulario digital anónimo y permanente para recibir ideas y reclamos, con una respuesta pública mensual que asegure transparencia y cumplimiento.">
+        <span class="pc-icon">📣</span>
+        <span class="pc-tag tag-derecho">Participación</span>
+        <div class="pc-title">Voz Estudiantil</div>
+        <p class="pc-desc">Asambleas abiertas mensuales. Formulario digital anónimo permanente con respuesta pública mensual. De ser consultados, a formar parte de la decisión.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">02</div>
+      </div>
+
+      <div class="pc c6"
+        data-modal="buzon"
+        data-icon="📬" data-tag="tag-derecho" data-taglabel="Anonimato"
+        data-title="Buzón Anónimo"
+        data-full="Crear un canal protegido donde cada estudiante pueda expresar inquietudes, denunciar irregularidades o señalar injusticias sin miedo a represalias. El anonimato garantiza libertad de expresión y fortalece una cultura de transparencia y respeto dentro de la institución.">
+        <span class="pc-icon">📬</span>
+        <span class="pc-tag tag-derecho">Anonimato</span>
+        <div class="pc-title">Buzón Anónimo</div>
+        <p class="pc-desc">Canal físico y digital protegido para expresar inquietudes y denunciar irregularidades sin miedo a represalias. Libertad de expresión garantizada.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">03</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TRANSPARENCIA -->
+  <div class="cat-block" data-category="transparencia" id="cat-trans">
+    <div class="cat-label">
+      <div class="cat-icon">📊</div>
+      <div class="cat-name">Transparencia & Comunicación</div>
+      <div class="cat-count">5 propuestas</div>
+    </div>
+    <div class="bento">
+
+      <div class="pc c4"
+        data-modal="plataforma"
+        data-icon="💻" data-tag="tag-trans" data-taglabel="Digital"
+        data-title="Plataforma Estudiantil"
+        data-full="Desarrollar un espacio digital oficial donde los estudiantes puedan encontrar propuestas, comunicados, novedades y avances de gestión. Una plataforma clara y organizada mejora la comunicación, evita desinformación y acerca la gestión a toda la comunidad.">
+        <span class="pc-icon">💻</span>
+        <span class="pc-tag tag-trans">Digital</span>
+        <div class="pc-title">Plataforma Estudiantil</div>
+        <p class="pc-desc">Espacio digital oficial con propuestas, comunicados y avances de gestión. Comunicación clara que evita desinformación.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">01</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="reclamos"
+        data-icon="🔍" data-tag="tag-trans" data-taglabel="Seguimiento"
+        data-title="Seguimiento de Reclamos"
+        data-full="Implementar un sistema público donde cada reclamo tenga un estado visible (recibido, en revisión, resuelto), asegurando que ninguna solicitud quede sin respuesta. Esto genera confianza institucional y demuestra compromiso real con las soluciones.">
+        <span class="pc-icon">🔍</span>
+        <span class="pc-tag tag-trans">Seguimiento</span>
+        <div class="pc-title">Seguimiento de Reclamos</div>
+        <p class="pc-desc">Sistema público con estado visible por reclamo: recibido, en revisión, resuelto. Ninguna solicitud sin respuesta.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">02</div>
+      </div>
+
+      <div class="pc c4"
+        data-modal="encuestas"
+        data-icon="📊" data-tag="tag-trans" data-taglabel="Datos"
+        data-title="Encuestas Periódicas"
+        data-full="Realizar consultas regulares para conocer la opinión estudiantil, medir el nivel de satisfacción y detectar problemas antes de que crezcan. Escuchar de manera constante permite tomar decisiones basadas en datos reales y fortalecer la representación estudiantil.">
+        <span class="pc-icon">📊</span>
+        <span class="pc-tag tag-trans">Datos</span>
+        <div class="pc-title">Encuestas Periódicas</div>
+        <p class="pc-desc">Consultas regulares para medir satisfacción y detectar problemas antes de que crezcan. Decisiones basadas en datos reales.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">03</div>
+      </div>
+
+      <div class="pc c6"
+        data-modal="boletin"
+        data-icon="📰" data-tag="tag-trans" data-taglabel="Comunicación"
+        data-title="Boletín Estudiantil"
+        data-full="Crear un medio oficial donde los estudiantes puedan informar, opinar y generar contenido fomenta el pensamiento crítico y la participación activa. El boletín se convierte en un espacio de identidad colectiva, donde la comunidad estudiantil comunica desde su propia perspectiva.">
+        <span class="pc-icon">📰</span>
+        <span class="pc-tag tag-trans">Comunicación</span>
+        <div class="pc-title">Boletín Estudiantil</div>
+        <p class="pc-desc">Medio oficial donde los estudiantes informan, opinan y generan contenido. Identidad colectiva desde la perspectiva estudiantil.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">04</div>
+      </div>
+
+      <div class="pc c3"
+        data-modal="redes"
+        data-icon="📱" data-tag="tag-trans" data-taglabel="Social"
+        data-title="Redes Activas"
+        data-full="Gestionar de manera profesional las redes de S.E.E.F. garantiza información clara, dinámica y atractiva. Una presencia digital constante fortalece la conexión con los estudiantes y mantiene a todos actualizados en tiempo real.">
+        <span class="pc-icon">📱</span>
+        <span class="pc-tag tag-trans">Social</span>
+        <div class="pc-title">Redes Activas</div>
+        <p class="pc-desc">Gestión profesional de redes para información dinámica y atractiva en tiempo real.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">05</div>
+      </div>
+
+      <div class="pc c3"
+        data-modal="informes"
+        data-icon="📋" data-tag="tag-trans" data-taglabel="Gestión"
+        data-title="Informes Públicos"
+        data-full="Publicar reportes mensuales sobre actividades y gastos asegura una gestión abierta y verificable. La transparencia genera confianza y demuestra compromiso con el uso correcto de los recursos.">
+        <span class="pc-icon">📋</span>
+        <span class="pc-tag tag-trans">Gestión</span>
+        <div class="pc-title">Informes Públicos</div>
+        <p class="pc-desc">Reportes mensuales sobre actividades y gastos. Gestión abierta y verificable para toda la comunidad.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">06</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DEPORTE -->
+  <div class="cat-block" data-category="deporte" id="cat-deporte">
+    <div class="cat-label">
+      <div class="cat-icon">🏅</div>
+      <div class="cat-name">Deporte & Selecciones</div>
+      <div class="cat-count">1 propuesta</div>
+    </div>
+    <div class="bento">
+      <div class="pc c12 featured"
+        data-modal="selecciones"
+        data-icon="🏅" data-tag="tag-deporte" data-taglabel="Deporte"
+        data-title="Apoyo a las Selecciones Deportivas del Colegio"
+        data-full="Proponemos fortalecer el apoyo a las selecciones deportivas del colegio mediante acompañamiento constante, mejor organización y reconocimiento a quienes representan a la institución. Esto incluye coordinación de entrenamientos, gestión de materiales necesarios, difusión de competencias y reconocimiento público a los equipos. Creemos que apoyar a nuestras selecciones no solo mejora el rendimiento deportivo, sino que también fortalece el sentido de pertenencia y el orgullo de toda la comunidad educativa.">
+        <span class="pc-icon">🏅</span>
+        <span class="pc-tag tag-deporte">Deporte Institucional</span>
+        <div class="pc-title pc-title-lg">Apoyo a las Selecciones Deportivas</div>
+        <p class="pc-desc">Acompañamiento constante, coordinación de entrenamientos, gestión de materiales, difusión de competencias y reconocimiento público a los equipos que representan al colegio. Orgullo de toda la comunidad.</p>
+        <div class="pc-badge">Leer más →</div>
+        <div class="pc-num">01</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /props-container -->
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <span class="modal-icon" id="m-icon"></span>
+    <span class="modal-tag" id="m-tag"></span>
+    <div class="modal-title" id="m-title"></div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">S.E.E.F.</div>
+  <span>Colegio Alemán del Sud · Tarija · Gestión 2026</span>
+  <a href="seef.html" style="color:var(--granate);text-decoration:none;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase">← Volver al Inicio</a>
+</footer>
 
 <script>
-const LABELS = ['Actividades','Cambios Educativos','Bienestar y Salud','Información y Prensa','Infraestructura','Plataforma y Reclamos'];
-const TOTAL  = LABELS.length;
-const slider = document.getElementById('slider');
-const dotsEl = document.getElementById('dots');
-const counter= document.getElementById('counter');
-const btnP   = document.getElementById('btnPrev');
-const btnN   = document.getElementById('btnNext');
-let cur = 0;
-
-// Build dots
-LABELS.forEach((_,i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i===0?' active':'');
-    d.title = LABELS[i];
-    d.addEventListener('click', () => go(i));
-    dotsEl.appendChild(d);
+// CURSOR
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.pc,.f-tab').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-function go(idx) {
-    if (idx < 0 || idx >= TOTAL) return;
-    closePanel(cur);
-    cur = idx;
-    slider.style.transform = 'translateX(-' + (cur * 100) + 'vw)';
-    dotsEl.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===cur));
-    counter.innerHTML = '<em>' + LABELS[cur] + '</em> · ' + (cur+1) + ' / ' + TOTAL;
-    btnP.disabled = cur === 0;
-    btnN.disabled = cur === TOTAL - 1;
-}
-
-btnP.addEventListener('click', () => go(cur - 1));
-btnN.addEventListener('click', () => go(cur + 1));
-
-// DOC DATA
-const docs = {
-    olympus:        { t:'OLYMPUS C.A.O.S.',         s:'Propuesta Deportiva · Mundialito Integral',         b:'<p>El Olympus C.A.O.S. es nuestra propuesta estrella para una competencia deportiva integral, justa y emocionante. Actualmente los mundialitos carecen de organización clara, lo que genera conflictos y desmotivación.</p><h4>¿Qué proponemos?</h4><p>Un mundialito reorganizado que incluya todas las disciplinas disponibles: fútbol, básquet, vóley, atletismo y más. Con un reglamento claro, árbitros designados y un sistema de puntuación transparente visible para todos. Con un sistema diferente de puntuación al anterior.</p><h4>Cronograma</h4><p><span style="color:#0891b2">Clasificación por curso.-</span> Se jugarán partidos entre todos los 1º y 2º de Sec, entre todos los 3º y 4º, entre todos los 5º y 6º. Solo dos cursos de cada serie con la mayor puntuación entrarán a la semifinal.</p><p><span style="color:#0891b2">Cuartos de final.-</span> Se sortearán las posiciones de juego, y se añadirá el mejor tercer lugar de todas las series para jugar en los cuartos de final.</p><p><span style="color:#0891b2">Semifinal.-</span> Los vencedores jugarán la semifinal y competirán por la copa, modelo de eliminación directa.</p><p><span style="color:#0891b2">Final.-</span> Se disputarán los primeros, segundos y terceros lugares.</p><h4>Impacto esperado</h4><p>Mayor participación estudiantil, fomento del juego limpio y un espíritu de comunidad que trascienda las aulas.</p>' },
-    golden:         { t:'THE GOLDEN CUP',            s:'Propuesta de Premiación · Trofeo Máximo',           b:'<p>The Golden Cup es el reconocimiento máximo de la gestión: un trofeo que premia al curso que más haya sumado puntos durante todo el año en actividades, convivencia y participación.</p><h4>Sistema de puntuación</h4><p>Cada actividad organizada por C.A.O.S. sumará puntos al ranking general. Los cursos podrán ver su posición en tiempo real desde la sección Golden Cup del sitio.</p><h4>Criterios</h4><p>Participación deportiva, eventos culturales, asistencia a asambleas y reconocimientos especiales. Acá podés usar todos tus talentos sin importar lo diferente que puedan ser, para ayudar a tu curso.</p>' },
-    blooming:       { t:'BLOOMING FEST',             s:'Propuesta Social · Fiesta de Primavera',            b:'<p>Blooming Fest es la fiesta de primavera de C.A.O.S.: un evento social disruptivo pensado por y para los estudiantes, con música en vivo, arte y un ambiente completamente diferente a lo de siempre.</p><h4>¿Qué incluye?</h4><p>Fiesta de máscaras, feria de arte estudiantil, food trucks y espacios de descanso decorados temáticamente. Un evento que el colegio nunca va a olvidar.</p><h4>Organización</h4><p>Se coordina con las autoridades del colegio y se financiará a través de entradas simbólicas y sponsors.</p>' },
-    stage:          { t:'C.A.O.S. STAGE',            s:'Propuesta Cultural · Escenario del Talento',        b:'<p>C.A.O.S. Stage es el espacio donde cada estudiante puede mostrar su talento único: música, teatro, stand-up, danza, malabares y cualquier expresión artística que quiera compartir.</p><h4>¿Cómo participar?</h4><p>Los interesados se inscriben previamente a través de los representantes de C.A.O.S. de cada curso.</p><h4>Frecuencia</h4><p>Se planea realizar al menos 1 edición por año. Acá podés usar tus talentos artísticos para poder sobresalir.</p>' },
-    enigma:         { t:'ENIGMA CHALLENGE',          s:'Propuesta de Estrategia · Desafío de Lógica',       b:'<p>Enigma Challenge es un recorrido de acertijos, pistas y desafíos de lógica distribuidos por todo el colegio. Los cursos compiten en equipos para resolver el misterio antes que el resto.</p><h4>Mecánica</h4><p>Cada equipo recibe una pista inicial. Resolviéndola llega a la siguiente ubicación y así sucesivamente hasta llegar al punto final, donde se revelará la solución del gran enigma.</p><h4>Premios</h4><p>El curso ganador suma 150 puntos al Golden Cup y recibe un reconocimiento especial.</p>' },
-    dia:            { t:'DÍA DEL ESTUDIANTE',        s:'Cambio Educativo · Celebración Oficial',            b:'<p>Proponemos que el Día del Estudiante sea reconocido formalmente por el colegio con actividades dedicadas exclusivamente a los alumnos: sin clases tradicionales, con talleres opcionales y espacios recreativos.</p><h4>¿Por qué es importante?</h4><p>Actualmente el día pasa sin reconocimiento institucional. Creemos que celebrar a los estudiantes fortalece el sentido de pertenencia y motiva la participación durante todo el año.</p><h4>Propuesta concreta</h4><p>Jornada de actividades libres, shows, juegos y un acto simbólico donde C.A.O.S. entrega reconocimientos a estudiantes destacados en todas las actividades, deportes y académico, pues creemos firmemente en que todos los estudiantes se destacan según su talento.</p>' },
-    derechos:       { t:'DERECHOS ESTUDIANTILES',    s:'Cambio Educativo · Protocolo de Respeto',           b:'<p>Exigimos que los derechos de cada estudiante sean respetados de manera real y no solo en el papel. Proponemos la creación de un protocolo claro y accesible para todos.</p><h4>Problemas actuales</h4><p>Falta de canales claros para reportar irregularidades, desconocimiento del reglamento estudiantil y ausencia de respuestas institucionales frente a situaciones de injusticia.</p><h4>Nuestras propuestas</h4><p>Un buzón de sugerencias y denuncias anónimo, reuniones periódicas entre C.A.O.S. y autoridades, y la difusión del reglamento estudiantil en todos los cursos. Así como la creación de un buzón en línea para presentar tu queja de forma anónima.</p>' },
-    voz:            { t:'VOZ ESTUDIANTIL',           s:'Cambio Educativo · Asambleas Abiertas',             b:'<p>La Voz Estudiantil es nuestra propuesta para que los alumnos tengan un espacio real de participación en las decisiones que los afectan. No queremos ser consultados: queremos decidir.</p><h4>Asambleas abiertas</h4><p>Una vez al mes, una asamblea abierta a todos los cursos donde se presentan propuestas, se votan iniciativas y se da seguimiento a compromisos anteriores.</p><h4>Canales digitales</h4><p>Un formulario anónimo permanente para recibir ideas y reclamos, con respuesta pública mensual.</p>' },
-    cafeteria:      { t:'MEJORA DE LA CAFETERÍA',    s:'Cambio Educativo · Bienestar y Alimentación',       b:'<p>La cafetería actual no cumple con las necesidades básicas de los estudiantes: precios altos, opciones limitadas y un espacio saturado. Eso tiene que cambiar.</p><h4>Propuestas concretas</h4><p>Menú semanal variado con opciones saludables y económicas, mejora del espacio físico o mejor atención para evitar el ambiente saturado.</p><h4>Plan de acción</h4><p>Reunión con el concesionario y las autoridades del colegio, presentación de una encuesta estudiantil sobre preferencias y un seguimiento mensual de los cambios implementados.</p>' },
-    salud_mental:   { t:'ACOMPAÑAMIENTO EMOCIONAL',  s:'Bienestar · Salud Mental',                          b:'<p>Proponemos crear espacios seguros de escucha y contención para estudiantes que atraviesen momentos difíciles.</p><h4>¿Cómo?</h4><p>Coordinación con el equipo de orientación, talleres de manejo del estrés y espacios de expresión. Reemplazá este texto con el contenido real.</p>' },
-    actividad_fisica:{ t:'MÁS MOVIMIENTO',           s:'Bienestar · Actividad Física',                      b:'<p>Espacios recreativos activos en los recreos y pausas activas durante las clases para mejorar el bienestar físico.</p><h4>Propuesta</h4><p>Reorganización de patios, provisión de materiales deportivos y capacitación de preceptores. Reemplazá este texto con el contenido real.</p>' },
-    alimentacion:   { t:'ALIMENTACIÓN SALUDABLE',    s:'Bienestar · Nutrición',                             b:'<p>Opciones nutritivas y accesibles para todos los estudiantes durante la jornada escolar completa.</p><h4>Plan</h4><p>Acuerdo con la cafetería, kiosco con opciones saludables y charlas de nutrición. Reemplazá este texto con el contenido real.</p>' },
-    prevencion:     { t:'TALLERES DE PREVENCIÓN',    s:'Bienestar · Salud Integral',                        b:'<p>Charlas y talleres sobre salud integral, hábitos saludables y bienestar estudiantil a cargo de profesionales.</p><h4>Temas</h4><p>Manejo del estrés, hábitos de sueño, nutrición y salud mental. Reemplazá este texto con el contenido real.</p>' },
-    comunicacion:   { t:'BOLETÍN ESTUDIANTIL',       s:'Información · Medio Propio',                        b:'<p>Un boletín digital donde los propios estudiantes informan, opinan y crean contenido sobre la vida del colegio.</p><h4>Formato</h4><p>Publicación mensual digital con notas, entrevistas y cobertura de eventos. Reemplazá este texto con el contenido real.</p>' },
-    redes:          { t:'REDES ACTIVAS',             s:'Información · Comunicación Digital',                b:'<p>Gestión activa de las redes de C.A.O.S. con contenido de calidad, frecuencia y estilo propio.</p><h4>Canales</h4><p>Instagram, TikTok y WhatsApp con contenido planificado y responsable de prensa designado. Reemplazá este texto con el contenido real.</p>' },
-    transparencia:  { t:'INFORMES PÚBLICOS',         s:'Información · Transparencia',                       b:'<p>Reportes mensuales sobre actividades, gastos y decisiones de C.A.O.S. publicados y accesibles a toda la comunidad.</p><h4>Formato</h4><p>PDF y publicación en redes con resumen ejecutivo. Reemplazá este texto con el contenido real.</p>' },
-    cartelera:      { t:'CARTELERA DIGITAL',         s:'Información · Comunicación Interna',                b:'<p>Pantallas o carteleras actualizadas con novedades, eventos y comunicados institucionales visibles para todos.</p><h4>Implementación</h4><p>Coordinación con dirección para uso de espacios y actualización semanal. Reemplazá este texto con el contenido real.</p>' },
-    aulas:          { t:'MEJORA DE AULAS',           s:'Infraestructura · Espacios de Aprendizaje',         b:'<p>Aulas más cómodas, mejor iluminadas y equipadas para un aprendizaje de calidad en todas las materias.</p><h4>Propuestas concretas</h4><p>Relevamiento de necesidades por curso, presentación formal a dirección y seguimiento de reparaciones. Reemplazá este texto con el contenido real.</p>' },
-    biblioteca:     { t:'BIBLIOTECA RENOVADA',       s:'Infraestructura · Recursos Educativos',             b:'<p>Modernización de la biblioteca con nuevos materiales, tecnología y horarios más amplios para los estudiantes.</p><h4>Plan</h4><p>Donación de libros, incorporación de recursos digitales y extensión de horarios de atención. Reemplazá este texto con el contenido real.</p>' },
-    laboratorio:    { t:'LAB DE TECNOLOGÍA',         s:'Infraestructura · Equipamiento Digital',            b:'<p>Equipamiento actualizado en el laboratorio de informática para que todos los cursos accedan a tecnología de calidad.</p><h4>Necesidades</h4><p>Renovación de computadoras, mejora de conectividad y software actualizado. Reemplazá este texto con el contenido real.</p>' },
-    espacios:       { t:'ESPACIOS COMUNES',          s:'Infraestructura · Bienestar General',               b:'<p>Patios, pasillos y salones de uso compartido mejorados para que todos se sientan cómodos en el colegio.</p><h4>Propuestas</h4><p>Mantenimiento de baños, repintura de espacios y mobiliario en zonas de descanso. Reemplazá este texto con el contenido real.</p>' },
-    buzon:          { t:'BUZÓN ANÓNIMO',             s:'Plataforma · Canal de Reclamos',                    b:'<p>Canal seguro y anónimo para reportar irregularidades, situaciones problemáticas o injusticias dentro del colegio.</p><h4>Funcionamiento</h4><p>Formulario digital accesible desde el sitio de C.A.O.S., revisado semanalmente con respuesta pública. Reemplazá este texto con el contenido real.</p>' },
-    plataforma:     { t:'PLATAFORMA ESTUDIANTIL',    s:'Plataforma · Hub Digital',                          b:'<p>Un sitio centralizado donde los estudiantes acceden a información, propuestas, ranking y novedades de C.A.O.S.</p><h4>Funcionalidades</h4><p>Ranking Golden Cup en tiempo real, propuestas con detalle y formulario de inscripción. Reemplazá este texto con el contenido real.</p>' },
-    seguimiento:    { t:'SEGUIMIENTO DE RECLAMOS',   s:'Plataforma · Transparencia',                        b:'<p>Sistema público donde cada reclamo presentado tiene un estado visible: recibido, en proceso, resuelto.</p><h4>Impacto</h4><p>Ningún reclamo queda en el olvido. Los estudiantes pueden ver qué pasa con su denuncia. Reemplazá este texto con el contenido real.</p>' },
-    encuestas:      { t:'ENCUESTAS PERIÓDICAS',      s:'Plataforma · Participación',                        b:'<p>Consultas regulares a todos los cursos para medir satisfacción, detectar problemas y orientar las acciones de C.A.O.S.</p><h4>Frecuencia</h4><p>Una encuesta mensual corta con publicación pública de resultados. Reemplazá este texto con el contenido real.</p>' }
-};
-
-// Close panel helper
-function closePanel(idx) {
-    const panel = document.getElementById('panel-' + idx);
-    if (!panel) return;
-    panel.classList.remove('open');
-    const activeCard = panel.closest('.slide').querySelector('.card.open');
-    if (activeCard) activeCard.classList.remove('open');
-}
-
-// Card click — event delegation
-document.getElementById('slider').addEventListener('click', function(e) {
-    // Close button
-    const closeBtn = e.target.closest('[data-close]');
-    if (closeBtn) {
-        closePanel(parseInt(closeBtn.dataset.close));
-        return;
-    }
-    // Card click
-    const card = e.target.closest('.card[data-doc]');
-    if (!card) return;
-
-    const key   = card.dataset.doc;
-    const slide = card.closest('.slide');
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const idx   = slides.indexOf(slide);
-    const panel = document.getElementById('panel-' + idx);
-    const data  = docs[key];
-    if (!data) return;
-
-    // Toggle: same card closes it
-    if (card.classList.contains('open') && panel.classList.contains('open')) {
-        closePanel(idx);
-        return;
-    }
-
-    // Close any other open card in this slide
-    slide.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
-
-    // Open this card
-    card.classList.add('open');
-    document.getElementById('title-' + idx).textContent = data.t;
-    document.getElementById('sub-'   + idx).textContent = data.s;
-    document.getElementById('body-'  + idx).innerHTML   = data.b;
-    panel.classList.add('open');
-
-    setTimeout(() => panel.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
+// HAM
+document.getElementById('ham').addEventListener('click',function(){
+  document.getElementById('mob').classList.toggle('open');
 });
 
-// Init
-go(0);
+// PROGRESS BAR
+const pbar=document.getElementById('pbar');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  pbar.style.width=pct+'%';
+});
+
+// INTERSECTION OBSERVER
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:0.08});
+document.querySelectorAll('.cat-block,.pc').forEach((el,i)=>{
+  if(el.classList.contains('pc')) el.style.transitionDelay=(i%4)*0.07+'s';
+  io.observe(el);
+});
+
+// FILTER TABS
+const tabs=document.querySelectorAll('.f-tab');
+const blocks=document.querySelectorAll('.cat-block');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('on'));
+    tab.classList.add('on');
+    const cat=tab.dataset.cat;
+    blocks.forEach(b=>{
+      if(cat==='all'||b.dataset.category===cat){
+        b.classList.remove('hidden');
+        // re-trigger animation
+        b.classList.remove('vis');
+        setTimeout(()=>io.observe(b),50);
+      } else {
+        b.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// MODAL
+const modalBg=document.getElementById('modal-bg');
+const mIcon=document.getElementById('m-icon');
+const mTag=document.getElementById('m-tag');
+const mTitle=document.getElementById('m-title');
+const mBody=document.getElementById('m-body');
+
+document.querySelectorAll('.pc[data-modal]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    mIcon.textContent=card.dataset.icon;
+    mTag.textContent=card.dataset.taglabel;
+    mTag.className='modal-tag '+card.dataset.tag;
+    mTitle.textContent=card.dataset.title;
+    mBody.textContent=card.dataset.full;
+    modalBg.classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+  card.style.cursor='none';
+});
+
+function closeModal(){
+  modalBg.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal-close').addEventListener('click',closeModal);
+modalBg.addEventListener('click',e=>{if(e.target===modalBg)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>
